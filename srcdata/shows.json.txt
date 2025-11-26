@@ -1,0 +1,108 @@
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, FlatList, ActivityIndicator, TouchableOpacity, Linking, TextInput, Alert, Keyboard } from 'react-native';
+import * as Location from 'expo-location';
+import { Ionicons } from '@expo/vector-icons'; // For the search icon
+
+import showData from '../data/shows.json'; 
+import { getDistanceInMiles } from '../utils/distance';
+
+export default function ShowListScreen() {
+  const [userLocation, setUserLocation] = useState(null);
+  const [sortedShows, setSortedShows] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [originName, setOriginName] = useState('Current Location'); // To show user where we are measuring from
+
+  useEffect(() => {
+    // On load, just get the GPS location
+    getCurrentLocation();
+  }, []);
+
+  const getCurrentLocation = async () => {
+    setLoading(true);
+    setSearchQuery(''); // Clear search box
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    
+    if (status !== 'granted') {
+      Alert.alert("Permission Denied", "We need location access to find shows near you.");
+      setLoading(false);
+      return;
+    }
+
+    let location = await Location.getCurrentPositionAsync({});
+    setUserLocation(location.coords);
+    setOriginName('Current Location');
+    processShows(location.coords);
+  };
+
+  const handleSearch = async () => {
+    if (!searchQuery.trim()) return;
+
+    Keyboard.dismiss(); // Hide keyboard
+    setLoading(true);
+
+    try {
+      // MAGIC: This asks the phone "Where is Andover, OH?"
+      const geocodedLocation = await Location.geocodeAsync(searchQuery);
+
+      if (geocodedLocation.length > 0) {
+        const { latitude, longitude } = geocodedLocation[0];
+        setOriginName(searchQuery); // Update header to say "Near Andover, OH"
+        processShows({ latitude, longitude });
+      } else {
+        Alert.alert("Not Found", "We couldn't locate that city. Try adding the state (e.g., 'Andover, OH')");
+        setLoading(false);
+      }
+    } catch (error) {
+      Alert.alert("Error", "Something went wrong searching for that location.");
+      setLoading(false);
+    }
+  };
+
+  const processShows = (coords) => {
+    const showsWithDistance = showData.map((show) => {
+      const miles = getDistanceInMiles(
+        coords.latitude, 
+        coords.longitude, 
+        show.latitude, 
+        show.longitude
+      );
+      return { ...show, distance: miles };
+    });
+
+    // Sort by distance and limit to 200 miles just to keep list relevant
+    const sorted = showsWithDistance
+      .filter(s => s.latitude !== 0) // Filter out bad data
+      .sort((a, b) => a.distance - b.distance);
+
+    setSortedShows(sorted);
+    setLoading(false);
+  };
+
+  const renderShowItem = ({ item }) => (
+    <View style={styles.card}>
+      <View style={styles.cardHeader}>
+        {/* UPDATED LABEL HERE */}
+        <Text style={styles.distanceBadge}>{item.distance} miles away</Text>
+      </View>
+      
+      <Text style={styles.title}>{item.name}</Text>
+      <Text style={styles.location}>{item.locationString}</Text>
+      
+      <View style={styles.divider} />
+      
+      <Text style={styles.vendorLabel}>Vendor Info:</Text>
+      <Text style={styles.vendorInfo} numberOfLines={2}>{item.vendorInfo}</Text>
+
+      {item.link ? (
+        <TouchableOpacity 
+            style={styles.button} 
+            onPress={() => Linking.openURL(item.link)}
+        >
+            <Text style={styles.buttonText}>View Details</Text>
+        </TouchableOpacity>
+      ) : null}
+    </View>
+  );
+
+  return (

@@ -1,0 +1,26 @@
+// src/utils/distance.js
+
+// This function converts Degrees to Radians (Math requires radians)
+const toRad = (value) => {
+  return (value * Math.PI) / 180;
+};
+
+// This is the famous "Haversine Formula"
+// It takes two GPS coordinates and returns the distance in MILES
+export const getDistanceInMiles = (lat1, lon1, lat2, lon2) => {
+  if (!lat1 || !lon1 || !lat2 || !lon2) return 99999; // Return huge distance if data is missing
+
+  const R = 3963; // Radius of Earth in Miles
+  const dLat = toRad(lat2 - lat1);
+  const dLon = toRad(lon2 - lon1);
+  
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  const distance = R * c;
+
+  return parseFloat(distance.toFixed(1)); // Returns number like 12.5
+};
