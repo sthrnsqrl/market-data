@@ -2,13 +2,32 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 const axios = require('axios');
 
-// --- CONFIGURATION ---
+// --- CONFIGURATION: FULL REGION ---
 const STATES = ['OH', 'PA', 'NY', 'MI', 'IN', 'KY'];
 
 // --- HELPER: Polite Pause ---
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-// --- HELPER: Browser Launcher ---
+// --- HELPER: Auto-Scroll ---
+async function autoScroll(page) {
+    await page.evaluate(async () => {
+        await new Promise((resolve) => {
+            let totalHeight = 0;
+            const distance = 100;
+            const timer = setInterval(() => {
+                const scrollHeight = document.body.scrollHeight;
+                window.scrollBy(0, distance);
+                totalHeight += distance;
+                if(totalHeight >= scrollHeight - window.innerHeight){
+                    clearInterval(timer);
+                    resolve();
+                }
+            }, 100);
+        });
+    });
+}
+
+// --- HELPER: Browser Launcher (Fresh Instance Every Time) ---
 async function runWithBrowser(taskFunction) {
     const browser = await puppeteer.launch({ 
         headless: false, // Keep visible so you can monitor
@@ -57,22 +76,43 @@ async function getCoordinates(locationString) {
 // --- HELPER: Category Logic ---
 function determineCategory(title, extraText = "") {
     const text = (title + " " + extraText).toLowerCase();
-    if (text.match(/viking|celtic|irish|german|oktoberfest|steampunk|renaissance|medieval|pirate|fest\b|festival|fair\b|carnival|fairgrounds|county fair/)) return "Festivals & Fairs";
-    if (text.match(/horror|ghost|spooky|haunted|halloween|dark|oddities|curiosities|paranormal|oddmall/)) return "Horror & Oddities";
-    if (text.match(/comic|con\b|anime|gaming|cosplay|expo|toy show|collectible|fan|convention center|trade center/)) return "Cons & Expos";
-    if (text.match(/farmers market|weekly|every (sunday|saturday)|flea market/)) return "Weekly Markets";
-    if (text.match(/craft|handmade|artisan|bazaar|boutique|maker|art show/)) return "Arts & Crafts";
+    // 1. PRIORITY: Festivals, Cultural Events, & Fairgrounds
+    if (text.match(/viking|celtic|irish|german|oktoberfest|steampunk|renaissance|medieval|pirate|fest\b|festival|fair\b|carnival|fairgrounds|county fair/)) {
+        return "Festivals & Fairs";
+    }
+    // 2. Horror & Oddities
+    if (text.match(/horror|ghost|spooky|haunted|halloween|dark|oddities|curiosities|paranormal|oddmall/)) {
+        return "Horror & Oddities";
+    }
+    // 3. Cons, Expos & Convention Centers
+    if (text.match(/comic|con\b|anime|gaming|cosplay|expo|toy show|collectible|fan|convention center|trade center/)) {
+        return "Cons & Expos";
+    }
+    // 4. Weekly Markets
+    if (text.match(/farmers market|weekly|every (sunday|saturday)|flea market/)) {
+        return "Weekly Markets";
+    }
+    // 5. Arts & Crafts
+    if (text.match(/craft|handmade|artisan|bazaar|boutique|maker|art show/)) {
+        return "Arts & Crafts";
+    }
+    // 6. Default Fallback
     return "Festivals & Fairs";
 }
 
-// --- STRATEGIES ---
-
-// Directory A (Temporarily Disabled in Main Controller)
+// --- STRATEGY 1: FairsAndFestivals.net ---
 async function scrapeDirectory(state) {
     return await runWithBrowser(async (page) => {
         console.log(`   [Directory A] Scraping ${state}...`);
         await page.goto(`https://www.fairsandfestivals.net/states/${state}/`, { waitUntil: 'domcontentloaded', timeout: 60000 });
         await sleep(5000); 
+
+        // Check for block
+        const title = await page.title();
+        if (title.includes("Page Not Found") || title.includes("Oops")) {
+            console.log("      ⚠️ Blocked by FairsAndFestivals (Oops Page). Skipping...");
+            return [];
+        }
 
         return await page.evaluate(() => {
             const data = [];
@@ -94,6 +134,7 @@ async function scrapeDirectory(state) {
     });
 }
 
+// --- STRATEGY 2: Festival Guides ---
 async function scrapeFestivalGuides(state) {
     const stateMap = { 'OH': 'ohio', 'PA': 'pennsylvania', 'NY': 'new-york', 'MI': 'michigan', 'IN': 'indiana', 'KY': 'kentucky' };
     const fullState = stateMap[state];
@@ -105,11 +146,9 @@ async function scrapeFestivalGuides(state) {
         await page.goto(`https://festivalguidesandreviews.com/${fullState}-festivals/`, { waitUntil: 'networkidle2', timeout: 0 });
         await sleep(3000);
 
-        // Cookie Consent Buster
         try {
             const consentBtn = await page.$x("//button[contains(., 'AGREE') or contains(., 'Agree') or contains(., 'Accept')]");
             if (consentBtn.length > 0) {
-                console.log("      🍪 Clicking Cookie Banner...");
                 await consentBtn[0].click();
                 await sleep(2000); 
             }
@@ -138,6 +177,7 @@ async function scrapeFestivalGuides(state) {
     });
 }
 
+// --- STRATEGY 3: Oddmall ---
 async function scrapeOddmall() {
     return await runWithBrowser(async (page) => {
         console.log(`   [Promoter] Scraping Oddmall...`);
@@ -166,6 +206,7 @@ async function scrapeOddmall() {
     });
 }
 
+// --- STRATEGY 4: Northcoast ---
 async function scrapeNorthcoast() {
     return await runWithBrowser(async (page) => {
         console.log(`   [Promoter] Scraping Northcoast...`);
@@ -211,15 +252,22 @@ async function scrapeNorthcoast() {
 
 // --- MAIN CONTROLLER ---
 (async () => {
-    console.log('🕷️  Starting RESILIENT Multi-Spider (Bypassing Blocked Sites)...');
+    console.log('🕷️  Starting RESILIENT Multi-Spider...');
     let masterList = [];
 
     // 1. Directories (Loop through states)
     for (const state of STATES) {
-        // NOTE: Skipped "listA" (FairsAndFestivals) because it is blocking bots right now.
-        // We will rely on "listB" (FestivalGuides) which is working perfectly.
+        // Source A
+        const listA = await scrapeDirectory(state);
+        if (listA.length > 0) {
+            const catA = listA.map(item => ({ ...item, state, category: determineCategory(item.name, item.locationString) }));
+            console.log(`      + Added ${catA.length} events from Directory A`);
+            masterList = masterList.concat(catA);
+        } else {
+            console.log("      - No events found (or blocked).");
+        }
 
-        // Source B: FestivalGuides
+        // Source B
         const listB = await scrapeFestivalGuides(state);
         if (listB.length > 0) {
             const catB = listB.map(item => ({ ...item, state, category: determineCategory(item.name, item.locationString) }));
