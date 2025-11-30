@@ -75658,5 +75658,29 @@
     "latitude": 39.7589478,
     "longitude": -84.1916069,
     "id": "ksgpw676b"
+  },
+  {
+    "name": "Richfield Christmas Village 2025",
+    "dateString": "DECEMBER 2025",
+    "locationString": "Richfield, OH",
+    "link": "https://www.townplanner.com/event/831481",
+    "state": "OH",
+    "vendorInfo": "Step into a Winter Wonderland at our 1st annual Christmas Fair. 3 days of festive fun, delicious treats, and holiday cheer!. Come meet the Grinch and take pictures with Santa",
+    "category": "Festivals & Fairs",
+    "latitude": 41.21973561260954,
+    "longitude": -81.6371595710116,
+    "id": "lpg8oilzf"
+  },
+  {
+    "name": "Oddmall: Chrishanukwanzmadan",
+    "dateString": "December 12th and13th, 2025",
+    "locationString": "Strongsville, Ohio",
+    "link": "https://www.oddmall.info/chrishanukwanzmadan",
+    "state": "OH",
+    "vendorInfo": "Chrishanukwanzmadan is Oddmall’s holiday show celebration. Dozens of vendors, live entertainment, Santas and elves and Grinches and Hanukkah Armadillos and Krampus and all the other stuff you’ve come to associate with the winter holidays figuratively drips from the walls and ceilings like tinsel from the buns of a curiously gluttonous cat. Don’t picture that last part. I don’t know why I wrote it.",
+    "category": "Festivals & Fairs",
+    "latitude": 41.311916304579604,
+    "longitude": -81.80763984770861,
+    "id": "r3jgl42j8"
   }
 ]
