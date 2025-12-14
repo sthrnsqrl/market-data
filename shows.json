@@ -1,5 +1,173 @@
 [
   {
+    "name": "2026 CINCINNATI SPRING AVANT-GARDE ART & CRAFT SHOW",
+    "dateString": "Saturday, March 14, 2026",
+    "locationString": "Loveland, OH 45140",
+    "link": "https://www.avantgardeshows.com/events",
+    "vendorInfo": "Accepting Vendors",
+    "category": "Arts & Crafts",
+    "state": "OH",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "xs9xurj52"
+  },
+  {
+    "name": "2026 ROCKY RIVER SPRING AVANT-GARDE ART & CRAFT SHOW",
+    "dateString": "Sunday, March 15, 2026",
+    "locationString": "Rocky River, OH 44116",
+    "link": "https://www.avantgardeshows.com/events",
+    "vendorInfo": "Accepting Vendors",
+    "category": "Arts & Crafts",
+    "state": "OH",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "s80njed4y"
+  },
+  {
+    "name": "2026 COLUMBUS SPRING AVANT-GARDE ART & CRAFT SHOW",
+    "dateString": "Saturday, March 21, 2026",
+    "locationString": "Hilliard, OH 43026",
+    "link": "https://www.avantgardeshows.com/events",
+    "vendorInfo": "Accepting Vendors",
+    "category": "Arts & Crafts",
+    "state": "OH",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "941x0o8a2"
+  },
+  {
+    "name": "​​​​2026 CHAGRIN FALLS SPRING AVANT-GARDE ART & CRAFT SHOW",
+    "dateString": "Sunday, March 22, 2026",
+    "locationString": "Chagrin Falls, OH 44023",
+    "link": "https://www.avantgardeshows.com/events",
+    "vendorInfo": "Accepting Vendors",
+    "category": "Arts & Crafts",
+    "state": "OH",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "3m7w9bwjz"
+  },
+  {
+    "name": "2026 AVON SPRING AVANT-GARDE ART & CRAFT SHOW",
+    "dateString": "Saturday, April 11, 2026",
+    "locationString": "Avon, OH 44011",
+    "link": "https://www.avantgardeshows.com/events",
+    "vendorInfo": "Accepting Vendors",
+    "category": "Arts & Crafts",
+    "state": "OH",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "zo2jow3r9"
+  },
+  {
+    "name": "2026 COLUMBUS SUMMER AVANT-GARDE ART & CRAFT SHOW",
+    "dateString": "Saturday, May 9, 2026",
+    "locationString": "Hilliard, OH 43026",
+    "link": "https://www.avantgardeshows.com/events",
+    "vendorInfo": "Accepting Vendors",
+    "category": "Arts & Crafts",
+    "state": "OH",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "iwm6ybibj"
+  },
+  {
+    "name": "​​​2026 COLUMBUS FALL AVANT-GARDE ART & CRAFT SHOW",
+    "dateString": "Sunday, September 13, 2026",
+    "locationString": "Hilliard, OH 43026",
+    "link": "https://www.avantgardeshows.com/events",
+    "vendorInfo": "Accepting Vendors",
+    "category": "Arts & Crafts",
+    "state": "OH",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "b363x369n"
+  },
+  {
+    "name": "​2026 ROCKY RIVER FALL AVANT-GARDE ART & CRAFT SHOW",
+    "dateString": "Sunday, September 20, 2026",
+    "locationString": "Rocky River, OH 44116",
+    "link": "https://www.avantgardeshows.com/events",
+    "vendorInfo": "Accepting Vendors",
+    "category": "Arts & Crafts",
+    "state": "OH",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "1t58s19en"
+  },
+  {
+    "name": "2026 CINCINNATI FALL AVANT-GARDE ART & CRAFT SHOW",
+    "dateString": "Saturday, November 7, 2026",
+    "locationString": "Loveland, OH 45140",
+    "link": "https://www.avantgardeshows.com/events",
+    "vendorInfo": "Accepting Vendors",
+    "category": "Arts & Crafts",
+    "state": "OH",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "mpwcbmp7f"
+  },
+  {
+    "name": "2026 CHAGRIN FALLS FALL AVANT-GARDE ART & CRAFT SHOW",
+    "dateString": "Sunday, November 8, 2026",
+    "locationString": "Chagrin Falls, OH 44023",
+    "link": "https://www.avantgardeshows.com/events",
+    "vendorInfo": "Accepting Vendors",
+    "category": "Arts & Crafts",
+    "state": "OH",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "fsfhnvtbi"
+  },
+  {
+    "name": "2026 STRONGSVILLE FALL AVANT-GARDE ART & CRAFT SHOW",
+    "dateString": "Saturday, November 14, 2026",
+    "locationString": "Strongsville, OH 44136",
+    "link": "https://www.avantgardeshows.com/events",
+    "vendorInfo": "Accepting Vendors",
+    "category": "Arts & Crafts",
+    "state": "OH",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "td6kbbbhz"
+  },
+  {
+    "name": "​​​​​2026 FAIRLAWN FALL AVANT-GARDE ART & CRAFT SHOW",
+    "dateString": "Sunday, November 22, 2026",
+    "locationString": "Fairlawn, OH 44333",
+    "link": "https://www.avantgardeshows.com/events",
+    "vendorInfo": "Accepting Vendors",
+    "category": "Arts & Crafts",
+    "state": "OH",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "eptj0ckk6"
+  },
+  {
+    "name": "2026 AVON WINTER AVANT-GARDE ART & CRAFT SHOW",
+    "dateString": "Saturday, November 28, 2026",
+    "locationString": "Avon, OH 44011",
+    "link": "https://www.avantgardeshows.com/events",
+    "vendorInfo": "Accepting Vendors",
+    "category": "Arts & Crafts",
+    "state": "OH",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "2rwjd6z5k"
+  },
+  {
+    "name": "2026 COLUMBUS WINTER AVANT-GARDE ART & CRAFT SHOW",
+    "dateString": "Saturday, December 12, 2026",
+    "locationString": "Hilliard, OH 43026",
+    "link": "https://www.avantgardeshows.com/events",
+    "vendorInfo": "Accepting Vendors",
+    "category": "Arts & Crafts",
+    "state": "OH",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "xuqudtyt6"
+  },
+  {
     "name": "Christmas Village at CAN DO Community Park II",
     "dateString": "12/14",
     "locationString": "Hazleton, undefined",
@@ -9,7 +177,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "v5rgyjfq9"
+    "id": "ek85fe2zw"
   },
   {
     "name": "Lancaster Liederkranz Christkindlmarkt",
@@ -21,7 +189,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "71cp11jnz"
+    "id": "ydav8jrix"
   },
   {
     "name": "12/21",
@@ -33,7 +201,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "nn8h4pul1"
+    "id": "qr5ux1quq"
   },
   {
     "name": "Christmas Village at CAN DO Community Park III",
@@ -45,7 +213,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "b2106amom"
+    "id": "t57eyi38m"
   },
   {
     "name": "It’s a Wonderful Life Holiday Festival V",
@@ -57,7 +225,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "o9x2hmef1"
+    "id": "ptzur8pv6"
   },
   {
     "name": "12/28 (Closed 12/24, 12/25)",
@@ -69,7 +237,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "hagbdkhl1"
+    "id": "b0kxqjhm4"
   },
   {
     "name": "Harrisburg New Year’s Eve Celebration",
@@ -81,7 +249,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "62gpbzlqf"
+    "id": "zh1w3wgtz"
   },
   {
     "name": "New Year’s Eve Bologna Drop",
@@ -93,7 +261,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "bat11hx1b"
+    "id": "hxbz9f6s3"
   },
   {
     "name": "First Night",
@@ -105,7 +273,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "1s0za84gk"
+    "id": "tt3912hhv"
   },
   {
     "name": "First Night State College",
@@ -117,7 +285,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "sr0ktplgg"
+    "id": "vvu4hit5t"
   },
   {
     "name": "Sunbury New Year’s Eve Celebration",
@@ -129,7 +297,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "8kz4fq3xs"
+    "id": "l1aholdw7"
   },
   {
     "name": "Mountain City Beer and Wine Festival",
@@ -141,7 +309,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "rq3ne6oim"
+    "id": "nyqwvio9r"
   },
   {
     "name": "Snowfest and Polar Plunge",
@@ -153,7 +321,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "vpbjpy5iy"
+    "id": "0v5hkxsdk"
   },
   {
     "name": "PA Chestnut Festival",
@@ -165,7 +333,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "ys4efe0oy"
+    "id": "skm1mryaw"
   },
   {
     "name": "Philly Chocolate, Wine and Whiskey Festival",
@@ -177,7 +345,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "7y4rvugqm"
+    "id": "u4rpgk2f5"
   },
   {
     "name": "Pocono Winter Beerfest",
@@ -189,7 +357,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "x61r03slq"
+    "id": "xzsjfr865"
   },
   {
     "name": "Greensburg Night Market I",
@@ -201,7 +369,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "ndncjwtoa"
+    "id": "65qnj7qsp"
   },
   {
     "name": "Ardmore Passport: World Pours Beer and Food Festival",
@@ -213,7 +381,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "52ue5fs4o"
+    "id": "68g0vbnfi"
   },
   {
     "name": "Chili",
@@ -225,7 +393,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "uw942ylua"
+    "id": "ivaqun7m4"
   },
   {
     "name": "Warren County Winterfest",
@@ -237,7 +405,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "681s2c7q6"
+    "id": "2y3z1x8sh"
   },
   {
     "name": "Groundhog Wine N Shine Fest",
@@ -249,7 +417,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "mnlquxy4c"
+    "id": "f2s06t581"
   },
   {
     "name": "Marienville Winterfest",
@@ -261,7 +429,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "ppu6kjy6a"
+    "id": "dz931go3x"
   },
   {
     "name": "Founders Philly Freeze",
@@ -273,7 +441,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "9ash8nyc9"
+    "id": "8xypv91fh"
   },
   {
     "name": "Winterfest at Moraine State Park",
@@ -285,7 +453,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "x4exesfdd"
+    "id": "3a3s3h4js"
   },
   {
     "name": "Allentown Winter Festival",
@@ -297,7 +465,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "yuvfcusq4"
+    "id": "nsdj393yg"
   },
   {
     "name": "Franklin on Ice",
@@ -309,7 +477,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "qmfvb0qse"
+    "id": "g5n2czbgv"
   },
   {
     "name": "Carve 4 Cancer Winter Festival at Montage Mountain",
@@ -321,7 +489,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "wnhwzgxbq"
+    "id": "o488swcnw"
   },
   {
     "name": "Skytop Lodge Winter Beer Festival",
@@ -333,7 +501,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "jgle1w7jm"
+    "id": "1bcbd3pxb"
   },
   {
     "name": "Kick Off and Chili Cook",
@@ -345,7 +513,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "xtyt924n3"
+    "id": "akias684b"
   },
   {
     "name": "Bat Fest at Lincoln Caverns",
@@ -357,7 +525,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "cnx8gmakd"
+    "id": "0bi29gbin"
   },
   {
     "name": "Winter Winefest and Market",
@@ -369,7 +537,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "m8u8uo4jo"
+    "id": "vojd3607u"
   },
   {
     "name": "Wine on the Lake",
@@ -381,7 +549,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "ticyhygxj"
+    "id": "6h2cmzb3d"
   },
   {
     "name": "Pittsburgh Winter Beerfest",
@@ -393,7 +561,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "zk4247txc"
+    "id": "5rdbhzi2o"
   },
   {
     "name": "Wine ‘n Shine Palooza",
@@ -405,7 +573,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "dylzjhusj"
+    "id": "2gtz2fg5y"
   },
   {
     "name": "Jammin’ for the Arts!",
@@ -417,7 +585,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "6tps3up8b"
+    "id": "4926kal3x"
   },
   {
     "name": "Greensburg Night Market II",
@@ -429,7 +597,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "w5kxt9yqg"
+    "id": "3po0egt3r"
   },
   {
     "name": "Winter Jam: Reading",
@@ -441,7 +609,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "h5lm3lf0t"
+    "id": "zjzl6u012"
   },
   {
     "name": "Kennett Winterfest",
@@ -453,7 +621,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "rpb1gm5ux"
+    "id": "by57oznvl"
   },
   {
     "name": "Pittsburgh Chocolate, Wine and Whiskey Festival",
@@ -465,7 +633,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "shjc5end7"
+    "id": "j4pp4ygyz"
   },
   {
     "name": "Spirits of the Burgh Festival",
@@ -477,7 +645,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "ctkvyz3mx"
+    "id": "wpdsgdyor"
   },
   {
     "name": "Winter Jam: Pittsburgh",
@@ -489,7 +657,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "6swei5048"
+    "id": "xhg8jx5vs"
   },
   {
     "name": "12/18 (Closed 12/16, 12/17)",
@@ -501,7 +669,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "gfxcgkdfa"
+    "id": "8tzd8xb4j"
   },
   {
     "name": "Holiday Magic in the Village",
@@ -513,7 +681,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "g5bgmf7rc"
+    "id": "hvikz4fsg"
   },
   {
     "name": "Dickens Christmas Festival V",
@@ -525,7 +693,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "2eg96lfj8"
+    "id": "ml9umnijh"
   },
   {
     "name": "Chanukah Event, Candy Drop and Celebration",
@@ -537,7 +705,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "888t3kakm"
+    "id": "fkkm55mt9"
   },
   {
     "name": "East Islip Holiday Lights Drive",
@@ -549,7 +717,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "56zkxs1ph"
+    "id": "wbn75zhz5"
   },
   {
     "name": "Saratoga New Year’s Eve",
@@ -561,7 +729,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "eue98h7ao"
+    "id": "ad9jkbhjf"
   },
   {
     "name": "Bank of Utica’s New Years Eve Bash",
@@ -573,7 +741,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "ksb5edt61"
+    "id": "bu0vxcg6i"
   },
   {
     "name": "Amsterdam SoupFest",
@@ -585,7 +753,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "m7wk4dcg6"
+    "id": "ojtg8pghi"
   },
   {
     "name": "Mendon Ponds Park Winterfest",
@@ -597,7 +765,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "zifyq4ghu"
+    "id": "9tkl6bl0v"
   },
   {
     "name": "Long Lake Winter Carnival",
@@ -609,7 +777,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "4v6yxogzt"
+    "id": "nonw0jj3l"
   },
   {
     "name": "Barrel Jam Beer Fest",
@@ -621,7 +789,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "2kcx5vgxt"
+    "id": "t04y9u5ii"
   },
   {
     "name": "Hudson Valley WingFest",
@@ -633,7 +801,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "k9696gmyn"
+    "id": "b7n2n9ezc"
   },
   {
     "name": "Buffalo On Tap",
@@ -645,7 +813,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "ti2ex3adf"
+    "id": "av5lbmf0s"
   },
   {
     "name": "Buffalo Wine and Chocolate Festival",
@@ -657,7 +825,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "1d3bte32z"
+    "id": "wncgmbx21"
   },
   {
     "name": "Carthage Winterfest",
@@ -669,7 +837,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "jtb9c2yvk"
+    "id": "410hbcmqe"
   },
   {
     "name": "Teatown Hudson River EagleFest",
@@ -681,7 +849,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "xcld0tuvl"
+    "id": "ew8yz1us0"
   },
   {
     "name": "Glens Falls Vegan Festival",
@@ -693,7 +861,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "te1a3kg3s"
+    "id": "76wsb8lps"
   },
   {
     "name": "Winterfest in Irondequoit",
@@ -705,7 +873,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "5dlq0mjuw"
+    "id": "2at4wibh0"
   },
   {
     "name": "Saratoga Chowderfest",
@@ -717,7 +885,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "t3jva37xv"
+    "id": "99eef0v0n"
   },
   {
     "name": "Mac and Cheese Fest",
@@ -729,7 +897,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "rd9m84wwt"
+    "id": "wpu80xvf8"
   },
   {
     "name": "Albany Wine and Chocolate Festival",
@@ -741,7 +909,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "yu0s1ab1f"
+    "id": "2zh2n8a8y"
   },
   {
     "name": "Brant Lake Winter Carnival",
@@ -753,7 +921,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "rpy0b80my"
+    "id": "ecoq6dyjh"
   },
   {
     "name": "NYS Ice Wine and Culinary Festival",
@@ -765,7 +933,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "khex20b7i"
+    "id": "wdfshjhkv"
   },
   {
     "name": "Ithaca Tap and Craft Festival",
@@ -777,7 +945,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "foqdyli4n"
+    "id": "edche5k5t"
   },
   {
     "name": "Hot Chocolate Fest at Ashokan",
@@ -789,7 +957,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "3nl84np8h"
+    "id": "7k59y2hqo"
   },
   {
     "name": "Buffalo Whiskey Riot",
@@ -801,7 +969,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "z7m10ht8s"
+    "id": "7x88eso7f"
   },
   {
     "name": "Inlet Winter Carnival",
@@ -813,7 +981,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "77wo2s45j"
+    "id": "3vzffp7g5"
   },
   {
     "name": "Kenan Wine and Beer Bash",
@@ -825,7 +993,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "6j4190vfy"
+    "id": "2w1gx7xuq"
   },
   {
     "name": "Saratoga Beer Summit",
@@ -837,7 +1005,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "s0hopl3hh"
+    "id": "oyt9khubc"
   },
   {
     "name": "Brewer’s Invitational",
@@ -849,7 +1017,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "h39wh7onz"
+    "id": "bstvs1pha"
   },
   {
     "name": "Buffalo Wine Festival",
@@ -861,7 +1029,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "3x5auj78x"
+    "id": "xpqkkdn39"
   },
   {
     "name": "Downtown Chili Cook",
@@ -873,7 +1041,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "0fknn2i0b"
+    "id": "ntt03ft55"
   },
   {
     "name": "Adirondack Brewery Barrel Fest",
@@ -885,7 +1053,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "ve5gbwhmq"
+    "id": "ae5aih7ir"
   },
   {
     "name": "The Vintage Market presents: A White Christmas",
@@ -897,7 +1065,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "3yzoyqc0l"
+    "id": "dla03ak2x"
   },
   {
     "name": "Christmas in the Village",
@@ -909,7 +1077,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "3yjdxdb5n"
+    "id": "21hsgjnew"
   },
   {
     "name": "Meckley’s Christmas Festival",
@@ -921,7 +1089,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "706aum20s"
+    "id": "pr4ldm9i6"
   },
   {
     "name": "Allegan New Year’s Eve Celebration",
@@ -933,7 +1101,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "yxhvlxa9f"
+    "id": "57pm5twgn"
   },
   {
     "name": "Cedar’s New Year’s Springing Eve Ball Drop",
@@ -945,7 +1113,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "3pamoh0cs"
+    "id": "tskl1rs29"
   },
   {
     "name": "Kalamazoo New Year’s Eve Fest",
@@ -957,7 +1125,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "cjhwb8vew"
+    "id": "xoka9anna"
   },
   {
     "name": "Rockin’ NYE",
@@ -969,7 +1137,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "ka30qzb2n"
+    "id": "76jjj4n9p"
   },
   {
     "name": "Fire and Ice (World of Winter)",
@@ -981,7 +1149,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "zupei66nx"
+    "id": "f7xk9l1pm"
   },
   {
     "name": "SISU Ski Fest",
@@ -993,7 +1161,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "6v1c6ag8m"
+    "id": "50q2gt4yv"
   },
   {
     "name": "Winterfest at Pier Park",
@@ -1005,7 +1173,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "56c7czbrj"
+    "id": "16q7igu19"
   },
   {
     "name": "Ypsilanti Bourbon Fest",
@@ -1017,7 +1185,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "thafo6tzj"
+    "id": "m319o2844"
   },
   {
     "name": "Winter Fest",
@@ -1029,7 +1197,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "d6j3rluus"
+    "id": "2ankitj3v"
   },
   {
     "name": "Circus Wonderland (World of Winter)",
@@ -1041,7 +1209,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "avch6yqlz"
+    "id": "k44d2j55c"
   },
   {
     "name": "Heikinpäivä Finnish American Mid",
@@ -1053,7 +1221,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "06pzft7o6"
+    "id": "6nq7r6iia"
   },
   {
     "name": "Tip",
@@ -1065,7 +1233,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "5kmmqyfn0"
+    "id": "laydx8kll"
   },
   {
     "name": "Winter’s A DRAG! (World of Winter)",
@@ -1077,7 +1245,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "eqr4vn20g"
+    "id": "flovenyp6"
   },
   {
     "name": "Pure Ludington Brrrew Fest",
@@ -1089,7 +1257,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "e7pi7mov3"
+    "id": "2hxc11byu"
   },
   {
     "name": "St. Joseph Winter Beer Fest",
@@ -1101,7 +1269,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "632snu55f"
+    "id": "clzyniq7j"
   },
   {
     "name": "Da Yooper Winterfest",
@@ -1113,7 +1281,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "p885dm0gv"
+    "id": "tgxtq4pi8"
   },
   {
     "name": "Saginaw Winter Brew Festival",
@@ -1125,7 +1293,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "z6mm55cws"
+    "id": "zb6470uin"
   },
   {
     "name": "Blake’s Chili Cook",
@@ -1137,7 +1305,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "puyq7sjxh"
+    "id": "bp8z8wk48"
   },
   {
     "name": "Beulah Winterfest",
@@ -1149,7 +1317,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "2gb4k0x2i"
+    "id": "ly0ufuvg7"
   },
   {
     "name": "Yeti Fest",
@@ -1161,7 +1329,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "v1qibm1ve"
+    "id": "24j6mc1t0"
   },
   {
     "name": "The Vintage Market: My Vintage Valentine",
@@ -1173,7 +1341,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "tsd94un0y"
+    "id": "7e68ej7n8"
   },
   {
     "name": "Meckley’s Shantytown Festival",
@@ -1185,7 +1353,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "89y7rixex"
+    "id": "zfq7bg4oz"
   },
   {
     "name": "Paint the Park (World of Winter)",
@@ -1197,7 +1365,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "a1caip1bp"
+    "id": "c544v2cau"
   },
   {
     "name": "Wine Not? Wine Festival",
@@ -1209,7 +1377,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "rppjq3dnp"
+    "id": "64k4i2x9c"
   },
   {
     "name": "Lansing Bourbon Fest",
@@ -1221,7 +1389,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "3xirl2xyj"
+    "id": "6vw67or2l"
   },
   {
     "name": "Que the Cheese",
@@ -1233,7 +1401,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "fdti9vbkn"
+    "id": "va8geivve"
   },
   {
     "name": "Winter Beer Festival",
@@ -1245,7 +1413,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "ui7b7leu8"
+    "id": "jqusydxxi"
   },
   {
     "name": "Lansing Frost Fest",
@@ -1257,7 +1425,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "u70fsl697"
+    "id": "0acyt118v"
   },
   {
     "name": "Krampus Bizaar",
@@ -1269,7 +1437,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "xosac8cjq"
+    "id": "x8orb4h6j"
   },
   {
     "name": "Christmas Lake Village Festival of Lights II",
@@ -1281,7 +1449,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "znmgtuadb"
+    "id": "6fxodjdk0"
   },
   {
     "name": "12/28 (Closed 12/25)",
@@ -1293,7 +1461,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "fc53av9qe"
+    "id": "nq6zsop2a"
   },
   {
     "name": "Fire and Ice Festival",
@@ -1305,7 +1473,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "axs3z1qgb"
+    "id": "bm33wb26y"
   },
   {
     "name": "Big Barn Beer Fest",
@@ -1317,7 +1485,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "ry5iwifak"
+    "id": "2zr6w9a1e"
   },
   {
     "name": "Winter Jam: Evansville",
@@ -1329,7 +1497,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "ilpiqssdt"
+    "id": "2s8360bpq"
   },
   {
     "name": "Winter Jam: Indianapolis",
@@ -1341,7 +1509,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "kphn2fu09"
+    "id": "mp0bryewv"
   },
   {
     "name": "Brewers of Indiana Guild Winterfest",
@@ -1353,7 +1521,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "4a1mkv545"
+    "id": "8c78pxiea"
   },
   {
     "name": "Chocolate Fest",
@@ -1365,7 +1533,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "f5uintfcj"
+    "id": "9bmzzckmf"
   },
   {
     "name": "Weather the Fort",
@@ -1377,7 +1545,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "6uzgh8zvd"
+    "id": "ghhobyj3s"
   },
   {
     "name": "“Frigid Digits” Winter Beer Fest",
@@ -1389,7 +1557,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "ggtgdi5xo"
+    "id": "2i1ogce8q"
   },
   {
     "name": "The Valentines Vendor Market",
@@ -1401,7 +1569,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "iavinim47"
+    "id": "rbo4l79hd"
   },
   {
     "name": "Shelf Ice Brewfest",
@@ -1413,7 +1581,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "t5o4dk20j"
+    "id": "f7d3ui3oi"
   },
   {
     "name": "Frozen Firkin Festival",
@@ -1425,7 +1593,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "bi935ae0j"
+    "id": "p9kwl00zj"
   },
   {
     "name": "Bock Beer Fest",
@@ -1437,7 +1605,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "9qwuidhku"
+    "id": "yee6fg7nm"
   },
   {
     "name": "March in the Pugs!",
@@ -1449,7 +1617,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "pj54nul4d"
+    "id": "o8za1k9rc"
   },
   {
     "name": "12/27 (Closed 12/24, 12/25)",
@@ -1461,7 +1629,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "g4jbeu54w"
+    "id": "0s6pk1eq0"
   },
   {
     "name": "Festival of Lights VI",
@@ -1473,7 +1641,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "kwwpqywtw"
+    "id": "my7z9ndft"
   },
   {
     "name": "Louisville Chocolate, Wine and Whiskey Festival",
@@ -1485,7 +1653,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "sv4wulgt3"
+    "id": "kot0u22rs"
   },
   {
     "name": "John Hartford Days",
@@ -1497,7 +1665,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "6v2ugxqw7"
+    "id": "f7upryuui"
   },
   {
     "name": "Gospel Fest",
@@ -1509,7 +1677,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "ha9w3otne"
+    "id": "254fx5mwq"
   },
   {
     "name": "KY Meat Shower Festival",
@@ -1521,6 +1689,6 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "f5m7yy1y2"
+    "id": "djj31ere7"
   }
 ]
