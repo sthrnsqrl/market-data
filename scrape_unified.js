@@ -148,26 +148,42 @@ async function scrapeFestivalGuides(state) {
     return await runWithBrowser(async (page) => {
         console.log(`   [Guides] Scraping FestivalGuidesAndReviews (${state})...`);
         try {
-            await page.goto(`https://festivalguidesandreviews.com/${fullState}-festivals/`, { waitUntil: 'domcontentloaded', timeout: 30000 });
-            return await page.evaluate((currentState) => {
+            // FIXED: URL format changed from /state-festivals/ to just /state/
+            await page.goto(`https://festivalguidesandreviews.com/${fullState}/`, { waitUntil: 'domcontentloaded', timeout: 30000 });
+            const data = await page.evaluate((currentState) => {
                 const data = [];
                 const contentDiv = document.querySelector('.entry-content') || document.body;
                 const allText = contentDiv.innerText.split('\n');
+                
                 allText.forEach(line => {
                     const cleanLine = line.trim();
-                    if (cleanLine.match(/^\d{1,2}\/\d{1,2}/) && (cleanLine.includes('–') || cleanLine.includes('-'))) {
-                        const parts = cleanLine.split(/[–-]/);
-                        if (parts.length >= 2) {
-                            const dateRaw = parts[0].trim();
-                            const name = parts[1].trim();
-                            let city = parts.length > 2 ? parts[2].trim() : "";
-                            const location = city.length > 2 ? `${city}, ${currentState}` : `${currentState}, USA`;
-                            data.push({ name: name, dateString: dateRaw, locationString: location, link: document.URL, vendorInfo: "FestivalGuides" });
+                    // NEW FORMAT: "12/15-12/20 – Winter Wonderfest V – Hartville"
+                    // Match: DATE(range) – NAME – CITY
+                    const match = cleanLine.match(/^(\d{1,2}\/\d{1,2}(?:-\d{1,2}\/\d{1,2})?)\s*[–—-]\s*(.+?)\s*[–—-]\s*(.+)$/);
+                    
+                    if (match) {
+                        const dateRaw = match[1].trim(); // Could be "12/15" or "12/15-12/20"
+                        const name = match[2].trim();
+                        const city = match[3].trim();
+                        
+                        // Extract just the first date from range (12/15 from 12/15-12/20)
+                        const firstDate = dateRaw.split('-')[0];
+                        
+                        if (name && city && firstDate) {
+                            const location = `${city}, ${currentState}`;
+                            data.push({ 
+                                name: name, 
+                                dateString: firstDate, // Just the start date
+                                locationString: location, 
+                                link: document.URL, 
+                                vendorInfo: "FestivalGuides" 
+                            });
                         }
                     }
                 });
                 return data;
             }, state);
+            return data;
         } catch (e) { return []; }
     });
 }
@@ -178,7 +194,18 @@ async function scrapeOhioFestivals() {
         console.log(`   [OhioFestivals] Scraping OhioFestivals.net TABLE...`);
         try {
             await page.goto(`https://ohiofestivals.net/schedule/`, { waitUntil: 'domcontentloaded', timeout: 30000 });
-            await page.waitForSelector('#tablepress-2, .tablepress', { timeout: 10000 });
+            
+            // Wait longer and try different approaches
+            try {
+                await page.waitForSelector('#tablepress-2', { timeout: 5000 });
+            } catch(e) {
+                try {
+                    await page.waitForSelector('.tablepress', { timeout: 5000 });
+                } catch(e2) {
+                    // Just wait a bit and hope the table loads
+                    await new Promise(resolve => setTimeout(resolve, 3000));
+                }
+            }
             
             return await page.evaluate(() => {
                 const data = [];
@@ -214,7 +241,7 @@ async function scrapeODMall() {
     return await runWithBrowser(async (page) => {
         console.log(`   [ODMall] Scraping ODMall Vendor Events...`);
         try {
-            await page.goto(`https://oddities-fleamarket.com/vendor-info/`, { waitUntil: 'domcontentloaded', timeout: 30000 });
+            await page.goto(`https://www.theodditiesfleamarket.com/vendor-info/`, { waitUntil: 'domcontentloaded', timeout: 30000 });
             await page.waitForSelector('.gdlr-core-event-item-list', { timeout: 10000 });
             
             return await page.evaluate(() => {
