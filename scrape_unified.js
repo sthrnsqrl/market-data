@@ -3,7 +3,7 @@ const fs = require('fs');
 const axios = require('axios');
 
 // --- CONFIGURATION ---
-const STATES = ['OH', 'PA', 'NY', 'MI', 'IN', 'KY']; // <--- Restored this line!
+const STATES = ['OH', 'PA', 'NY', 'MI', 'IN', 'KY']; 
 const GEOCODE_DELAY_MS = 1000; 
 
 // --- MANUAL SEEDS (Hardcoded GPS) ---
@@ -71,7 +71,7 @@ function isShowCurrent(dateObj) {
     return dateObj >= today;
 }
 
-// --- CATEGORY LOGIC (Fixes Holiday/Arts Issues) ---
+// --- CATEGORY LOGIC (Fixes "Arts & Craft" Singular) ---
 function determineCategory(title) {
     const text = title.toLowerCase();
     
@@ -81,8 +81,8 @@ function determineCategory(title) {
     // 2. Conventions
     if (text.match(/comic|con\b|anime|toy show|card show/)) return "Conventions";
     
-    // 3. Arts & Crafts (Catch-all for Gifts, Holidays, Bazaars)
-    if (text.match(/craft|artisan|handmade|bazaar|boutique|gift|maker|expo|holiday|christmas|winter|santa|sleigh/)) return "Arts & Crafts"; 
+    // 3. Arts & Craft (SINGULAR - Matches App UI)
+    if (text.match(/craft|artisan|handmade|bazaar|boutique|gift|maker|expo|holiday|christmas|winter|santa|sleigh/)) return "Arts & Craft"; 
     
     // 4. Oddities
     if (text.match(/horror|ghost|spooky|paranormal|oddities/)) return "Horror & Oddities";
@@ -129,7 +129,7 @@ async function getCoordinates(locationString) {
     return null;
 }
 
-// --- SPIDER: Festival Guides ---
+// --- SPIDER 1: Festival Guides (General) ---
 async function scrapeFestivalGuides(state) {
     const stateMap = { 'OH': 'ohio', 'PA': 'pennsylvania', 'NY': 'new-york', 'MI': 'michigan', 'IN': 'indiana', 'KY': 'kentucky' };
     const fullState = stateMap[state];
@@ -162,9 +162,47 @@ async function scrapeFestivalGuides(state) {
     }, state);
 }
 
+// --- SPIDER 2: OHIO FESTIVALS SPECIFIC (New Source) ---
+async function scrapeOhioFestivals() {
+    return await runWithBrowser(async (page) => {
+        console.log(`   [OhioFestivals] Scraping OhioFestivals.net (Deep Dive)...`);
+        try {
+            await page.goto(`https://ohiofestivals.net/schedule/`, { waitUntil: 'domcontentloaded', timeout: 60000 });
+            return await page.evaluate(() => {
+                const data = [];
+                const listItems = document.querySelectorAll('li'); // They list simply in LIs
+                listItems.forEach(li => {
+                    const text = li.innerText;
+                    // Format: "Event Name – City – Date"
+                    if (text.includes('–') && (text.includes('2025') || text.includes('2026'))) {
+                        const parts = text.split('–');
+                        if (parts.length >= 3) {
+                            const name = parts[0].trim();
+                            const city = parts[1].trim();
+                            const dateRaw = parts[2].trim();
+                            const location = `${city}, OH`;
+                            const link = li.querySelector('a')?.href || "https://ohiofestivals.net/schedule/";
+                            
+                            data.push({ 
+                                name: name, 
+                                dateString: dateRaw, 
+                                locationString: location, 
+                                link: link, 
+                                vendorInfo: "OhioFestivals.net",
+                                state: "OH"
+                            });
+                        }
+                    }
+                });
+                return data;
+            });
+        } catch (e) { return []; }
+    });
+}
+
 // --- MAIN EXECUTION ---
 (async () => {
-    console.log('🚀 STARTING MEGA-SPIDER (Final Fix)...');
+    console.log('🚀 STARTING MEGA-SPIDER (Ohio Rescue Edition)...');
     let masterList = [];
 
     // 1. SEEDS
@@ -192,6 +230,14 @@ async function scrapeFestivalGuides(state) {
     });
 
     // 2. MAIN LOOP
+    // A. Run Ohio Deep Dive FIRST
+    const ohioData = await scrapeOhioFestivals();
+    if (ohioData.length > 0) {
+        masterList = masterList.concat(ohioData.map(i => ({...i, category: determineCategory(i.name)})));
+        console.log(`     -> Found ${ohioData.length} events from OhioFestivals.net`);
+    }
+
+    // B. Run Standard Loop
     for (const state of STATES) {
         const listA = await scrapeFestivalGuides(state);
         if (listA.length > 0) {
@@ -207,7 +253,7 @@ async function scrapeFestivalGuides(state) {
         if (!item.dateString) return false;
         const d = parseDate(item.dateString);
         if (d && isShowCurrent(d)) {
-            // FIX: Normalize date string to MM/DD/YYYY so the app recognizes it
+            // Standardize Date
             item.dateString = `${d.getMonth()+1}/${d.getDate()}/${d.getFullYear()}`;
             item.dateObj = d; 
             return true;
