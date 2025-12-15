@@ -3,10 +3,10 @@ const fs = require('fs');
 const axios = require('axios');
 
 // --- CONFIGURATION ---
-const STATES = ['OH', 'PA', 'NY', 'MI', 'IN', 'KY']; 
-const GEOCODE_DELAY_MS = 1000; // Increased to 1s to be nicer to the API
+const STATES = ['OH', 'PA', 'NY', 'MI', 'IN', 'KY']; // <--- Restored this line!
+const GEOCODE_DELAY_MS = 1000; 
 
-// --- MANUAL SEEDS (Hardcoded GPS - These will always work) ---
+// --- MANUAL SEEDS (Hardcoded GPS) ---
 const MANUAL_SEEDS = [
     { name: "Rogers Community Auction", location: "Rogers, OH", dayOfWeek: 5, startMonth: 0, endMonth: 11, year: 2026, lat: 40.7933, lon: -80.6358, link: "http://rogersohio.com/", desc: "Weekly Friday Flea Market" },
     { name: "Hartville Marketplace", location: "Hartville, OH", dayOfWeek: 5, startMonth: 0, endMonth: 11, year: 2026, lat: 40.9691, lon: -81.3323, link: "https://hartvillemarketplace.com", desc: "Hartville Market (Fri)" },
@@ -71,22 +71,31 @@ function isShowCurrent(dateObj) {
     return dateObj >= today;
 }
 
+// --- CATEGORY LOGIC (Fixes Holiday/Arts Issues) ---
 function determineCategory(title) {
     const text = title.toLowerCase();
-    if (text.match(/flea/)) return "Weekly Markets"; 
-    if (text.match(/farmers/)) return "Weekly Markets";
-    if (text.match(/comic|con\b/)) return "Conventions";
-    if (text.match(/craft|artisan|handmade/)) return "Arts & Crafts";
-    if (text.match(/horror|ghost|spooky/)) return "Horror & Oddities";
+    
+    // 1. Weekly Markets
+    if (text.match(/flea market|farmers market|weekly|swap meet|trade center/)) return "Weekly Markets";
+    
+    // 2. Conventions
+    if (text.match(/comic|con\b|anime|toy show|card show/)) return "Conventions";
+    
+    // 3. Arts & Crafts (Catch-all for Gifts, Holidays, Bazaars)
+    if (text.match(/craft|artisan|handmade|bazaar|boutique|gift|maker|expo|holiday|christmas|winter|santa|sleigh/)) return "Arts & Crafts"; 
+    
+    // 4. Oddities
+    if (text.match(/horror|ghost|spooky|paranormal|oddities/)) return "Horror & Oddities";
+    
+    // 5. Default
     return "Festivals & Fairs";
 }
 
-// --- SMART GEOCODER (The Fix for "Invisible" Shows) ---
+// --- SMART GEOCODER ---
 async function getCoordinates(locationString) {
     if (!locationString || locationString.length < 3) return null;
     let searchLoc = locationString.replace(/\n/g, ", ").trim();
     
-    // Attempt 1: Full String (e.g. "Fairgrounds, Canfield, OH")
     try {
         await sleep(GEOCODE_DELAY_MS); 
         let url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(searchLoc)}&format=json&limit=1`;
@@ -97,12 +106,11 @@ async function getCoordinates(locationString) {
         }
     } catch (e) {}
 
-    // Attempt 2: City Only Fallback (e.g. "Canfield, OH")
-    // If exact match failed, strip everything before the last comma-pair to get just City, State
+    // Fallback: City Only
     if (searchLoc.includes(",")) {
         const parts = searchLoc.split(",");
         if (parts.length >= 2) {
-            const cityState = parts.slice(-2).join(",").trim(); // Take last two parts
+            const cityState = parts.slice(-2).join(",").trim(); 
             if (cityState.length > 5 && !cityState.match(/^\d+$/) && cityState !== searchLoc) {
                 console.log(`    ⚠️ Precise failed, trying City: "${cityState}"...`);
                 try {
@@ -117,12 +125,11 @@ async function getCoordinates(locationString) {
             }
         }
     }
-    
     console.log("    ❌ Geocode failed");
     return null;
 }
 
-// --- SPIDER: Festival Guides (Primary Source) ---
+// --- SPIDER: Festival Guides ---
 async function scrapeFestivalGuides(state) {
     const stateMap = { 'OH': 'ohio', 'PA': 'pennsylvania', 'NY': 'new-york', 'MI': 'michigan', 'IN': 'indiana', 'KY': 'kentucky' };
     const fullState = stateMap[state];
@@ -157,7 +164,7 @@ async function scrapeFestivalGuides(state) {
 
 // --- MAIN EXECUTION ---
 (async () => {
-    console.log('🚀 STARTING MEGA-SPIDER (Smart Geocode Fix)...');
+    console.log('🚀 STARTING MEGA-SPIDER (Final Fix)...');
     let masterList = [];
 
     // 1. SEEDS
@@ -200,14 +207,16 @@ async function scrapeFestivalGuides(state) {
         if (!item.dateString) return false;
         const d = parseDate(item.dateString);
         if (d && isShowCurrent(d)) {
+            // FIX: Normalize date string to MM/DD/YYYY so the app recognizes it
+            item.dateString = `${d.getMonth()+1}/${d.getDate()}/${d.getFullYear()}`;
             item.dateObj = d; 
             return true;
         }
         return false;
     });
 
-    // 4. GEOCODE (With Verbose Logging)
-    console.log(`\n🌍 Geocoding ${validList.length} unique events (This will take a few minutes)...`);
+    // 4. GEOCODE
+    console.log(`\n🌍 Geocoding ${validList.length} unique events...`);
     let finalGeocoded = [];
     let seen = new Set();
 
@@ -217,7 +226,6 @@ async function scrapeFestivalGuides(state) {
         if (seen.has(key)) continue;
         seen.add(key);
 
-        // Skip geocoding if we have seeds
         if (show.latitude && show.latitude !== 0) {
             finalGeocoded.push(show);
             continue; 
@@ -232,9 +240,9 @@ async function scrapeFestivalGuides(state) {
             if (coords) {
                 show.latitude = coords.lat;
                 show.longitude = coords.lon;
-                finalGeocoded.push(show); // ONLY save if we have coords
+                finalGeocoded.push(show); 
             } else {
-                console.log("Skipping due to bad location.");
+                console.log("Skipping.");
             }
         }
     }
