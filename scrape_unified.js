@@ -6,47 +6,23 @@ const axios = require('axios');
 const STATES = ['OH', 'PA', 'NY', 'MI', 'IN', 'KY']; 
 
 // 1. BROAD SEARCH TERMS (Atomic Keywords)
-// The logic is: Page must contain (ANY Event Word) AND (ANY Vendor Word)
 const EVENT_TERMS = [
-    "Fest",         // Catches Festival, Winterfest, Summerfest, Octoberfest
-    "Fair",         // Catches Street Fair, County Fair, Village Fair
-    "Show",         // Catches Art Show, Car Show, Craft Show
-    "Market",       // Catches Flea Market, Farmers Market, Holiday Market
-    "Carnival",
-    "Parade",
-    "Celebration",  // Catches 4th of July Celebration, etc.
-    "Days",         // Catches "Pioneer Days", "Community Days", "Heritage Days"
-    "Rally",        // Catches Food Truck Rally
-    "Gathering",
-    "Expo",
-    "Convention"
+    "Fest", "Fair", "Show", "Market", "Carnival", "Parade", 
+    "Celebration", "Days", "Rally", "Gathering", "Expo", "Convention"
 ];
 
 const ENTERTAINMENT_TERMS = [
-    "Live Music", 
-    "Concert", 
-    "Entertainment", 
-    "Band", 
-    "Performance"
+    "Live Music", "Concert", "Entertainment", "Band", "Performance"
 ];
 
 const VENDOR_TERMS = [
-    "Vendors",      // Catches "Call for Vendors", "Vendor Info", "Vendors Wanted"
-    "Exhibitors",   // Catches "Exhibitor List", "Exhibitor App"
-    "Booths",       // Catches "Booth Space", "Booth Rental"
-    "Artists",      // Catches "Calling all Artists", "Artist Alley"
-    "Registration", // Catches "Vendor Registration"
-    "Applications", // Catches "Download Application"
-    "Spots",        // Catches "Vendor Spots Available"
-    "Tables",       // Catches "Table Request"
-    "Merchants",
-    "Sellers",
-    "Food Trucks"
+    "Vendors", "Exhibitors", "Booths", "Artists", "Registration", 
+    "Applications", "Spots", "Tables", "Merchants", "Sellers", "Food Trucks"
 ];
 
 const GEOCODE_DELAY_MS = 800; 
 
-// --- 2. MANUAL SEEDS (The "Must Haves") ---
+// --- 2. MANUAL SEEDS ---
 const MANUAL_SEEDS = [
     { name: "Rogers Community Auction", location: "Rogers, OH", dayOfWeek: 5, startMonth: 0, endMonth: 11, year: 2026, link: "http://rogersohio.com/", desc: "Weekly Friday Flea Market" },
     { name: "Andover Drive-In Flea Market", location: "Andover, OH", dayOfWeek: 6, startMonth: 4, endMonth: 9, year: 2026, link: "FB: PymatuningLakeDriveIn", desc: "Weekly Saturday Flea" },
@@ -82,26 +58,32 @@ async function runWithBrowser(taskFunction) {
     }
 }
 
-// --- HELPER: Smart Date Parser ---
+// --- HELPER: ROBUST DATE PARSER ---
 function parseDate(text) {
     if (!text) return null;
     const cleanText = text.toString().trim();
     const currentYear = new Date().getFullYear(); 
 
-    // Look for "Month DD" (e.g., "Aug 12")
-    const dateRegex = /(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s?(\d{1,2})/i;
-    const match = cleanText.match(dateRegex);
+    // 1. Numeric (MM/DD/YYYY)
+    const numMatch = cleanText.match(/(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})/);
+    if (numMatch) {
+        return new Date(parseInt(numMatch[3]), parseInt(numMatch[1]) - 1, parseInt(numMatch[2]));
+    }
 
-    if (match) {
+    // 2. Text (Month DD)
+    const textMatch = cleanText.match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s?(\d{1,2})/i);
+    if (textMatch) {
         const monthNames = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
-        const month = monthNames.indexOf(match[1].toLowerCase().substring(0, 3));
-        const day = parseInt(match[2]);
+        const month = monthNames.indexOf(textMatch[1].toLowerCase().substring(0, 3));
+        const day = parseInt(textMatch[2]);
         
         let year = currentYear;
-        // If we find "Jan" but it's currently December, assume next year
-        if (new Date().getMonth() > 9 && month < 3) year += 1;
+        // Smart Year Logic: 
+        // If it's Dec 2025, and we see "Dec 20", it's 2025.
+        // If it's Dec 2025, and we see "Jan 5", it's 2026.
+        if (new Date().getMonth() > 10 && month < 2) year += 1;
         
-        // Check for explicit year in text
+        // Override with explicit year if present
         const yearMatch = cleanText.match(/202[5-7]/);
         if (yearMatch) year = parseInt(yearMatch[0]);
 
@@ -165,15 +147,16 @@ async function getCoordinates(locationString) {
 // 🕷️ THE SPIDERS
 // =========================================================
 
-// 1. The NEW Boolean Web Discovery Engine
+// 1. The BOOLEAN Web Discovery Engine (Updated for 2025 AND 2026)
 async function performBooleanSearch(termsA, termsB, state) {
     return await runWithBrowser(async (page) => {
-        // Construct Boolean Query: (A OR B OR C) AND (X OR Y OR Z)
+        // CHANGED: SEARCH FOR BOTH YEARS
+        // This query syntax "(2025 OR 2026)" tells the search engine to accept either year.
         const groupA = termsA.map(t => `"${t}"`).join(" OR ");
         const groupB = termsB.map(t => `"${t}"`).join(" OR ");
-        const fullQuery = `(${groupA}) AND (${groupB}) ${state} 2025`;
+        const fullQuery = `(${groupA}) AND (${groupB}) ${state} (2025 OR 2026)`;
         
-        console.log(`   [Discovery] Boolean Search: ${state}...`);
+        console.log(`   [Discovery] Boolean Search: ${state} (25/26)...`);
         
         try {
             await page.goto(`https://html.duckduckgo.com/html/?q=${encodeURIComponent(fullQuery)}`, { waitUntil: 'domcontentloaded' });
@@ -191,10 +174,8 @@ async function performBooleanSearch(termsA, termsB, state) {
                 const lowerTitle = item.title.toLowerCase();
                 const lowerUrl = item.url.toLowerCase();
                 
-                // Filter out generic guides/directories to reduce noise
                 if (lowerTitle.includes("best of") || lowerTitle.includes("guide to") || lowerTitle.includes("directory")) return false;
                 
-                // Prioritize known event platforms or direct festival sites
                 return lowerUrl.includes('facebook.com/events') || 
                        lowerUrl.includes('zappication.org') || 
                        lowerUrl.includes('meetup.com') ||
@@ -233,17 +214,14 @@ async function scrapeNortheastOhioParent() {
                          const lines = text.split('\n');
                          if(lines.length > 0) {
                              const name = lines[0]; 
-                             const dateMatch = text.match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s?(\d{1,2})/i);
-                             if (name.length > 5 && dateMatch) {
-                                 data.push({
-                                     name: name,
-                                     dateString: dateMatch[0],
-                                     locationString: "Northeast Ohio",
-                                     link: "https://www.northeastohioparent.com/things-to-do/festivals-fairs/",
-                                     vendorInfo: "NEOhioParent Listing",
-                                     state: "OH"
-                                 });
-                             }
+                             data.push({
+                                 name: name,
+                                 dateString: text, 
+                                 locationString: "Northeast Ohio",
+                                 link: "https://www.northeastohioparent.com/things-to-do/festivals-fairs/",
+                                 vendorInfo: "NEOhioParent Listing",
+                                 state: "OH"
+                             });
                          }
                     }
                 });
@@ -253,7 +231,7 @@ async function scrapeNortheastOhioParent() {
     });
 }
 
-// 3. FairsAndFestivals (Directory)
+// 3. FairsAndFestivals
 async function scrapeDirectory(state) {
     return await runWithBrowser(async (page) => {
         try {
@@ -279,7 +257,7 @@ async function scrapeDirectory(state) {
     });
 }
 
-// 4. FestivalGuides (Directory - Strict Filter)
+// 4. FestivalGuides
 async function scrapeFestivalGuides(state) {
     const stateMap = { 'OH': 'ohio', 'PA': 'pennsylvania', 'NY': 'new-york', 'MI': 'michigan', 'IN': 'indiana', 'KY': 'kentucky' };
     const fullState = stateMap[state];
@@ -315,7 +293,7 @@ async function scrapeFestivalGuides(state) {
 
 // --- MAIN EXECUTION ---
 (async () => {
-    console.log('🚀 STARTING MEGA-SPIDER (Boolean Logic Edition)...');
+    console.log('🚀 STARTING MEGA-SPIDER (2025/2026 Edition)...');
     let masterList = [];
 
     // 1. MANUAL SEEDS
@@ -325,9 +303,10 @@ async function scrapeFestivalGuides(state) {
         const endDate = new Date(rule.year, rule.endMonth + 1, 0);
         while (dateCursor <= endDate) {
             if (dateCursor.getDay() === rule.dayOfWeek) {
+                const dateStr = `${dateCursor.getMonth()+1}/${dateCursor.getDate()}/${dateCursor.getFullYear()}`;
                 masterList.push({
                     name: rule.name,
-                    dateString: dateCursor.toLocaleDateString(),
+                    dateString: dateStr,
                     locationString: rule.location,
                     link: rule.link,
                     vendorInfo: rule.desc,
@@ -346,32 +325,27 @@ async function scrapeFestivalGuides(state) {
         console.log(`   ✅ Found ${neoData.length} events from NortheastOhioParent.`);
     }
 
-    // 3. MAIN LOOP (Directories + Boolean Discovery)
+    // 3. MAIN LOOP
     for (const state of STATES) {
-        // Source A
         const listA = await scrapeDirectory(state);
         if (listA.length > 0) masterList = masterList.concat(listA.map(i => ({...i, state, category: determineCategory(i.name)})));
         
-        // Source B
         const listB = await scrapeFestivalGuides(state);
         if (listB.length > 0) masterList = masterList.concat(listB.map(i => ({...i, state, category: determineCategory(i.name)})));
 
-        // 4. BOOLEAN DISCOVERY (Smart Queries)
+        // 4. BOOLEAN DISCOVERY
         console.log(`   🔎 Hunting in ${state}...`);
-        
-        // A. General Events + Vendor Terms
         const generalHits = await performBooleanSearch(EVENT_TERMS, VENDOR_TERMS, state);
         if (generalHits.length > 0) {
             masterList = masterList.concat(generalHits);
-            console.log(`      + Found ${generalHits.length} General Events (with vendor call)`);
+            console.log(`      + Found ${generalHits.length} General Events`);
         }
         await sleep(1500); 
 
-        // B. Entertainment + Vendor Terms (Your specific request)
         const entHits = await performBooleanSearch(ENTERTAINMENT_TERMS, VENDOR_TERMS, state);
         if (entHits.length > 0) {
             masterList = masterList.concat(entHits);
-            console.log(`      + Found ${entHits.length} Entertainment Events (with vendor call)`);
+            console.log(`      + Found ${entHits.length} Entertainment Events`);
         }
         await sleep(1500);
     }
@@ -379,10 +353,8 @@ async function scrapeFestivalGuides(state) {
     // 5. PROCESS & CLEANUP
     console.log(`\n📋 Processing ${masterList.length} raw candidates...`);
     
-    // Parse Dates & Filter Old
     const validList = masterList.filter(item => {
         if (!item.dateString) return false;
-        // Keep discovery links
         if (item.dateString === "Check Link") return true;
         
         const d = parseDate(item.dateString);
