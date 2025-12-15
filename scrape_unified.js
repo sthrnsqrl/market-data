@@ -4,55 +4,73 @@ const axios = require('axios');
 
 // --- CONFIGURATION ---
 const STATES = ['OH', 'PA', 'NY', 'MI', 'IN', 'KY']; 
-
-// 1. BROAD SEARCH TERMS (Atomic Keywords)
-const EVENT_TERMS = [
-    "Fest", "Fair", "Show", "Market", "Carnival", "Parade", 
-    "Celebration", "Days", "Rally", "Gathering", "Expo", "Convention"
-];
-
-const ENTERTAINMENT_TERMS = [
-    "Live Music", "Concert", "Entertainment", "Band", "Performance"
-];
-
-const VENDOR_TERMS = [
-    "Vendors", "Exhibitors", "Booths", "Artists", "Registration", 
-    "Applications", "Spots", "Tables", "Merchants", "Sellers", "Food Trucks"
-];
-
 const GEOCODE_DELAY_MS = 800; 
 
-// --- 2. MANUAL SEEDS ---
+// --- SEARCH TERMS (Year Removed) ---
+
+// 1. DATED EVENTS (Festivals, Fairs)
+const EVENT_TERMS = [
+    "Festival", "Fair", "Carnival", "Parade", "Celebration", 
+    "Community Days", "Founders Day", "Homecoming", "Block Party", 
+    "Oktoberfest", "Holiday Market", "Music Fest", "Art Show"
+];
+
+// 2. PERMANENT VENUES (Venues, Markets)
+const VENUE_TERMS = [
+    "Flea Market", "Farmers Market", "Public Market", 
+    "Trade Center", "Swap Meet", "Antique Mall", "Drive-In Flea"
+];
+
+// 3. VENDOR INDICATORS (The "Qualifier")
+const VENDOR_TERMS = [
+    "Vendor Application", "Exhibitor Info", "Booth Rental", 
+    "Call for Artists", "Vendor Registration", "Sell with us",
+    "Merchant Info", "Food Truck Application"
+];
+
+// --- MANUAL SEEDS (Backup Only) ---
 const MANUAL_SEEDS = [
-    { name: "Rogers Community Auction", location: "Rogers, OH", dayOfWeek: 5, startMonth: 0, endMonth: 11, year: 2026, link: "http://rogersohio.com/", desc: "Weekly Friday Flea Market" },
-    { name: "Andover Drive-In Flea Market", location: "Andover, OH", dayOfWeek: 6, startMonth: 4, endMonth: 9, year: 2026, link: "FB: PymatuningLakeDriveIn", desc: "Weekly Saturday Flea" },
-    { name: "Andover Drive-In Flea Market", location: "Andover, OH", dayOfWeek: 0, startMonth: 4, endMonth: 9, year: 2026, link: "FB: PymatuningLakeDriveIn", desc: "Weekly Sunday Flea" },
-    { name: "Tremont Farmers Market", location: "Cleveland, OH", dayOfWeek: 2, startMonth: 4, endMonth: 9, year: 2026, link: "tremontfarmersmarket.com", desc: "Weekly Tuesday Market" },
-    { name: "Jamie's Flea Market", location: "South Amherst, OH", dayOfWeek: 3, startMonth: 0, endMonth: 11, year: 2026, link: "jamiesfleamarket.com", desc: "Weekly Wednesday Flea" },
-    { name: "Jamie's Flea Market", location: "South Amherst, OH", dayOfWeek: 6, startMonth: 0, endMonth: 11, year: 2026, link: "jamiesfleamarket.com", desc: "Weekly Saturday Flea" }
+    { name: "Rogers Community Auction", location: "Rogers, OH", dayOfWeek: 5, startMonth: 0, endMonth: 11, year: 2026, link: "http://rogersohio.com/", desc: "Weekly Friday Flea Market" }
 ];
 
 // --- HELPER: Polite Pause ---
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-// --- HELPER: Browser Launcher ---
+// --- HELPER: Browser Launcher (Fixed for CAPTCHA - VISIBLE MODE) ---
 async function runWithBrowser(taskFunction) {
     const browser = await puppeteer.launch({ 
-        headless: "new", 
-        args: ['--no-sandbox', '--disable-setuid-sandbox'] 
+        // 1. SHOW THE BROWSER (So Google sees a "real" window)
+        headless: false, 
+        
+        // 2. SAVE COOKIES (So you don't get blocked every time)
+        userDataDir: "./user_data", 
+        
+        // 3. MAXIMIZE WINDOW (Looks more human)
+        args: ['--no-sandbox', '--disable-setuid-sandbox', '--start-maximized'],
+        defaultViewport: null
     });
     try {
-        const page = await browser.newPage();
-        await page.setRequestInterception(true);
-        page.on('request', (req) => {
-            if (['image', 'font', 'media'].includes(req.resourceType())) req.abort();
-            else req.continue();
-        });
+        const pages = await browser.pages();
+        const page = pages.length > 0 ? pages[0] : await browser.newPage();
+        
+        // Randomize mouse movement to look human
+        try {
+             await page.mouse.move(Math.random() * 100, Math.random() * 100);
+        } catch(e) {}
+
+        // Stealth: Set a real Chrome User Agent
         await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+        
         const result = await taskFunction(page);
+        
+        // OPTIONAL: Keep window open for 1 second so you can see what happened
+        // await sleep(1000); 
+
         await browser.close();
         return result;
     } catch (e) {
+        // Don't close immediately on error, so you can see the CAPTCHA if needed
+        console.log("Browser Error (likely CAPTCHA):", e.message);
         try { await browser.close(); } catch(e2) {}
         return [];
     }
@@ -78,12 +96,9 @@ function parseDate(text) {
         const day = parseInt(textMatch[2]);
         
         let year = currentYear;
-        // Smart Year Logic: 
-        // If it's Dec 2025, and we see "Dec 20", it's 2025.
-        // If it's Dec 2025, and we see "Jan 5", it's 2026.
+        // Smart Year Logic
         if (new Date().getMonth() > 10 && month < 2) year += 1;
         
-        // Override with explicit year if present
         const yearMatch = cleanText.match(/202[5-7]/);
         if (yearMatch) year = parseInt(yearMatch[0]);
 
@@ -144,94 +159,76 @@ async function getCoordinates(locationString) {
 }
 
 // =========================================================
-// 🕷️ THE SPIDERS
+// 🕷️ THE GOOGLE SPIDERS
 // =========================================================
 
-// 1. The BOOLEAN Web Discovery Engine (Updated for 2025 AND 2026)
-async function performBooleanSearch(termsA, termsB, state) {
+// Generic Google Search Function
+async function performGoogleSearch(query, state, type) {
     return await runWithBrowser(async (page) => {
-        // CHANGED: SEARCH FOR BOTH YEARS
-        // This query syntax "(2025 OR 2026)" tells the search engine to accept either year.
-        const groupA = termsA.map(t => `"${t}"`).join(" OR ");
-        const groupB = termsB.map(t => `"${t}"`).join(" OR ");
-        const fullQuery = `(${groupA}) AND (${groupB}) ${state} (2025 OR 2026)`;
+        // Construct natural query: "Flea Market Ohio Vendor Application"
+        const fullQuery = `${query} ${state}`; 
         
-        console.log(`   [Discovery] Boolean Search: ${state} (25/26)...`);
+        console.log(`   [Google ${type}] Searching: "${fullQuery}"`);
         
         try {
-            await page.goto(`https://html.duckduckgo.com/html/?q=${encodeURIComponent(fullQuery)}`, { waitUntil: 'domcontentloaded' });
+            await page.goto(`https://www.google.com/search?q=${encodeURIComponent(fullQuery)}&num=15`, { waitUntil: 'domcontentloaded' });
             
+            // Check for CAPTCHA (Manual solve if visible)
+            if (await page.$('#captcha-form') || await page.$('iframe[src*="google.com/recaptcha"]')) {
+                console.log("     ⚠️ CAPTCHA detected! Please solve it in the window...");
+                // Wait for user to solve it (give 30 seconds)
+                await sleep(30000); 
+            }
+
             const rawLinks = await page.evaluate(() => {
                 const results = [];
-                const anchors = document.querySelectorAll('.result__a');
-                anchors.forEach(a => {
-                    results.push({ title: a.innerText, url: a.href });
+                // Select all main search result containers
+                const containers = document.querySelectorAll('.g'); 
+                
+                containers.forEach(container => {
+                    const titleEl = container.querySelector('h3');
+                    const linkEl = container.querySelector('a');
+                    const snippetEl = container.querySelector('.VwiC3b'); // The text snippet
+                    
+                    if (titleEl && linkEl) {
+                        results.push({ 
+                            title: titleEl.innerText, 
+                            url: linkEl.href,
+                            snippet: snippetEl ? snippetEl.innerText : ""
+                        });
+                    }
                 });
                 return results;
             });
 
-            const relevant = rawLinks.filter(item => {
+            return rawLinks.filter(item => {
                 const lowerTitle = item.title.toLowerCase();
                 const lowerUrl = item.url.toLowerCase();
                 
-                if (lowerTitle.includes("best of") || lowerTitle.includes("guide to") || lowerTitle.includes("directory")) return false;
+                // Filter out generic Top 10 lists if possible, unless the user wants them
+                if (lowerTitle.includes("top 10") || lowerTitle.includes("best of") || lowerTitle.includes("directory")) return false;
                 
-                return lowerUrl.includes('facebook.com/events') || 
-                       lowerUrl.includes('zappication.org') || 
-                       lowerUrl.includes('meetup.com') ||
-                       lowerUrl.includes('eventbrite.com') ||
-                       lowerUrl.includes('festival') ||
-                       lowerUrl.includes('fair') ||
-                       lowerUrl.includes('carnival');
-            });
-
-            return relevant.map(item => ({
+                // Keep social media events, official sites, and known platforms
+                return true; 
+            }).map(item => ({
                 name: item.title,
+                // If snippet has a date, maybe we can use it, otherwise "Check Link"
                 dateString: "Check Link", 
                 locationString: `${state}, USA`,
                 link: item.url,
-                vendorInfo: "Web Discovery",
+                vendorInfo: "Google Discovery",
                 category: "Discovered",
                 state: state
             }));
 
-        } catch (e) { return []; }
+        } catch (e) { 
+            // console.log("Google error:", e.message);
+            return []; 
+        }
     });
 }
 
-// 2. Northeast Ohio Parent
-async function scrapeNortheastOhioParent() {
-    console.log("   [Spider] Crawling NortheastOhioParent.com...");
-    return await runWithBrowser(async (page) => {
-        try {
-            await page.goto('https://www.northeastohioparent.com/things-to-do/festivals-fairs/', { waitUntil: 'domcontentloaded', timeout: 60000 });
-            return await page.evaluate(() => {
-                const data = [];
-                const articles = document.querySelectorAll('article, .entry-content p');
-                articles.forEach(el => {
-                    const text = el.innerText;
-                    if (text.includes("2025") || text.includes("2026")) {
-                         const lines = text.split('\n');
-                         if(lines.length > 0) {
-                             const name = lines[0]; 
-                             data.push({
-                                 name: name,
-                                 dateString: text, 
-                                 locationString: "Northeast Ohio",
-                                 link: "https://www.northeastohioparent.com/things-to-do/festivals-fairs/",
-                                 vendorInfo: "NEOhioParent Listing",
-                                 state: "OH"
-                             });
-                         }
-                    }
-                });
-                return data;
-            });
-        } catch (e) { return []; }
-    });
-}
-
-// 3. FairsAndFestivals
+// 2. FairsAndFestivals (Directory) - Keeping this as a backup source
 async function scrapeDirectory(state) {
     return await runWithBrowser(async (page) => {
         try {
@@ -257,49 +254,15 @@ async function scrapeDirectory(state) {
     });
 }
 
-// 4. FestivalGuides
-async function scrapeFestivalGuides(state) {
-    const stateMap = { 'OH': 'ohio', 'PA': 'pennsylvania', 'NY': 'new-york', 'MI': 'michigan', 'IN': 'indiana', 'KY': 'kentucky' };
-    const fullState = stateMap[state];
-    if (!fullState) return [];
-
-    return await runWithBrowser(async (page) => {
-        try {
-            await page.goto(`https://festivalguidesandreviews.com/${fullState}-festivals/`, { waitUntil: 'domcontentloaded', timeout: 60000 });
-            return await page.evaluate((currentState) => {
-                const data = [];
-                const contentDiv = document.querySelector('.entry-content') || document.body;
-                const allText = contentDiv.innerText.split('\n');
-                allText.forEach(line => {
-                    const cleanLine = line.trim();
-                    if (cleanLine.match(/^\d{1,2}\/\d{1,2}/) && (cleanLine.includes('–') || cleanLine.includes('-'))) {
-                        const parts = cleanLine.split(/[–-]/);
-                        if (parts.length >= 2) {
-                            const dateRaw = parts[0].trim();
-                            const name = parts[1].trim();
-                            if (name.length < 80) {
-                                let city = parts.length > 2 ? parts[2].trim() : "";
-                                const location = city.length > 2 ? `${city}, ${currentState}` : `${currentState}, USA`;
-                                data.push({ name: name, dateString: dateRaw, locationString: location, link: document.URL, vendorInfo: "FestivalGuides" });
-                            }
-                        }
-                    }
-                });
-                return data;
-            }, state);
-        } catch (e) { return []; }
-    }, state);
-}
-
 // --- MAIN EXECUTION ---
 (async () => {
-    console.log('🚀 STARTING MEGA-SPIDER (2025/2026 Edition)...');
+    console.log('🚀 STARTING MEGA-SPIDER (Google Edition - Visible)...');
     let masterList = [];
 
     // 1. MANUAL SEEDS
-    console.log(`   [Seeds] Injecting ${MANUAL_SEEDS.length} Weekly Markets...`);
+    console.log(`   [Seeds] Injecting ${MANUAL_SEEDS.length} Backup Seeds...`);
     MANUAL_SEEDS.forEach(rule => {
-        let dateCursor = new Date(rule.year, rule.startMonth, 1);
+         let dateCursor = new Date(rule.year, rule.startMonth, 1);
         const endDate = new Date(rule.year, rule.endMonth + 1, 0);
         while (dateCursor <= endDate) {
             if (dateCursor.getDay() === rule.dayOfWeek) {
@@ -318,43 +281,47 @@ async function scrapeFestivalGuides(state) {
         }
     });
 
-    // 2. NORTHEAST OHIO PARENT
-    const neoData = await scrapeNortheastOhioParent();
-    if (neoData.length > 0) {
-        masterList = masterList.concat(neoData.map(i => ({...i, category: determineCategory(i.name)})));
-        console.log(`   ✅ Found ${neoData.length} events from NortheastOhioParent.`);
-    }
-
-    // 3. MAIN LOOP
+    // 2. MAIN LOOP
     for (const state of STATES) {
+        // A. Directory (Backup)
         const listA = await scrapeDirectory(state);
         if (listA.length > 0) masterList = masterList.concat(listA.map(i => ({...i, state, category: determineCategory(i.name)})));
+
+        // B. GOOGLE HUNTER
+        console.log(`   🔎 Google Hunting in ${state}...`);
+
+        // Search 1: General Vendors
+        const query1 = `(Festival OR Fair OR Carnival) AND (Vendor Application OR Booth Rental)`;
+        const hits1 = await performGoogleSearch(query1, state, "General");
+        if (hits1.length > 0) masterList = masterList.concat(hits1);
+        await sleep(2000 + Math.random() * 2000); 
+
+        // Search 2: Markets (Venues)
+        const query2 = `(Flea Market OR Farmers Market) AND (Vendor Info OR Sell Here)`;
+        const hits2 = await performGoogleSearch(query2, state, "Markets");
+        if (hits2.length > 0) masterList = masterList.concat(hits2);
+        await sleep(2000 + Math.random() * 2000);
+
+        // Search 3: Arts & Crafts
+        const query3 = `(Art Show OR Craft Fair) AND (Call for Artists OR Exhibitor Application)`;
+        const hits3 = await performGoogleSearch(query3, state, "Arts");
+        if (hits3.length > 0) masterList = masterList.concat(hits3);
+        await sleep(2000 + Math.random() * 2000);
         
-        const listB = await scrapeFestivalGuides(state);
-        if (listB.length > 0) masterList = masterList.concat(listB.map(i => ({...i, state, category: determineCategory(i.name)})));
-
-        // 4. BOOLEAN DISCOVERY
-        console.log(`   🔎 Hunting in ${state}...`);
-        const generalHits = await performBooleanSearch(EVENT_TERMS, VENDOR_TERMS, state);
-        if (generalHits.length > 0) {
-            masterList = masterList.concat(generalHits);
-            console.log(`      + Found ${generalHits.length} General Events`);
-        }
-        await sleep(1500); 
-
-        const entHits = await performBooleanSearch(ENTERTAINMENT_TERMS, VENDOR_TERMS, state);
-        if (entHits.length > 0) {
-            masterList = masterList.concat(entHits);
-            console.log(`      + Found ${entHits.length} Entertainment Events`);
-        }
-        await sleep(1500);
+        // Search 4: Entertainment
+        const query4 = `(Live Music OR Concert Series) AND (Vendor Wanted OR Food Truck Needed)`;
+        const hits4 = await performGoogleSearch(query4, state, "Ent");
+        if (hits4.length > 0) masterList = masterList.concat(hits4);
+        await sleep(2000 + Math.random() * 2000);
     }
 
-    // 5. PROCESS & CLEANUP
+    // 3. PROCESS & CLEANUP
     console.log(`\n📋 Processing ${masterList.length} raw candidates...`);
     
     const validList = masterList.filter(item => {
         if (!item.dateString) return false;
+        
+        // Pass "Check Link" (Google results)
         if (item.dateString === "Check Link") return true;
         
         const d = parseDate(item.dateString);
@@ -365,7 +332,7 @@ async function scrapeFestivalGuides(state) {
         return false;
     });
 
-    // 6. GEOCODE
+    // 4. GEOCODE
     console.log(`\n🌍 Geocoding ${validList.length} unique events...`);
     let finalGeocoded = [];
     let seen = new Set();
