@@ -1,12 +1,36 @@
+/*
+================================================================================
+SHOW FINDER - MEGA SCRAPER
+================================================================================
+Scrapes vendor shows/craft fairs/festivals from multiple sources across 6 states
+Created by: Drew Noles @ Black Squirrel Studios
+Last Updated: December 2025
+
+SOURCES:
+1. Manual Seeds - Weekly markets with hardcoded GPS (Hartville, Rogers, Traders World, Andover)
+2. FestivalGuides - State festival listings (OH, PA, NY, MI, IN, KY)
+3. OhioFestivals.net - Ohio-specific festival table
+4. ODMall.info - Horror & oddities marketplace events
+
+OUTPUT: shows.json (geocoded events ready for app)
+================================================================================
+*/
+
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 const axios = require('axios');
 
-// --- CONFIGURATION ---
-const STATES = ['OH', 'PA', 'NY', 'MI', 'IN', 'KY']; 
-const GEOCODE_DELAY_MS = 1000; 
+// ============================================================================
+// CONFIGURATION
+// ============================================================================
 
-// --- MANUAL SEEDS (Hardcoded GPS) ---
+const STATES = ['OH', 'PA', 'NY', 'MI', 'IN', 'KY']; 
+const GEOCODE_DELAY_MS = 1000; // Be polite to OpenStreetMap
+
+// ============================================================================
+// MANUAL SEEDS - Weekly Markets with Known Locations
+// ============================================================================
+
 const MANUAL_SEEDS = [
     { name: "Rogers Community Auction", location: "Rogers, OH", dayOfWeek: 5, startMonth: 0, endMonth: 11, year: 2026, lat: 40.7933, lon: -80.6358, link: "http://rogersohio.com/", desc: "Weekly Friday Flea Market" },
     { name: "Hartville Marketplace", location: "Hartville, OH", dayOfWeek: 5, startMonth: 0, endMonth: 11, year: 2026, lat: 40.9691, lon: -81.3323, link: "https://hartvillemarketplace.com", desc: "Hartville Market (Fri)" },
@@ -18,10 +42,12 @@ const MANUAL_SEEDS = [
     { name: "Traders World Flea Market", location: "Lebanon, OH", dayOfWeek: 0, startMonth: 0, endMonth: 11, year: 2026, lat: 39.4550, lon: -84.3466, link: "https://tradersworldmarket.com", desc: "Traders World (Sun)" }
 ];
 
-// --- HELPER: Polite Pause ---
+// ============================================================================
+// HELPER FUNCTIONS
+// ============================================================================
+
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-// --- HELPER: Browser Launcher ---
 async function runWithBrowser(taskFunction) {
     const browser = await puppeteer.launch({ 
         headless: false, 
@@ -44,21 +70,41 @@ async function runWithBrowser(taskFunction) {
     }
 }
 
-// --- IMPROVED DATE PARSER (handles ranges and multiple formats) ---
+// ============================================================================
+// DATE PARSER - Handles Multiple Formats
+// ============================================================================
+
 function parseDate(text) {
     if (!text) return null;
     const cleanText = text.toString().trim();
     const currentYear = new Date().getFullYear(); 
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
     
-    // Try numeric format: MM/DD/YYYY or M/D/YY
-    const numMatch = cleanText.match(/(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})/);
-    if (numMatch) {
-        let year = parseInt(numMatch[3]);
+    // Format: MM/DD/YYYY or M/D/YYYY
+    const numMatchWithYear = cleanText.match(/(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})/);
+    if (numMatchWithYear) {
+        let year = parseInt(numMatchWithYear[3]);
         if (year < 100) year += 2000;
-        return new Date(year, parseInt(numMatch[1]) - 1, parseInt(numMatch[2]));
+        return new Date(year, parseInt(numMatchWithYear[1]) - 1, parseInt(numMatchWithYear[2]));
     }
     
-    // Try text format with year: "December 15, 2025" or "Dec 15-17, 2025"
+    // Format: MM/DD or M/D (no year - add it smartly)
+    const numMatchNoYear = cleanText.match(/^(\d{1,2})[\/\-](\d{1,2})$/);
+    if (numMatchNoYear) {
+        const month = parseInt(numMatchNoYear[1]) - 1;
+        const day = parseInt(numMatchNoYear[2]);
+        
+        let year = currentYear;
+        const testDate = new Date(year, month, day);
+        if (testDate < today) {
+            year += 1;
+        }
+        
+        return new Date(year, month, day);
+    }
+    
+    // Format: "December 15, 2025" or "Dec 15-17, 2025"
     const textWithYearMatch = cleanText.match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+(\d{1,2})(?:-\d{1,2})?,?\s+(202[5-7])/i);
     if (textWithYearMatch) {
         const monthNames = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
@@ -68,7 +114,7 @@ function parseDate(text) {
         return new Date(year, month, day);
     }
     
-    // Try text format without year: "December 15" or "Dec 15-17"
+    // Format: "December 15" or "Dec 15-17" (no year)
     const textMatch = cleanText.match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+(\d{1,2})/i);
     if (textMatch) {
         const monthNames = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
@@ -76,7 +122,6 @@ function parseDate(text) {
         const day = parseInt(textMatch[2]);
         
         let year = currentYear;
-        const today = new Date();
         const testDate = new Date(year, month, day);
         if (testDate < today) {
             year += 1;
@@ -95,7 +140,10 @@ function isShowCurrent(dateObj) {
     return dateObj >= today;
 }
 
-// --- CATEGORY LOGIC ---
+// ============================================================================
+// CATEGORY CLASSIFIER
+// ============================================================================
+
 function determineCategory(title) {
     const text = title.toLowerCase();
     if (text.match(/flea market|farmers market|weekly|swap meet|trade center|hartville|rogers|traders world/)) return "Weekly Markets";
@@ -105,21 +153,25 @@ function determineCategory(title) {
     return "Festivals & Fairs";
 }
 
-// --- SMART GEOCODER ---
+// ============================================================================
+// GEOCODER - OpenStreetMap Nominatim
+// ============================================================================
+
 async function getCoordinates(locationString) {
     if (!locationString || locationString.length < 3) return null;
     let searchLoc = locationString.replace(/\n/g, ", ").trim();
     
+    // Try full address first
     try {
         await sleep(GEOCODE_DELAY_MS); 
         let url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(searchLoc)}&format=json&limit=1`;
-        let response = await axios.get(url, { headers: { 'User-Agent': 'ShowFinderApp_Ult_1.0' }, timeout: 8000 });
+        let response = await axios.get(url, { headers: { 'User-Agent': 'ShowFinderApp_v1.0' }, timeout: 8000 });
         if (response.data && response.data.length > 0) {
             return { lat: parseFloat(response.data[0].lat), lon: parseFloat(response.data[0].lon) };
         }
     } catch (e) {}
 
-    // Fallback: City Only
+    // Fallback: Try city, state only
     if (searchLoc.includes(",")) {
         const parts = searchLoc.split(",");
         if (parts.length >= 2) {
@@ -128,7 +180,7 @@ async function getCoordinates(locationString) {
                 try {
                     await sleep(GEOCODE_DELAY_MS);
                     let url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(cityState)}&format=json&limit=1`;
-                    let response = await axios.get(url, { headers: { 'User-Agent': 'ShowFinderApp_Ult_1.0' }, timeout: 8000 });
+                    let response = await axios.get(url, { headers: { 'User-Agent': 'ShowFinderApp_v1.0' }, timeout: 8000 });
                     if (response.data && response.data.length > 0) {
                         return { lat: parseFloat(response.data[0].lat), lon: parseFloat(response.data[0].lon) };
                     }
@@ -139,17 +191,20 @@ async function getCoordinates(locationString) {
     return null;
 }
 
-// --- SPIDER 1: Festival Guides ---
+// ============================================================================
+// SCRAPER 1: FestivalGuides (Multi-State)
+// ============================================================================
+
 async function scrapeFestivalGuides(state) {
     const stateMap = { 'OH': 'ohio', 'PA': 'pennsylvania', 'NY': 'new-york', 'MI': 'michigan', 'IN': 'indiana', 'KY': 'kentucky' };
     const fullState = stateMap[state];
     if (!fullState) return [];
 
     return await runWithBrowser(async (page) => {
-        console.log(`   [Guides] Scraping FestivalGuidesAndReviews (${state})...`);
+        console.log(`   [FestivalGuides] Scraping ${state}...`);
         try {
-            // FIXED: URL format changed from /state-festivals/ to just /state/
             await page.goto(`https://festivalguidesandreviews.com/${fullState}/`, { waitUntil: 'domcontentloaded', timeout: 30000 });
+            
             const data = await page.evaluate((currentState) => {
                 const data = [];
                 const contentDiv = document.querySelector('.entry-content') || document.body;
@@ -157,23 +212,22 @@ async function scrapeFestivalGuides(state) {
                 
                 allText.forEach(line => {
                     const cleanLine = line.trim();
-                    // NEW FORMAT: "12/15-12/20 – Winter Wonderfest V – Hartville"
-                    // Match: DATE(range) – NAME – CITY
+                    // Format: "12/15-12/20 – Winter Wonderfest V – Hartville"
                     const match = cleanLine.match(/^(\d{1,2}\/\d{1,2}(?:-\d{1,2}\/\d{1,2})?)\s*[–—-]\s*(.+?)\s*[–—-]\s*(.+)$/);
                     
                     if (match) {
-                        const dateRaw = match[1].trim(); // Could be "12/15" or "12/15-12/20"
+                        const dateRaw = match[1].trim();
                         const name = match[2].trim();
                         const city = match[3].trim();
                         
-                        // Extract just the first date from range (12/15 from 12/15-12/20)
+                        // Extract just first date from range
                         const firstDate = dateRaw.split('-')[0];
                         
                         if (name && city && firstDate) {
                             const location = `${city}, ${currentState}`;
                             data.push({ 
                                 name: name, 
-                                dateString: firstDate, // Just the start date
+                                dateString: firstDate,
                                 locationString: location, 
                                 link: document.URL, 
                                 vendorInfo: "FestivalGuides" 
@@ -183,31 +237,50 @@ async function scrapeFestivalGuides(state) {
                 });
                 return data;
             }, state);
+            
             return data;
-        } catch (e) { return []; }
+        } catch (e) { 
+            console.error(`   ❌ FestivalGuides (${state}): ${e.message}`);
+            return []; 
+        }
     });
 }
 
-// --- SPIDER 2: OHIO FESTIVALS TABLE ---
+// ============================================================================
+// SCRAPER 2: OhioFestivals.net (Table Format)
+// ============================================================================
+
 async function scrapeOhioFestivals() {
     return await runWithBrowser(async (page) => {
-        console.log(`   [OhioFestivals] Scraping OhioFestivals.net TABLE...`);
+        console.log(`   [OhioFestivals] Scraping TABLE...`);
         try {
-            await page.goto(`https://ohiofestivals.net/schedule/`, { waitUntil: 'domcontentloaded', timeout: 30000 });
+            await page.goto(`https://ohiofestivals.net/schedule/`, { 
+                waitUntil: 'networkidle2',
+                timeout: 45000
+            });
             
-            // Wait longer and try different approaches
+            // Patient waiting with fallbacks
+            let tableFound = false;
             try {
-                await page.waitForSelector('#tablepress-2', { timeout: 5000 });
+                await page.waitForSelector('#tablepress-2', { timeout: 10000 });
+                tableFound = true;
             } catch(e) {
                 try {
-                    await page.waitForSelector('.tablepress', { timeout: 5000 });
+                    await page.waitForSelector('.tablepress', { timeout: 10000 });
+                    tableFound = true;
                 } catch(e2) {
-                    // Just wait a bit and hope the table loads
-                    await new Promise(resolve => setTimeout(resolve, 3000));
+                    try {
+                        await page.waitForSelector('table', { timeout: 10000 });
+                        tableFound = true;
+                    } catch(e3) {
+                        console.log('      No tables found, trying anyway...');
+                    }
                 }
             }
             
-            return await page.evaluate(() => {
+            await new Promise(resolve => setTimeout(resolve, 5000));
+            
+            const data = await page.evaluate(() => {
                 const data = [];
                 const table = document.querySelector('#tablepress-2') || document.querySelector('.tablepress');
                 if (!table) return data;
@@ -229,6 +302,10 @@ async function scrapeOhioFestivals() {
                 });
                 return data;
             });
+            
+            console.log(`      Found ${data.length} events`);
+            return data;
+            
         } catch (e) { 
             console.error(`   ❌ OhioFestivals: ${e.message}`);
             return []; 
@@ -236,57 +313,97 @@ async function scrapeOhioFestivals() {
     });
 }
 
-// --- SPIDER 3: ODMALL (Horror & Oddities) ---
+// ============================================================================
+// SCRAPER 3: ODMall.info (Horror & Oddities)
+// ============================================================================
+
 async function scrapeODMall() {
     return await runWithBrowser(async (page) => {
-        console.log(`   [ODMall] Scraping ODMall Vendor Events...`);
+        console.log(`   [ODMall] Scraping Events...`);
         try {
-            await page.goto(`https://www.theodditiesfleamarket.com/vendor-info/`, { waitUntil: 'domcontentloaded', timeout: 30000 });
-            await page.waitForSelector('.gdlr-core-event-item-list', { timeout: 10000 });
+            await page.goto(`https://www.oddmall.info/vendor-show-info`, { 
+                waitUntil: 'networkidle2', 
+                timeout: 30000 
+            });
             
-            return await page.evaluate(() => {
+            // Flexible Squarespace selectors
+            let contentFound = false;
+            try {
+                await page.waitForSelector('.sqs-block-content', { timeout: 5000 });
+                contentFound = true;
+            } catch(e) {
+                try {
+                    await page.waitForSelector('.sqs-block', { timeout: 5000 });
+                    contentFound = true;
+                } catch(e2) {
+                    await new Promise(resolve => setTimeout(resolve, 3000));
+                }
+            }
+            
+            const data = await page.evaluate(() => {
                 const data = [];
-                const currentYear = new Date().getFullYear();
-                const events = document.querySelectorAll('.gdlr-core-event-item-list');
                 
-                events.forEach(event => {
-                    try {
-                        const monthSpan = event.querySelector('.gdlr-core-event-item-info-date');
-                        const daySpan = event.querySelector('.gdlr-core-event-item-info-day');
-                        const titleLink = event.querySelector('.gdlr-core-event-item-title a');
-                        const locationSpan = event.querySelector('.gdlr-core-event-item-info');
+                let contentBlocks = document.querySelectorAll('.sqs-block-content');
+                if (contentBlocks.length === 0) {
+                    contentBlocks = document.querySelectorAll('.sqs-block');
+                }
+                if (contentBlocks.length === 0) {
+                    contentBlocks = document.querySelectorAll('main, article, .content');
+                }
+                
+                contentBlocks.forEach(block => {
+                    const paragraphs = block.querySelectorAll('p');
+                    
+                    paragraphs.forEach(para => {
+                        const text = para.innerText.trim();
                         
-                        const name = titleLink ? titleLink.innerText.trim() : '';
-                        const link = titleLink ? titleLink.href : '';
-                        const location = locationSpan ? locationSpan.innerText.trim() : 'Ohio, USA';
+                        // Format: "January 18, 2025: Defiance, OH"
+                        const match = text.match(/^([A-Za-z]+\s+\d{1,2},\s+\d{4}):\s*(.+)$/);
                         
-                        if (monthSpan && daySpan && name) {
-                            const month = monthSpan.innerText.trim();
-                            const day = daySpan.innerText.trim();
-                            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-                            const monthNum = monthNames.indexOf(month) + 1;
+                        if (match) {
+                            const dateString = match[1].trim();
+                            let nameAndLocation = match[2].trim();
                             
-                            if (monthNum > 0) {
-                                let year = currentYear;
-                                const today = new Date();
-                                const eventDate = new Date(year, monthNum - 1, parseInt(day));
-                                if (eventDate < today) year += 1;
+                            const link = para.querySelector('a');
+                            let eventLink = link ? link.href : 'https://www.oddmall.info/vendor-show-info';
+                            let eventName = '';
+                            let location = '';
+                            
+                            if (link) {
+                                const linkText = link.innerText.trim();
                                 
-                                const dateString = `${monthNum}/${day}/${year}`;
-                                data.push({
-                                    name, dateString,
-                                    locationString: location,
-                                    link: link || "https://oddities-fleamarket.com/vendor-info/",
-                                    vendorInfo: "ODMall (Oddities)",
-                                    state: "OH",
-                                    category: "Horror & Oddities"
-                                });
+                                if (linkText.includes(',')) {
+                                    location = linkText;
+                                    const city = linkText.split(',')[0].trim();
+                                    eventName = `ODMall ${city}`;
+                                } else {
+                                    eventName = linkText;
+                                    location = nameAndLocation.replace(linkText, '').trim() || "Ohio, USA";
+                                }
+                            } else {
+                                location = nameAndLocation;
+                                eventName = `ODMall ${nameAndLocation}`;
                             }
+                            
+                            data.push({
+                                name: eventName,
+                                dateString: dateString,
+                                locationString: location,
+                                link: eventLink,
+                                vendorInfo: "ODMall (Oddities & Curiosities)",
+                                state: location.includes('OH') ? 'OH' : 'Multi',
+                                category: "Horror & Oddities"
+                            });
                         }
-                    } catch (err) {}
+                    });
                 });
+                
                 return data;
             });
+            
+            console.log(`      Found ${data.length} ODMall events`);
+            return data;
+            
         } catch (e) { 
             console.error(`   ❌ ODMall: ${e.message}`);
             return []; 
@@ -294,13 +411,21 @@ async function scrapeODMall() {
     });
 }
 
-// --- MAIN EXECUTION ---
+// ============================================================================
+// MAIN EXECUTION
+// ============================================================================
+
 (async () => {
-    console.log('🚀 STARTING MEGA-SPIDER (3 Sources Edition)...');
+    console.log('🚀 SHOW FINDER - MEGA SCRAPER');
+    console.log('   Scraping vendor shows across 6 states...\n');
+    
     let masterList = [];
 
-    // 1. SEEDS
-    console.log(`\n📍 [Seeds] Injecting ${MANUAL_SEEDS.length} Seeds...`);
+    // ------------------------------------------------------------------------
+    // STEP 1: Generate Seed Events (Weekly Markets)
+    // ------------------------------------------------------------------------
+    
+    console.log('📍 [Seeds] Generating weekly market events...');
     MANUAL_SEEDS.forEach(rule => {
         let dateCursor = new Date(rule.year, rule.startMonth, 1);
         const endDate = new Date(rule.year, rule.endMonth + 1, 0);
@@ -308,29 +433,45 @@ async function scrapeODMall() {
             if (dateCursor.getDay() === rule.dayOfWeek) {
                 const dateStr = `${dateCursor.getMonth()+1}/${dateCursor.getDate()}/${dateCursor.getFullYear()}`;
                 masterList.push({
-                    name: rule.name, dateString: dateStr, locationString: rule.location,
-                    link: rule.link, vendorInfo: rule.desc, category: "Weekly Markets",
-                    state: "OH", latitude: rule.lat, longitude: rule.lon
+                    name: rule.name, 
+                    dateString: dateStr, 
+                    locationString: rule.location,
+                    link: rule.link, 
+                    vendorInfo: rule.desc, 
+                    category: "Weekly Markets",
+                    state: "OH", 
+                    latitude: rule.lat, 
+                    longitude: rule.lon
                 });
             }
             dateCursor.setDate(dateCursor.getDate() + 1);
         }
     });
-    console.log(`   ✅ Generated ${masterList.length} seed events`);
+    console.log(`   ✅ Generated ${masterList.length} seed events\n`);
 
-    // 2. SCRAPERS
-    const ohioData = await scrapeOhioFestivals();
-    if (ohioData.length > 0) {
-        masterList = masterList.concat(ohioData.map(i => ({...i, category: i.category || determineCategory(i.name)})));
-        console.log(`   ✅ Added ${ohioData.length} from OhioFestivals.net`);
+    // ------------------------------------------------------------------------
+    // STEP 2: Scrape External Sources
+    // ------------------------------------------------------------------------
+    
+    // OhioFestivals (skip if timeout, don't block)
+    try {
+        const ohioData = await scrapeOhioFestivals();
+        if (ohioData.length > 0) {
+            masterList = masterList.concat(ohioData.map(i => ({...i, category: i.category || determineCategory(i.name)})));
+            console.log(`   ✅ Added ${ohioData.length} from OhioFestivals.net\n`);
+        }
+    } catch(e) {
+        console.log(`   ⚠️  OhioFestivals skipped (timeout)\n`);
     }
 
+    // ODMall
     const odmallData = await scrapeODMall();
     if (odmallData.length > 0) {
         masterList = masterList.concat(odmallData);
-        console.log(`   ✅ Added ${odmallData.length} from ODMall`);
+        console.log(`   ✅ Added ${odmallData.length} from ODMall\n`);
     }
 
+    // FestivalGuides (all states)
     for (const state of STATES) {
         const listA = await scrapeFestivalGuides(state);
         if (listA.length > 0) {
@@ -340,8 +481,11 @@ async function scrapeODMall() {
         await sleep(1000);
     }
 
-    // 3. PROCESS
-    console.log(`\n📋 Processing ${masterList.length} raw candidates...`);
+    // ------------------------------------------------------------------------
+    // STEP 3: Date Validation
+    // ------------------------------------------------------------------------
+    
+    console.log(`\n📋 Processing ${masterList.length} raw events...`);
     const validList = masterList.filter(item => {
         if (!item.dateString) return false;
         const d = parseDate(item.dateString);
@@ -352,10 +496,13 @@ async function scrapeODMall() {
         }
         return false;
     });
-    console.log(`   ✅ ${validList.length} events have valid future dates`);
+    console.log(`   ✅ ${validList.length} events have valid future dates\n`);
 
-    // 4. GEOCODE
-    console.log(`\n🌍 Geocoding ${validList.length} events...`);
+    // ------------------------------------------------------------------------
+    // STEP 4: Geocoding
+    // ------------------------------------------------------------------------
+    
+    console.log('🌍 Geocoding events...');
     let finalGeocoded = [];
     let seen = new Set();
 
@@ -387,9 +534,14 @@ async function scrapeODMall() {
         }
     }
 
+    // ------------------------------------------------------------------------
+    // STEP 5: Save Results
+    // ------------------------------------------------------------------------
+    
     fs.writeFileSync('shows.json', JSON.stringify(finalGeocoded, null, 2));
-    console.log(`\n🎉 DONE! Saved ${finalGeocoded.length} VERIFIED Shows.`);
-    console.log(`\n📊 BREAKDOWN:`);
+    
+    console.log(`\n🎉 COMPLETE! Saved ${finalGeocoded.length} shows to shows.json\n`);
+    console.log('📊 BREAKDOWN:');
     console.log(`   - Seeds: ${finalGeocoded.filter(s => s.vendorInfo && s.vendorInfo.includes('Weekly')).length}`);
     console.log(`   - OhioFestivals: ${finalGeocoded.filter(s => s.vendorInfo === 'OhioFestivals.net').length}`);
     console.log(`   - ODMall: ${finalGeocoded.filter(s => s.vendorInfo && s.vendorInfo.includes('ODMall')).length}`);
