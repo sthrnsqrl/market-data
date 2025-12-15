@@ -62,7 +62,7 @@ const MANUAL_SEEDS = [
     }
 ];
 
-// --- HELPER: Polite Pause (RESTORED!) ---
+// --- HELPER: Polite Pause ---
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 // --- HELPER: Browser Launcher ---
@@ -102,6 +102,7 @@ function parseDate(text) {
         const month = monthNames.indexOf(textMatch[1].toLowerCase().substring(0, 3));
         const day = parseInt(textMatch[2]);
         let year = currentYear;
+        // If Dec and finding Jan event, assume next year
         if (new Date().getMonth() > 10 && month < 2) year += 1;
         const yearMatch = cleanText.match(/202[5-7]/);
         if (yearMatch) year = parseInt(yearMatch[0]);
@@ -144,38 +145,42 @@ async function getCoordinates(locationString) {
 // 🕷️ THE SPIDERS
 // =========================================================
 
-// 1. DIRECTORY SCRAPER (Brute Force Mode)
-async function scrapeDirectory(state) {
-    return await runWithBrowser(async (page) => {
-        try {
-            await page.goto(`https://www.fairsandfestivals.net/states/${state}/`, { waitUntil: 'domcontentloaded', timeout: 60000 });
-            try { await page.waitForSelector('table', { timeout: 5000 }); } catch(e){}
+// 1. FESTIVAL GUIDES (Restored: This one has Cities!)
+async function scrapeFestivalGuides(state) {
+    const stateMap = { 'OH': 'ohio', 'PA': 'pennsylvania', 'NY': 'new-york', 'MI': 'michigan', 'IN': 'indiana', 'KY': 'kentucky' };
+    const fullState = stateMap[state];
+    if (!fullState) return [];
 
-            return await page.evaluate(() => {
+    return await runWithBrowser(async (page) => {
+        console.log(`   [Guides] Scraping FestivalGuidesAndReviews (${state})...`);
+        try {
+            await page.goto(`https://festivalguidesandreviews.com/${fullState}-festivals/`, { waitUntil: 'domcontentloaded', timeout: 60000 });
+            return await page.evaluate((currentState) => {
                 const data = [];
-                const rows = document.querySelectorAll('tr');
-                rows.forEach(row => {
-                    const text = row.innerText;
-                    if (text.match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s\d{1,2}/)) {
-                        const cols = row.querySelectorAll('td');
-                        if (cols.length >= 3) {
-                            data.push({ 
-                                name: cols[1].innerText.trim(), 
-                                dateString: cols[0].innerText.trim(), 
-                                locationString: cols[2].innerText.trim(), 
-                                link: cols[1].querySelector('a')?.href || "", 
-                                vendorInfo: "Directory List" 
-                            });
+                const contentDiv = document.querySelector('.entry-content') || document.body;
+                const allText = contentDiv.innerText.split('\n');
+                allText.forEach(line => {
+                    const cleanLine = line.trim();
+                    // Looks for: "1/15 - Event Name - City"
+                    if (cleanLine.match(/^\d{1,2}\/\d{1,2}/) && (cleanLine.includes('–') || cleanLine.includes('-'))) {
+                        const parts = cleanLine.split(/[–-]/);
+                        if (parts.length >= 2) {
+                            const dateRaw = parts[0].trim();
+                            const name = parts[1].trim();
+                            // Grab City if available
+                            let city = parts.length > 2 ? parts[2].trim() : "";
+                            const location = city.length > 2 ? `${city}, ${currentState}` : `${currentState}, USA`;
+                            data.push({ name: name, dateString: dateRaw, locationString: location, link: document.URL, vendorInfo: "FestivalGuides" });
                         }
                     }
                 });
                 return data;
-            });
-        } catch(e) { return []; }
-    });
+            }, state);
+        } catch (e) { return []; }
+    }, state);
 }
 
-// 2. GOOGLE HUNTER
+// 2. GOOGLE HUNTER (Backup)
 async function performGoogleSearch(query, state, type) {
     return await runWithBrowser(async (page) => {
         const fullQuery = `${query} ${state}`; 
@@ -213,7 +218,7 @@ async function performGoogleSearch(query, state, type) {
 
 // --- MAIN EXECUTION ---
 (async () => {
-    console.log('🚀 STARTING MEGA-SPIDER (Hardcoded Seeds + Google + Sleep Fix)...');
+    console.log('🚀 STARTING MEGA-SPIDER (City-Level Precision)...');
     let masterList = [];
 
     // 1. SEEDS (With Pre-Set GPS)
@@ -232,7 +237,7 @@ async function performGoogleSearch(query, state, type) {
                     vendorInfo: rule.desc,
                     category: "Weekly Markets",
                     state: "OH",
-                    // Use Hardcoded Lat/Lon if available
+                    // Use Hardcoded Lat/Lon
                     latitude: rule.lat || 0,
                     longitude: rule.lon || 0
                 });
@@ -243,22 +248,17 @@ async function performGoogleSearch(query, state, type) {
 
     // 2. MAIN LOOP
     for (const state of STATES) {
-        // A. Directory
-        const listA = await scrapeDirectory(state);
+        // A. Festival Guides (Primary Source for CITIES)
+        const listA = await scrapeFestivalGuides(state);
         if (listA.length > 0) {
             masterList = masterList.concat(listA.map(i => ({...i, state, category: determineCategory(i.name)})));
-            console.log(`     -> Found ${listA.length} directory events for ${state}`);
+            console.log(`     -> Found ${listA.length} city-specific events for ${state}`);
         }
 
-        // B. Google Hunter
+        // B. Google Hunter (Backup)
         const query1 = `(Festival OR Fair OR Carnival) AND (Vendor Application OR Booth Rental)`;
         const hits1 = await performGoogleSearch(query1, state, "General");
         if (hits1.length > 0) masterList = masterList.concat(hits1);
-        await sleep(1500);
-        
-        const query2 = `(Flea Market OR Farmers Market) AND (Vendor Info)`;
-        const hits2 = await performGoogleSearch(query2, state, "Markets");
-        if (hits2.length > 0) masterList = masterList.concat(hits2);
         await sleep(1500);
     }
 
@@ -275,7 +275,7 @@ async function performGoogleSearch(query, state, type) {
         return false;
     });
 
-    // 4. GEOCODE (Only needed for items WITHOUT hardcoded Lat/Lon)
+    // 4. GEOCODE
     console.log(`\n🌍 Geocoding ${validList.length} unique events...`);
     let finalGeocoded = [];
     let seen = new Set();
@@ -288,7 +288,6 @@ async function performGoogleSearch(query, state, type) {
 
         if (i % 20 === 0) process.stdout.write(".");
 
-        // If we already have hardcoded GPS (Seeds), skip Geocoding
         if (show.latitude && show.latitude !== 0) {
             finalGeocoded.push(show);
             continue; 
