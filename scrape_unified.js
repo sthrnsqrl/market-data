@@ -5,21 +5,43 @@ const axios = require('axios');
 // --- CONFIGURATION ---
 const STATES = ['OH', 'PA', 'NY', 'MI', 'IN', 'KY']; 
 
-// 1. EXPANDED KEYWORDS (Catching Small Town Events)
-const DISCOVERY_KEYWORDS = [
-    "Live Music Festival", 
-    "Vendor Wanted", 
-    "Arts and Crafts Show", 
-    "Food Truck", 
-    "Street Fair",
-    "Village Fair",
-    "Community Days",
-    "Founders Day",
-    "Homecoming Festival",
-    "Pioneer Days",
-    "Parade",
+// 1. BROAD SEARCH TERMS (Atomic Keywords)
+// The logic is: Page must contain (ANY Event Word) AND (ANY Vendor Word)
+const EVENT_TERMS = [
+    "Fest",         // Catches Festival, Winterfest, Summerfest, Octoberfest
+    "Fair",         // Catches Street Fair, County Fair, Village Fair
+    "Show",         // Catches Art Show, Car Show, Craft Show
+    "Market",       // Catches Flea Market, Farmers Market, Holiday Market
     "Carnival",
-    "Fest 2025" // Catch-all for "Winterfest", "Springfest", etc.
+    "Parade",
+    "Celebration",  // Catches 4th of July Celebration, etc.
+    "Days",         // Catches "Pioneer Days", "Community Days", "Heritage Days"
+    "Rally",        // Catches Food Truck Rally
+    "Gathering",
+    "Expo",
+    "Convention"
+];
+
+const ENTERTAINMENT_TERMS = [
+    "Live Music", 
+    "Concert", 
+    "Entertainment", 
+    "Band", 
+    "Performance"
+];
+
+const VENDOR_TERMS = [
+    "Vendors",      // Catches "Call for Vendors", "Vendor Info", "Vendors Wanted"
+    "Exhibitors",   // Catches "Exhibitor List", "Exhibitor App"
+    "Booths",       // Catches "Booth Space", "Booth Rental"
+    "Artists",      // Catches "Calling all Artists", "Artist Alley"
+    "Registration", // Catches "Vendor Registration"
+    "Applications", // Catches "Download Application"
+    "Spots",        // Catches "Vendor Spots Available"
+    "Tables",       // Catches "Table Request"
+    "Merchants",
+    "Sellers",
+    "Food Trucks"
 ];
 
 const GEOCODE_DELAY_MS = 800; 
@@ -47,7 +69,6 @@ async function runWithBrowser(taskFunction) {
         const page = await browser.newPage();
         await page.setRequestInterception(true);
         page.on('request', (req) => {
-            // Block heavy media to speed up crawling
             if (['image', 'font', 'media'].includes(req.resourceType())) req.abort();
             else req.continue();
         });
@@ -122,7 +143,6 @@ async function getCoordinates(locationString) {
         if (response.data && response.data.length > 0) {
             return { lat: parseFloat(response.data[0].lat), lon: parseFloat(response.data[0].lon) };
         }
-        // Retry City/State only
         if (searchLoc.includes(",")) {
             const parts = searchLoc.split(",");
             if (parts.length >= 2) {
@@ -145,7 +165,60 @@ async function getCoordinates(locationString) {
 // 🕷️ THE SPIDERS
 // =========================================================
 
-// 1. Northeast Ohio Parent
+// 1. The NEW Boolean Web Discovery Engine
+async function performBooleanSearch(termsA, termsB, state) {
+    return await runWithBrowser(async (page) => {
+        // Construct Boolean Query: (A OR B OR C) AND (X OR Y OR Z)
+        const groupA = termsA.map(t => `"${t}"`).join(" OR ");
+        const groupB = termsB.map(t => `"${t}"`).join(" OR ");
+        const fullQuery = `(${groupA}) AND (${groupB}) ${state} 2025`;
+        
+        console.log(`   [Discovery] Boolean Search: ${state}...`);
+        
+        try {
+            await page.goto(`https://html.duckduckgo.com/html/?q=${encodeURIComponent(fullQuery)}`, { waitUntil: 'domcontentloaded' });
+            
+            const rawLinks = await page.evaluate(() => {
+                const results = [];
+                const anchors = document.querySelectorAll('.result__a');
+                anchors.forEach(a => {
+                    results.push({ title: a.innerText, url: a.href });
+                });
+                return results;
+            });
+
+            const relevant = rawLinks.filter(item => {
+                const lowerTitle = item.title.toLowerCase();
+                const lowerUrl = item.url.toLowerCase();
+                
+                // Filter out generic guides/directories to reduce noise
+                if (lowerTitle.includes("best of") || lowerTitle.includes("guide to") || lowerTitle.includes("directory")) return false;
+                
+                // Prioritize known event platforms or direct festival sites
+                return lowerUrl.includes('facebook.com/events') || 
+                       lowerUrl.includes('zappication.org') || 
+                       lowerUrl.includes('meetup.com') ||
+                       lowerUrl.includes('eventbrite.com') ||
+                       lowerUrl.includes('festival') ||
+                       lowerUrl.includes('fair') ||
+                       lowerUrl.includes('carnival');
+            });
+
+            return relevant.map(item => ({
+                name: item.title,
+                dateString: "Check Link", 
+                locationString: `${state}, USA`,
+                link: item.url,
+                vendorInfo: "Web Discovery",
+                category: "Discovered",
+                state: state
+            }));
+
+        } catch (e) { return []; }
+    });
+}
+
+// 2. Northeast Ohio Parent
 async function scrapeNortheastOhioParent() {
     console.log("   [Spider] Crawling NortheastOhioParent.com...");
     return await runWithBrowser(async (page) => {
@@ -180,57 +253,9 @@ async function scrapeNortheastOhioParent() {
     });
 }
 
-// 2. The Web Discovery Engine (Updated for Accuracy)
-async function performDiscoverySearch(query, state) {
-    return await runWithBrowser(async (page) => {
-        const fullQuery = `${query} ${state} 2025`;
-        console.log(`   [Discovery] Searching web for: "${fullQuery}"...`);
-        
-        try {
-            await page.goto(`https://html.duckduckgo.com/html/?q=${encodeURIComponent(fullQuery)}`, { waitUntil: 'domcontentloaded' });
-            
-            const rawLinks = await page.evaluate(() => {
-                const results = [];
-                const anchors = document.querySelectorAll('.result__a');
-                anchors.forEach(a => {
-                    results.push({ title: a.innerText, url: a.href });
-                });
-                return results;
-            });
-
-            const relevant = rawLinks.filter(item => {
-                const lowerTitle = item.title.toLowerCase();
-                // Filter out "Best of" lists and "Guides" to reduce noise
-                if (lowerTitle.includes("best of") || lowerTitle.includes("guide to") || lowerTitle.includes("directory")) {
-                    return false;
-                }
-                const url = item.url.toLowerCase();
-                return url.includes('facebook.com/events') || 
-                       url.includes('zappication.org') || 
-                       url.includes('meetup.com') ||
-                       url.includes('eventbrite.com') ||
-                       url.includes('festival');
-            });
-
-            return relevant.map(item => ({
-                name: item.title,
-                dateString: "Check Link", 
-                locationString: `${state}, USA`,
-                link: item.url,
-                vendorInfo: "Web Discovery",
-                category: "Discovered",
-                state: state
-            }));
-
-        } catch (e) { return []; }
-    });
-}
-
 // 3. FairsAndFestivals (Directory)
 async function scrapeDirectory(state) {
     return await runWithBrowser(async (page) => {
-        // console.log(`   [Directory] checking ${state}...`); 
-        // Commenting out log to reduce noise if it fails silently
         try {
             await page.goto(`https://www.fairsandfestivals.net/states/${state}/`, { waitUntil: 'domcontentloaded', timeout: 60000 });
             return await page.evaluate(() => {
@@ -254,7 +279,7 @@ async function scrapeDirectory(state) {
     });
 }
 
-// 4. FestivalGuides (Directory - TIGHTENED to reduce noise)
+// 4. FestivalGuides (Directory - Strict Filter)
 async function scrapeFestivalGuides(state) {
     const stateMap = { 'OH': 'ohio', 'PA': 'pennsylvania', 'NY': 'new-york', 'MI': 'michigan', 'IN': 'indiana', 'KY': 'kentucky' };
     const fullState = stateMap[state];
@@ -266,17 +291,14 @@ async function scrapeFestivalGuides(state) {
             return await page.evaluate((currentState) => {
                 const data = [];
                 const contentDiv = document.querySelector('.entry-content') || document.body;
-                // Only look at lines that actually look like events (Date - Name)
                 const allText = contentDiv.innerText.split('\n');
                 allText.forEach(line => {
                     const cleanLine = line.trim();
-                    // Strict Regex: Must start with Date (Digit/Digit) AND have a hyphen
                     if (cleanLine.match(/^\d{1,2}\/\d{1,2}/) && (cleanLine.includes('–') || cleanLine.includes('-'))) {
                         const parts = cleanLine.split(/[–-]/);
                         if (parts.length >= 2) {
                             const dateRaw = parts[0].trim();
                             const name = parts[1].trim();
-                            // If name is too long, it's likely a paragraph, skip it
                             if (name.length < 80) {
                                 let city = parts.length > 2 ? parts[2].trim() : "";
                                 const location = city.length > 2 ? `${city}, ${currentState}` : `${currentState}, USA`;
@@ -293,7 +315,7 @@ async function scrapeFestivalGuides(state) {
 
 // --- MAIN EXECUTION ---
 (async () => {
-    console.log('🚀 STARTING MEGA-SPIDER (Multi-State + Expanded Discovery)...');
+    console.log('🚀 STARTING MEGA-SPIDER (Boolean Logic Edition)...');
     let masterList = [];
 
     // 1. MANUAL SEEDS
@@ -324,7 +346,7 @@ async function scrapeFestivalGuides(state) {
         console.log(`   ✅ Found ${neoData.length} events from NortheastOhioParent.`);
     }
 
-    // 3. MAIN LOOP (Directories + Discovery)
+    // 3. MAIN LOOP (Directories + Boolean Discovery)
     for (const state of STATES) {
         // Source A
         const listA = await scrapeDirectory(state);
@@ -334,17 +356,24 @@ async function scrapeFestivalGuides(state) {
         const listB = await scrapeFestivalGuides(state);
         if (listB.length > 0) masterList = masterList.concat(listB.map(i => ({...i, state, category: determineCategory(i.name)})));
 
-        // 4. DISCOVERY SEARCH (Active for ALL states now)
+        // 4. BOOLEAN DISCOVERY (Smart Queries)
         console.log(`   🔎 Hunting in ${state}...`);
-        for (const keyword of DISCOVERY_KEYWORDS) {
-             const discovered = await performDiscoverySearch(keyword, state);
-             if (discovered.length > 0) {
-                 masterList = masterList.concat(discovered);
-                 console.log(`      + Discovered ${discovered.length} links for "${keyword}"`);
-             }
-             // Jitter to be safe
-             await sleep(1000 + Math.random() * 1000); 
+        
+        // A. General Events + Vendor Terms
+        const generalHits = await performBooleanSearch(EVENT_TERMS, VENDOR_TERMS, state);
+        if (generalHits.length > 0) {
+            masterList = masterList.concat(generalHits);
+            console.log(`      + Found ${generalHits.length} General Events (with vendor call)`);
         }
+        await sleep(1500); 
+
+        // B. Entertainment + Vendor Terms (Your specific request)
+        const entHits = await performBooleanSearch(ENTERTAINMENT_TERMS, VENDOR_TERMS, state);
+        if (entHits.length > 0) {
+            masterList = masterList.concat(entHits);
+            console.log(`      + Found ${entHits.length} Entertainment Events (with vendor call)`);
+        }
+        await sleep(1500);
     }
 
     // 5. PROCESS & CLEANUP
@@ -376,7 +405,6 @@ async function scrapeFestivalGuides(state) {
         if (seen.has(key)) continue;
         seen.add(key);
 
-        // Simple progress bar
         if (i % 10 === 0) process.stdout.write(".");
 
         if (show.locationString) {
