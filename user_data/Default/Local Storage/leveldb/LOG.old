@@ -1,13 +1,3 @@
-2025/12/15-10:55:57.475 26f8 Reusing MANIFEST C:\Users\Andrew\Desktop\market-vendor-show-finder\show-scraper\user_data\Default\Local Storage\leveldb/MANIFEST-000001
-2025/12/15-10:55:57.643 26f8 Recovering log #10
-2025/12/15-10:55:57.645 26f8 Level-0 table #12: started
-2025/12/15-10:55:57.998 26f8 Level-0 table #12: 54664 bytes OK
-2025/12/15-10:55:58.716 26f8 Delete type=0 #10
-2025/12/15-10:55:58.906 16e4 Compacting 4@0 + 0@1 files
-2025/12/15-10:55:59.170 16e4 Generated table #14@0: 11 keys, 18872 bytes
-2025/12/15-10:55:59.171 16e4 Compacted 4@0 + 0@1 files => 18872 bytes
-2025/12/15-10:55:59.207 16e4 compacted to: files[ 0 1 0 0 0 0 0 ]
-2025/12/15-10:55:59.249 16e4 Delete type=2 #3
-2025/12/15-10:55:59.249 16e4 Delete type=2 #6
-2025/12/15-10:55:59.252 16e4 Delete type=2 #9
-2025/12/15-10:55:59.259 16e4 Delete type=2 #12
+2025/12/15-11:52:04.316 3ba4 Reusing MANIFEST C:\Users\Andrew\Desktop\market-vendor-show-finder\show-scraper\user_data\Default\Local Storage\leveldb/MANIFEST-000001
+2025/12/15-11:52:04.819 3ba4 Recovering log #17
+2025/12/15-11:52:05.182 3ba4 Reusing old log C:\Users\Andrew\Desktop\market-vendor-show-finder\show-scraper\user_data\Default\Local Storage\leveldb/000017.log 
