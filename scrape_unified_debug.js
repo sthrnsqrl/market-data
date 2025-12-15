@@ -44,47 +44,30 @@ async function runWithBrowser(taskFunction) {
     }
 }
 
-// --- IMPROVED DATE PARSER (handles ranges and multiple formats) ---
+// --- HELPER: ROBUST DATE PARSER ---
 function parseDate(text) {
     if (!text) return null;
     const cleanText = text.toString().trim();
     const currentYear = new Date().getFullYear(); 
     
-    // Try numeric format: MM/DD/YYYY or M/D/YY
-    const numMatch = cleanText.match(/(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})/);
-    if (numMatch) {
-        let year = parseInt(numMatch[3]);
-        if (year < 100) year += 2000;
-        return new Date(year, parseInt(numMatch[1]) - 1, parseInt(numMatch[2]));
-    }
+    // Try numeric format: MM/DD/YYYY
+    const numMatch = cleanText.match(/(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})/);
+    if (numMatch) return new Date(parseInt(numMatch[3]), parseInt(numMatch[1]) - 1, parseInt(numMatch[2]));
     
-    // Try text format with year: "December 15, 2025" or "Dec 15-17, 2025"
-    const textWithYearMatch = cleanText.match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+(\d{1,2})(?:-\d{1,2})?,?\s+(202[5-7])/i);
-    if (textWithYearMatch) {
-        const monthNames = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
-        const month = monthNames.indexOf(textWithYearMatch[1].toLowerCase().substring(0, 3));
-        const day = parseInt(textWithYearMatch[2]);
-        const year = parseInt(textWithYearMatch[3]);
-        return new Date(year, month, day);
-    }
-    
-    // Try text format without year: "December 15" or "Dec 15-17"
-    const textMatch = cleanText.match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+(\d{1,2})/i);
+    // Try text format: Month DD
+    const textMatch = cleanText.match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s?(\d{1,2})/i);
     if (textMatch) {
         const monthNames = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
         const month = monthNames.indexOf(textMatch[1].toLowerCase().substring(0, 3));
         const day = parseInt(textMatch[2]);
-        
         let year = currentYear;
-        const today = new Date();
-        const testDate = new Date(year, month, day);
-        if (testDate < today) {
-            year += 1;
-        }
-        
+        if (new Date().getMonth() > 10 && month < 2) year += 1;
+        const yearMatch = cleanText.match(/202[5-7]/);
+        if (yearMatch) year = parseInt(yearMatch[0]);
         return new Date(year, month, day);
     }
     
+    console.log(`   ⚠️  Could not parse date: "${cleanText}"`);
     return null;
 }
 
@@ -98,10 +81,10 @@ function isShowCurrent(dateObj) {
 // --- CATEGORY LOGIC ---
 function determineCategory(title) {
     const text = title.toLowerCase();
-    if (text.match(/flea market|farmers market|weekly|swap meet|trade center|hartville|rogers|traders world/)) return "Weekly Markets";
-    if (text.match(/comic|con\b|anime|toy show|card show|gaming|cosplay/)) return "Conventions";
-    if (text.match(/horror|oddities|oddity|macabre|dark|spooky|paranormal|gothic|haunted|occult/)) return "Horror & Oddities";
+    if (text.match(/flea market|farmers market|weekly|swap meet|trade center/)) return "Weekly Markets";
+    if (text.match(/comic|con\b|anime|toy show|card show/)) return "Conventions";
     if (text.match(/craft|artisan|handmade|bazaar|boutique|gift|maker|expo|holiday|christmas|winter|santa|sleigh/)) return "Arts & Craft"; 
+    if (text.match(/horror|ghost|spooky|paranormal|oddities/)) return "Horror & Oddities";
     return "Festivals & Fairs";
 }
 
@@ -115,6 +98,7 @@ async function getCoordinates(locationString) {
         let url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(searchLoc)}&format=json&limit=1`;
         let response = await axios.get(url, { headers: { 'User-Agent': 'ShowFinderApp_Ult_1.0' }, timeout: 8000 });
         if (response.data && response.data.length > 0) {
+            console.log("    ✅ Found precise location");
             return { lat: parseFloat(response.data[0].lat), lon: parseFloat(response.data[0].lon) };
         }
     } catch (e) {}
@@ -125,34 +109,41 @@ async function getCoordinates(locationString) {
         if (parts.length >= 2) {
             const cityState = parts.slice(-2).join(",").trim(); 
             if (cityState.length > 5 && !cityState.match(/^\d+$/) && cityState !== searchLoc) {
+                console.log(`    ⚠️ Precise failed, trying City: "${cityState}"...`);
                 try {
                     await sleep(GEOCODE_DELAY_MS);
                     let url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(cityState)}&format=json&limit=1`;
                     let response = await axios.get(url, { headers: { 'User-Agent': 'ShowFinderApp_Ult_1.0' }, timeout: 8000 });
                     if (response.data && response.data.length > 0) {
+                        console.log("    ✅ Found city location");
                         return { lat: parseFloat(response.data[0].lat), lon: parseFloat(response.data[0].lon) };
                     }
                 } catch(e) {}
             }
         }
     }
+    console.log("    ❌ Geocode failed");
     return null;
 }
 
-// --- SPIDER 1: Festival Guides ---
+// --- SPIDER 1: Festival Guides (General) ---
 async function scrapeFestivalGuides(state) {
     const stateMap = { 'OH': 'ohio', 'PA': 'pennsylvania', 'NY': 'new-york', 'MI': 'michigan', 'IN': 'indiana', 'KY': 'kentucky' };
     const fullState = stateMap[state];
     if (!fullState) return [];
 
     return await runWithBrowser(async (page) => {
-        console.log(`   [Guides] Scraping FestivalGuidesAndReviews (${state})...`);
+        console.log(`\n   [Guides] Scraping FestivalGuidesAndReviews (${state})...`);
         try {
-            await page.goto(`https://festivalguidesandreviews.com/${fullState}-festivals/`, { waitUntil: 'domcontentloaded', timeout: 30000 });
-            return await page.evaluate((currentState) => {
+            await page.goto(`https://festivalguidesandreviews.com/${fullState}-festivals/`, { waitUntil: 'domcontentloaded', timeout: 60000 });
+            
+            const data = await page.evaluate((currentState) => {
                 const data = [];
                 const contentDiv = document.querySelector('.entry-content') || document.body;
                 const allText = contentDiv.innerText.split('\n');
+                
+                console.log(`   DEBUG: Found ${allText.length} lines of text`);
+                
                 allText.forEach(line => {
                     const cleanLine = line.trim();
                     if (cleanLine.match(/^\d{1,2}\/\d{1,2}/) && (cleanLine.includes('–') || cleanLine.includes('-'))) {
@@ -168,100 +159,90 @@ async function scrapeFestivalGuides(state) {
                 });
                 return data;
             }, state);
-        } catch (e) { return []; }
-    });
-}
-
-// --- SPIDER 2: OHIO FESTIVALS TABLE ---
-async function scrapeOhioFestivals() {
-    return await runWithBrowser(async (page) => {
-        console.log(`   [OhioFestivals] Scraping OhioFestivals.net TABLE...`);
-        try {
-            await page.goto(`https://ohiofestivals.net/schedule/`, { waitUntil: 'domcontentloaded', timeout: 30000 });
-            await page.waitForSelector('#tablepress-2, .tablepress', { timeout: 10000 });
             
-            return await page.evaluate(() => {
-                const data = [];
-                const table = document.querySelector('#tablepress-2') || document.querySelector('.tablepress');
-                if (!table) return data;
-                
-                const rows = table.querySelectorAll('tbody tr');
-                rows.forEach(row => {
-                    const cells = row.querySelectorAll('td');
-                    if (cells.length >= 3) {
-                        const name = cells[0].innerText.trim();
-                        const city = cells[1].innerText.trim();
-                        const dateRaw = cells[2].innerText.trim();
-                        
-                        if (name && city && dateRaw && dateRaw.length > 3) {
-                            const location = `${city}, OH`;
-                            const link = cells[0].querySelector('a')?.href || "https://ohiofestivals.net/schedule/";
-                            data.push({ name, dateString: dateRaw, locationString: location, link, vendorInfo: "OhioFestivals.net", state: "OH" });
-                        }
-                    }
-                });
-                return data;
-            });
+            console.log(`   DEBUG: Extracted ${data.length} events from FestivalGuides`);
+            if (data.length > 0) {
+                console.log(`   DEBUG: Sample event:`, JSON.stringify(data[0], null, 2));
+            }
+            return data;
         } catch (e) { 
-            console.error(`   ❌ OhioFestivals: ${e.message}`);
+            console.error(`   ❌ FestivalGuides error: ${e.message}`);
             return []; 
         }
     });
 }
 
-// --- SPIDER 3: ODMALL (Horror & Oddities) ---
-async function scrapeODMall() {
+// --- SPIDER 2: OHIO FESTIVALS SPECIFIC ---
+async function scrapeOhioFestivals() {
     return await runWithBrowser(async (page) => {
-        console.log(`   [ODMall] Scraping ODMall Vendor Events...`);
+        console.log(`\n   [OhioFestivals] Scraping OhioFestivals.net...`);
         try {
-            await page.goto(`https://oddities-fleamarket.com/vendor-info/`, { waitUntil: 'domcontentloaded', timeout: 30000 });
-            await page.waitForSelector('.gdlr-core-event-item-list', { timeout: 10000 });
+            await page.goto(`https://ohiofestivals.net/schedule/`, { waitUntil: 'domcontentloaded', timeout: 60000 });
             
-            return await page.evaluate(() => {
+            const data = await page.evaluate(() => {
                 const data = [];
-                const currentYear = new Date().getFullYear();
-                const events = document.querySelectorAll('.gdlr-core-event-item-list');
                 
-                events.forEach(event => {
-                    try {
-                        const monthSpan = event.querySelector('.gdlr-core-event-item-info-date');
-                        const daySpan = event.querySelector('.gdlr-core-event-item-info-day');
-                        const titleLink = event.querySelector('.gdlr-core-event-item-title a');
-                        const locationSpan = event.querySelector('.gdlr-core-event-item-info');
-                        
-                        const name = titleLink ? titleLink.innerText.trim() : '';
-                        const link = titleLink ? titleLink.href : '';
-                        const location = locationSpan ? locationSpan.innerText.trim() : 'Ohio, USA';
-                        
-                        if (monthSpan && daySpan && name) {
-                            const month = monthSpan.innerText.trim();
-                            const day = daySpan.innerText.trim();
-                            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-                            const monthNum = monthNames.indexOf(month) + 1;
-                            
-                            if (monthNum > 0) {
-                                let year = currentYear;
-                                const today = new Date();
-                                const eventDate = new Date(year, monthNum - 1, parseInt(day));
-                                if (eventDate < today) year += 1;
+                // Try multiple selectors
+                let listItems = document.querySelectorAll('.schedule-list li');
+                if (listItems.length === 0) {
+                    listItems = document.querySelectorAll('main li, article li, .content li');
+                }
+                
+                console.log(`   DEBUG: Found ${listItems.length} list items on OhioFestivals`);
+                
+                listItems.forEach((li, index) => {
+                    const text = li.innerText;
+                    if (index < 3) {
+                        console.log(`   DEBUG: Sample LI ${index}: ${text.substring(0, 100)}`);
+                    }
+                    
+                    // Look for dates in various formats
+                    if (text.match(/202[5-7]/) || text.match(/\d{1,2}\/\d{1,2}/)) {
+                        // Try to parse different formats
+                        if (text.includes('–') || text.includes('-')) {
+                            const parts = text.split(/[–-]/);
+                            if (parts.length >= 2) {
+                                const name = parts[0].trim();
+                                let city = '';
+                                let dateRaw = '';
                                 
-                                const dateString = `${monthNum}/${day}/${year}`;
-                                data.push({
-                                    name, dateString,
-                                    locationString: location,
-                                    link: link || "https://oddities-fleamarket.com/vendor-info/",
-                                    vendorInfo: "ODMall (Oddities)",
-                                    state: "OH",
-                                    category: "Horror & Oddities"
-                                });
+                                // Try to identify which part is city vs date
+                                for (let i = 1; i < parts.length; i++) {
+                                    const part = parts[i].trim();
+                                    if (part.match(/202[5-7]/) || part.match(/\d{1,2}\/\d{1,2}/)) {
+                                        dateRaw = part;
+                                    } else if (!city && part.length > 2 && part.length < 30) {
+                                        city = part;
+                                    }
+                                }
+                                
+                                if (name && dateRaw) {
+                                    const location = city ? `${city}, OH` : `Ohio, USA`;
+                                    const link = li.querySelector('a')?.href || "https://ohiofestivals.net/schedule/";
+                                    
+                                    data.push({ 
+                                        name: name, 
+                                        dateString: dateRaw, 
+                                        locationString: location, 
+                                        link: link, 
+                                        vendorInfo: "OhioFestivals.net",
+                                        state: "OH"
+                                    });
+                                }
                             }
                         }
-                    } catch (err) {}
+                    }
                 });
                 return data;
             });
+            
+            console.log(`   DEBUG: Extracted ${data.length} events from OhioFestivals`);
+            if (data.length > 0) {
+                console.log(`   DEBUG: Sample event:`, JSON.stringify(data[0], null, 2));
+            }
+            return data;
         } catch (e) { 
-            console.error(`   ❌ ODMall: ${e.message}`);
+            console.error(`   ❌ OhioFestivals error: ${e.message}`);
             return []; 
         }
     });
@@ -269,7 +250,7 @@ async function scrapeODMall() {
 
 // --- MAIN EXECUTION ---
 (async () => {
-    console.log('🚀 STARTING MEGA-SPIDER (3 Sources Edition)...');
+    console.log('🚀 STARTING MEGA-SPIDER (Debug Edition)...');
     let masterList = [];
 
     // 1. SEEDS
@@ -281,9 +262,15 @@ async function scrapeODMall() {
             if (dateCursor.getDay() === rule.dayOfWeek) {
                 const dateStr = `${dateCursor.getMonth()+1}/${dateCursor.getDate()}/${dateCursor.getFullYear()}`;
                 masterList.push({
-                    name: rule.name, dateString: dateStr, locationString: rule.location,
-                    link: rule.link, vendorInfo: rule.desc, category: "Weekly Markets",
-                    state: "OH", latitude: rule.lat, longitude: rule.lon
+                    name: rule.name,
+                    dateString: dateStr,
+                    locationString: rule.location,
+                    link: rule.link,
+                    vendorInfo: rule.desc,
+                    category: "Weekly Markets",
+                    state: "OH",
+                    latitude: rule.lat,
+                    longitude: rule.lon
                 });
             }
             dateCursor.setDate(dateCursor.getDate() + 1);
@@ -292,23 +279,19 @@ async function scrapeODMall() {
     console.log(`   ✅ Generated ${masterList.length} seed events`);
 
     // 2. SCRAPERS
+    // A. Ohio Festivals
     const ohioData = await scrapeOhioFestivals();
     if (ohioData.length > 0) {
-        masterList = masterList.concat(ohioData.map(i => ({...i, category: i.category || determineCategory(i.name)})));
-        console.log(`   ✅ Added ${ohioData.length} from OhioFestivals.net`);
+        masterList = masterList.concat(ohioData.map(i => ({...i, category: determineCategory(i.name)})));
+        console.log(`   ✅ Added ${ohioData.length} events from OhioFestivals.net`);
     }
 
-    const odmallData = await scrapeODMall();
-    if (odmallData.length > 0) {
-        masterList = masterList.concat(odmallData);
-        console.log(`   ✅ Added ${odmallData.length} from ODMall`);
-    }
-
+    // B. Standard Loop
     for (const state of STATES) {
         const listA = await scrapeFestivalGuides(state);
         if (listA.length > 0) {
             masterList = masterList.concat(listA.map(i => ({...i, state, category: determineCategory(i.name)})));
-            console.log(`   ✅ Added ${listA.length} from FestivalGuides (${state})`);
+            console.log(`   ✅ Added ${listA.length} events for ${state}`);
         }
         await sleep(1000);
     }
@@ -328,7 +311,7 @@ async function scrapeODMall() {
     console.log(`   ✅ ${validList.length} events have valid future dates`);
 
     // 4. GEOCODE
-    console.log(`\n🌍 Geocoding ${validList.length} events...`);
+    console.log(`\n🌍 Geocoding ${validList.length} unique events...`);
     let finalGeocoded = [];
     let seen = new Set();
 
@@ -353,9 +336,8 @@ async function scrapeODMall() {
                 show.latitude = coords.lat;
                 show.longitude = coords.lon;
                 finalGeocoded.push(show); 
-                console.log('✅');
             } else {
-                console.log('❌');
+                console.log("Skipped.");
             }
         }
     }
@@ -363,8 +345,6 @@ async function scrapeODMall() {
     fs.writeFileSync('shows.json', JSON.stringify(finalGeocoded, null, 2));
     console.log(`\n🎉 DONE! Saved ${finalGeocoded.length} VERIFIED Shows.`);
     console.log(`\n📊 BREAKDOWN:`);
-    console.log(`   - Seeds: ${finalGeocoded.filter(s => s.vendorInfo && s.vendorInfo.includes('Weekly')).length}`);
-    console.log(`   - OhioFestivals: ${finalGeocoded.filter(s => s.vendorInfo === 'OhioFestivals.net').length}`);
-    console.log(`   - ODMall: ${finalGeocoded.filter(s => s.vendorInfo && s.vendorInfo.includes('ODMall')).length}`);
-    console.log(`   - FestivalGuides: ${finalGeocoded.filter(s => s.vendorInfo === 'FestivalGuides').length}`);
+    console.log(`   - Seeds: ${masterList.filter(s => s.vendorInfo && s.vendorInfo.includes('Weekly')).length}`);
+    console.log(`   - Scraped: ${finalGeocoded.length - masterList.filter(s => s.vendorInfo && s.vendorInfo.includes('Weekly')).length}`);
 })();
