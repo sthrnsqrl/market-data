@@ -1,665 +1,5 @@
 [
   {
-    "name": "2026 CINCINNATI SPRING AVANT-GARDE ART & CRAFT SHOW",
-    "dateString": "Saturday, March 14, 2026",
-    "locationString": "Loveland, OH 45140",
-    "link": "https://www.avantgardeshows.com/events",
-    "vendorInfo": "Accepting Vendors",
-    "category": "Arts & Crafts",
-    "state": "OH",
-    "latitude": 39.2689476,
-    "longitude": -84.263826,
-    "id": "himdvqs07"
-  },
-  {
-    "name": "2026 ROCKY RIVER SPRING AVANT-GARDE ART & CRAFT SHOW",
-    "dateString": "Sunday, March 15, 2026",
-    "locationString": "Rocky River, OH 44116",
-    "link": "https://www.avantgardeshows.com/events",
-    "vendorInfo": "Accepting Vendors",
-    "category": "Arts & Crafts",
-    "state": "OH",
-    "latitude": 41.4756031,
-    "longitude": -81.8393034,
-    "id": "x7y6tt4qf"
-  },
-  {
-    "name": "2026 COLUMBUS SPRING AVANT-GARDE ART & CRAFT SHOW",
-    "dateString": "Saturday, March 21, 2026",
-    "locationString": "Hilliard, OH 43026",
-    "link": "https://www.avantgardeshows.com/events",
-    "vendorInfo": "Accepting Vendors",
-    "category": "Arts & Crafts",
-    "state": "OH",
-    "latitude": 40.033814,
-    "longitude": -83.1596108,
-    "id": "1pa3hx7ix"
-  },
-  {
-    "name": "​​​​2026 CHAGRIN FALLS SPRING AVANT-GARDE ART & CRAFT SHOW",
-    "dateString": "Sunday, March 22, 2026",
-    "locationString": "Chagrin Falls, OH 44023",
-    "link": "https://www.avantgardeshows.com/events",
-    "vendorInfo": "Accepting Vendors",
-    "category": "Arts & Crafts",
-    "state": "OH",
-    "latitude": 41.436589,
-    "longitude": -81.3855058,
-    "id": "8de9qbrji"
-  },
-  {
-    "name": "2026 AVON SPRING AVANT-GARDE ART & CRAFT SHOW",
-    "dateString": "Saturday, April 11, 2026",
-    "locationString": "Avon, OH 44011",
-    "link": "https://www.avantgardeshows.com/events",
-    "vendorInfo": "Accepting Vendors",
-    "category": "Arts & Crafts",
-    "state": "OH",
-    "latitude": 41.4516512,
-    "longitude": -82.0350598,
-    "id": "mdnxe7jr5"
-  },
-  {
-    "name": "2026 COLUMBUS SUMMER AVANT-GARDE ART & CRAFT SHOW",
-    "dateString": "Saturday, May 9, 2026",
-    "locationString": "Hilliard, OH 43026",
-    "link": "https://www.avantgardeshows.com/events",
-    "vendorInfo": "Accepting Vendors",
-    "category": "Arts & Crafts",
-    "state": "OH",
-    "latitude": 40.033814,
-    "longitude": -83.1596108,
-    "id": "dh0acguie"
-  },
-  {
-    "name": "​​​2026 COLUMBUS FALL AVANT-GARDE ART & CRAFT SHOW",
-    "dateString": "Sunday, September 13, 2026",
-    "locationString": "Hilliard, OH 43026",
-    "link": "https://www.avantgardeshows.com/events",
-    "vendorInfo": "Accepting Vendors",
-    "category": "Arts & Crafts",
-    "state": "OH",
-    "latitude": 40.033814,
-    "longitude": -83.1596108,
-    "id": "v5pigfkzi"
-  },
-  {
-    "name": "​2026 ROCKY RIVER FALL AVANT-GARDE ART & CRAFT SHOW",
-    "dateString": "Sunday, September 20, 2026",
-    "locationString": "Rocky River, OH 44116",
-    "link": "https://www.avantgardeshows.com/events",
-    "vendorInfo": "Accepting Vendors",
-    "category": "Arts & Crafts",
-    "state": "OH",
-    "latitude": 41.4756031,
-    "longitude": -81.8393034,
-    "id": "xrlgre1uv"
-  },
-  {
-    "name": "2026 CINCINNATI FALL AVANT-GARDE ART & CRAFT SHOW",
-    "dateString": "Saturday, November 7, 2026",
-    "locationString": "Loveland, OH 45140",
-    "link": "https://www.avantgardeshows.com/events",
-    "vendorInfo": "Accepting Vendors",
-    "category": "Arts & Crafts",
-    "state": "OH",
-    "latitude": 39.2689476,
-    "longitude": -84.263826,
-    "id": "qkn1v14r4"
-  },
-  {
-    "name": "2026 CHAGRIN FALLS FALL AVANT-GARDE ART & CRAFT SHOW",
-    "dateString": "Sunday, November 8, 2026",
-    "locationString": "Chagrin Falls, OH 44023",
-    "link": "https://www.avantgardeshows.com/events",
-    "vendorInfo": "Accepting Vendors",
-    "category": "Arts & Crafts",
-    "state": "OH",
-    "latitude": 41.436589,
-    "longitude": -81.3855058,
-    "id": "378cwpjec"
-  },
-  {
-    "name": "2026 STRONGSVILLE FALL AVANT-GARDE ART & CRAFT SHOW",
-    "dateString": "Saturday, November 14, 2026",
-    "locationString": "Strongsville, OH 44136",
-    "link": "https://www.avantgardeshows.com/events",
-    "vendorInfo": "Accepting Vendors",
-    "category": "Arts & Crafts",
-    "state": "OH",
-    "latitude": 41.3144733,
-    "longitude": -81.83511,
-    "id": "2ees1z7eq"
-  },
-  {
-    "name": "​​​​​2026 FAIRLAWN FALL AVANT-GARDE ART & CRAFT SHOW",
-    "dateString": "Sunday, November 22, 2026",
-    "locationString": "Fairlawn, OH 44333",
-    "link": "https://www.avantgardeshows.com/events",
-    "vendorInfo": "Accepting Vendors",
-    "category": "Arts & Crafts",
-    "state": "OH",
-    "latitude": 41.1326644,
-    "longitude": -81.6262051,
-    "id": "20m2cirec"
-  },
-  {
-    "name": "2026 AVON WINTER AVANT-GARDE ART & CRAFT SHOW",
-    "dateString": "Saturday, November 28, 2026",
-    "locationString": "Avon, OH 44011",
-    "link": "https://www.avantgardeshows.com/events",
-    "vendorInfo": "Accepting Vendors",
-    "category": "Arts & Crafts",
-    "state": "OH",
-    "latitude": 41.4516512,
-    "longitude": -82.0350598,
-    "id": "04lcxsutt"
-  },
-  {
-    "name": "2026 COLUMBUS WINTER AVANT-GARDE ART & CRAFT SHOW",
-    "dateString": "Saturday, December 12, 2026",
-    "locationString": "Hilliard, OH 43026",
-    "link": "https://www.avantgardeshows.com/events",
-    "vendorInfo": "Accepting Vendors",
-    "category": "Arts & Crafts",
-    "state": "OH",
-    "latitude": 40.033814,
-    "longitude": -83.1596108,
-    "id": "r1zi9jiqw"
-  },
-  {
-    "name": "Christmas Village at CAN DO Community Park II",
-    "dateString": "12/14",
-    "locationString": "Hazleton, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "gy3x0w0j0"
-  },
-  {
-    "name": "Lancaster Liederkranz Christkindlmarkt",
-    "dateString": "12/14",
-    "locationString": "Manheim, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "b65rfuwg0"
-  },
-  {
-    "name": "12/21",
-    "dateString": "12/15",
-    "locationString": "Holiday Lights on the Lake VI, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "jd6r1piln"
-  },
-  {
-    "name": "Christmas Village at CAN DO Community Park III",
-    "dateString": "12/21",
-    "locationString": "Hazleton, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "yplu0tmj7"
-  },
-  {
-    "name": "It’s a Wonderful Life Holiday Festival V",
-    "dateString": "12/20",
-    "locationString": "Indiana, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "xxo39ch6w"
-  },
-  {
-    "name": "12/28 (Closed 12/24, 12/25)",
-    "dateString": "12/22",
-    "locationString": "Holiday Nights of Lights V, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "w2ud1ml1z"
-  },
-  {
-    "name": "Harrisburg New Year’s Eve Celebration",
-    "dateString": "12/31*",
-    "locationString": "Harrisburg, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "yo70hzoth"
-  },
-  {
-    "name": "New Year’s Eve Bologna Drop",
-    "dateString": "12/31*",
-    "locationString": "Lebanon, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "40s8uhd8w"
-  },
-  {
-    "name": "First Night",
-    "dateString": "12/31",
-    "locationString": "Pittsburgh, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "cphfnljwj"
-  },
-  {
-    "name": "First Night State College",
-    "dateString": "12/31",
-    "locationString": "State College, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "aris251ea"
-  },
-  {
-    "name": "Sunbury New Year’s Eve Celebration",
-    "dateString": "12/31*",
-    "locationString": "Sunbury, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "igybapvtd"
-  },
-  {
-    "name": "Mountain City Beer and Wine Festival",
-    "dateString": "1/10",
-    "locationString": "Altoona, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "05x27nqxx"
-  },
-  {
-    "name": "Snowfest and Polar Plunge",
-    "dateString": "1/17*",
-    "locationString": "Huntingdon, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "wwo1jlc2b"
-  },
-  {
-    "name": "PA Chestnut Festival",
-    "dateString": "1/24",
-    "locationString": "Castanea, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "azguzvce8"
-  },
-  {
-    "name": "Philly Chocolate, Wine and Whiskey Festival",
-    "dateString": "1/24",
-    "locationString": "Oaks, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "xjyaygmu9"
-  },
-  {
-    "name": "Pocono Winter Beerfest",
-    "dateString": "1/24",
-    "locationString": "Stroudsburg, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "mmfevffh9"
-  },
-  {
-    "name": "Greensburg Night Market I",
-    "dateString": "1/29*",
-    "locationString": "Greensburg, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "xahbzcau7"
-  },
-  {
-    "name": "Ardmore Passport: World Pours Beer and Food Festival",
-    "dateString": "1/31",
-    "locationString": "Ardmore, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "qcehp7a7y"
-  },
-  {
-    "name": "Chili",
-    "dateString": "1/31",
-    "locationString": "Q and Beer Garden, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "a00jggth2"
-  },
-  {
-    "name": "Warren County Winterfest",
-    "dateString": "1/31*",
-    "locationString": "Clarendon, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "stg93yxhc"
-  },
-  {
-    "name": "Groundhog Wine N Shine Fest",
-    "dateString": "1/31",
-    "locationString": "Clearfield, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "p3k2ef0ob"
-  },
-  {
-    "name": "Marienville Winterfest",
-    "dateString": "1/31",
-    "locationString": "Marienville, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "9e19yo9jb"
-  },
-  {
-    "name": "Founders Philly Freeze",
-    "dateString": "1/31",
-    "locationString": "Out, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "ri585vnhp"
-  },
-  {
-    "name": "Winterfest at Moraine State Park",
-    "dateString": "1/31",
-    "locationString": "Portersville, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "ld7wt385q"
-  },
-  {
-    "name": "Allentown Winter Festival",
-    "dateString": "2/7*",
-    "locationString": "Allentown, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "wkpcijune"
-  },
-  {
-    "name": "Franklin on Ice",
-    "dateString": "2/7*",
-    "locationString": "Franklin, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "sn9a5yomf"
-  },
-  {
-    "name": "Carve 4 Cancer Winter Festival at Montage Mountain",
-    "dateString": "2/7",
-    "locationString": "Scranton, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "ah0jz2hkv"
-  },
-  {
-    "name": "Skytop Lodge Winter Beer Festival",
-    "dateString": "2/7",
-    "locationString": "Skytop, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "qpiuxm3nj"
-  },
-  {
-    "name": "Kick Off and Chili Cook",
-    "dateString": "2/13",
-    "locationString": "Off (Fire and Ice Festival), undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "9zj39ul29"
-  },
-  {
-    "name": "Bat Fest at Lincoln Caverns",
-    "dateString": "2/14",
-    "locationString": "Huntingdon, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "wxoqys8ex"
-  },
-  {
-    "name": "Winter Winefest and Market",
-    "dateString": "2/15",
-    "locationString": "Bethlehem, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "mgcf0q9nx"
-  },
-  {
-    "name": "Wine on the Lake",
-    "dateString": "2/21",
-    "locationString": "Erie, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "uhzehlt2r"
-  },
-  {
-    "name": "Pittsburgh Winter Beerfest",
-    "dateString": "2/21",
-    "locationString": "Pittsburgh, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "k8t3h5k0v"
-  },
-  {
-    "name": "Wine ‘n Shine Palooza",
-    "dateString": "2/22",
-    "locationString": "Greensburg, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "3e3nxw3by"
-  },
-  {
-    "name": "Jammin’ for the Arts!",
-    "dateString": "2/22*",
-    "locationString": "Waynesboro, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "smxaejla5"
-  },
-  {
-    "name": "Greensburg Night Market II",
-    "dateString": "2/26*",
-    "locationString": "Greensburg, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "lbfb0qgl6"
-  },
-  {
-    "name": "Winter Jam: Reading",
-    "dateString": "2/26",
-    "locationString": "Reading, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "hkkra3vsq"
-  },
-  {
-    "name": "Kennett Winterfest",
-    "dateString": "2/28",
-    "locationString": "Kennett Square, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "2cyz02c24"
-  },
-  {
-    "name": "Pittsburgh Chocolate, Wine and Whiskey Festival",
-    "dateString": "2/28*",
-    "locationString": "Pittsburgh, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "h37zpcy22"
-  },
-  {
-    "name": "Spirits of the Burgh Festival",
-    "dateString": "2/28",
-    "locationString": "Pittsburgh, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "77leiz2bz"
-  },
-  {
-    "name": "Winter Jam: Pittsburgh",
-    "dateString": "2/28",
-    "locationString": "Pittsburgh, undefined",
-    "link": "https://festivalguidesandreviews.com/pennsylvania-festivals/",
-    "vendorInfo": "FestivalGuides",
-    "state": "PA",
-    "category": "Festivals & Fairs",
-    "latitude": 0,
-    "longitude": 0,
-    "id": "klf4q2uub"
-  },
-  {
     "name": "12/18 (Closed 12/16, 12/17)",
     "dateString": "12/15",
     "locationString": "East Islip Holiday Lights Drive, undefined",
@@ -669,7 +9,67 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "n96exi1fo"
+    "id": "n5atli35u"
+  },
+  {
+    "name": "12/21",
+    "dateString": "12/15",
+    "locationString": "Peace, Love and Lights IV, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "l4lprec8y"
+  },
+  {
+    "name": "12/21",
+    "dateString": "12/17",
+    "locationString": "Roc Holiday Village III, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "enl59d9eb"
+  },
+  {
+    "name": "12/21",
+    "dateString": "12/18",
+    "locationString": "Riverhead Holiday Light Show V, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "esu6zeuia"
+  },
+  {
+    "name": "12/20",
+    "dateString": "12/19",
+    "locationString": "Poinsettias After Dark IV, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Horror & Oddities",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "9ws6z4d98"
+  },
+  {
+    "name": "12/21",
+    "dateString": "12/19",
+    "locationString": "Buffalo Holiday Market IV, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "nwzc842xz"
   },
   {
     "name": "Holiday Magic in the Village",
@@ -681,7 +81,91 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "urrdcpce2"
+    "id": "ls43gccsu"
+  },
+  {
+    "name": "12/21",
+    "dateString": "12/20",
+    "locationString": "Dickens Christmas Festival IV, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "8cgo05ne9"
+  },
+  {
+    "name": "12/25 (Closed 12/23, 12/24, 12/25)",
+    "dateString": "12/22",
+    "locationString": "East Islip Holiday Lights Drive, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "hj0sr7iiy"
+  },
+  {
+    "name": "12/27 (Closed 12/25)",
+    "dateString": "12/22",
+    "locationString": "Jungle Bells: Holiday Lights at Animal Adventure Park VIII, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "iscezfspg"
+  },
+  {
+    "name": "12/27 (Closed 12/24, 12/25)",
+    "dateString": "12/22",
+    "locationString": "Kevin McCurdy’s Holiday Spirit Festival V, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "uwappcd9m"
+  },
+  {
+    "name": "12/28",
+    "dateString": "12/22",
+    "locationString": "Peace, Love and Lights V, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "bzb7vaefl"
+  },
+  {
+    "name": "12/28 (Closed 12/24, 12/25)",
+    "dateString": "12/22",
+    "locationString": "LuminoCity Festival VIII, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "zhr2m6jgv"
+  },
+  {
+    "name": "12/28 (Closed 12/23, 12/24, 12/25)",
+    "dateString": "12/22",
+    "locationString": "Holiday Light Nights V, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "8po97zpdr"
   },
   {
     "name": "Dickens Christmas Festival V",
@@ -693,7 +177,55 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "6qou5b0x3"
+    "id": "c747l5ujq"
+  },
+  {
+    "name": "12/28 (Closed 12/25)",
+    "dateString": "12/24",
+    "locationString": "Roc Holiday Village IV, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "atcfcitn3"
+  },
+  {
+    "name": "12/28 (Closed 12/25)",
+    "dateString": "12/25",
+    "locationString": "Glimmer Nights at Fenimore Farm and Country Village V, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "6jcugv7qw"
+  },
+  {
+    "name": "12/27",
+    "dateString": "12/26",
+    "locationString": "Poinsettias After Dark V, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Horror & Oddities",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "zib52bwjd"
+  },
+  {
+    "name": "12/28",
+    "dateString": "12/26",
+    "locationString": "Wild Center Wild Lights V, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "m65xk8hrk"
   },
   {
     "name": "Chanukah Event, Candy Drop and Celebration",
@@ -705,7 +237,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "7vb69whrs"
+    "id": "yx1hdexg3"
   },
   {
     "name": "East Islip Holiday Lights Drive",
@@ -717,7 +249,79 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "iyac8qgtq"
+    "id": "h2pccowe5"
+  },
+  {
+    "name": "12/30",
+    "dateString": "12/29",
+    "locationString": "Poinsettias After Dark VI, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Horror & Oddities",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "y8lw875tx"
+  },
+  {
+    "name": "12/31",
+    "dateString": "12/29",
+    "locationString": "Riverhead Holiday Light Show VII, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "n4mahz73t"
+  },
+  {
+    "name": "1/1",
+    "dateString": "12/29",
+    "locationString": "Oneonta Festival of Lights IV, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "nj5khx8g6"
+  },
+  {
+    "name": "1/3 (Closed 1/1)",
+    "dateString": "12/29",
+    "locationString": "Wild Center Wild Lights VI, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "cs0ohqx99"
+  },
+  {
+    "name": "1/3",
+    "dateString": "12/29",
+    "locationString": "Magic of Lights: Long Island VII, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "4me9lkg50"
+  },
+  {
+    "name": "1/4",
+    "dateString": "12/29",
+    "locationString": "Broome County Festival of Lights VII, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "xna4oilf0"
   },
   {
     "name": "Saratoga New Year’s Eve",
@@ -729,7 +333,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "p0jl5gd8h"
+    "id": "0ql27vb6s"
   },
   {
     "name": "Bank of Utica’s New Years Eve Bash",
@@ -741,7 +345,79 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "bd42hrc9n"
+    "id": "ox8aktlp9"
+  },
+  {
+    "name": "1/12",
+    "dateString": "1/5",
+    "locationString": "Wegman’s Lights on the Lake VIII, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "habq162g6"
+  },
+  {
+    "name": "1/10",
+    "dateString": "1/9",
+    "locationString": "Wild Center Wild Lights VII, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "mem1ii9n5"
+  },
+  {
+    "name": "1/18",
+    "dateString": "1/15",
+    "locationString": "Tonawanda Winterfest, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "jqhat8u8r"
+  },
+  {
+    "name": "1/17",
+    "dateString": "1/16",
+    "locationString": "Wild Center Wild Lights VIII, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "ffhyac7cz"
+  },
+  {
+    "name": "1/18*",
+    "dateString": "1/16",
+    "locationString": "Finger Lakes Winter Carnival, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "kjkpqyppc"
+  },
+  {
+    "name": "1/19",
+    "dateString": "1/16",
+    "locationString": "Salmon River Winter Festival, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "wqb6l6laa"
   },
   {
     "name": "Amsterdam SoupFest",
@@ -753,7 +429,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "pt7hbezbk"
+    "id": "dtptqvvc6"
   },
   {
     "name": "Mendon Ponds Park Winterfest",
@@ -765,7 +441,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "zdf70pjj0"
+    "id": "l79m407e6"
   },
   {
     "name": "Long Lake Winter Carnival",
@@ -777,7 +453,31 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "4qdgbq5h3"
+    "id": "f25nt7fc4"
+  },
+  {
+    "name": "1/24",
+    "dateString": "1/23",
+    "locationString": "Funky Ice Fest I, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "lh354f7yc"
+  },
+  {
+    "name": "1/25",
+    "dateString": "1/23",
+    "locationString": "Homer Winterfest, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "zkjp82lja"
   },
   {
     "name": "Barrel Jam Beer Fest",
@@ -789,7 +489,31 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "h2u796ok1"
+    "id": "wg7j3u1fb"
+  },
+  {
+    "name": "1/31",
+    "dateString": "1/30",
+    "locationString": "Funky Ice Fest II, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "o3vvcn3d8"
+  },
+  {
+    "name": "2/1",
+    "dateString": "1/30",
+    "locationString": "Winter Hoot, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "8wob12nzy"
   },
   {
     "name": "Hudson Valley WingFest",
@@ -801,7 +525,43 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "68ifgsm7i"
+    "id": "qf5bcuk3v"
+  },
+  {
+    "name": "2/8",
+    "dateString": "2/5",
+    "locationString": "Cooperstown Winter Carnival, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "f0a94vt6e"
+  },
+  {
+    "name": "2/7",
+    "dateString": "2/6",
+    "locationString": "Wild Center Wild Lights XI, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "kzi8zz7ae"
+  },
+  {
+    "name": "2/8*",
+    "dateString": "2/6",
+    "locationString": "Cazenovia Winter Fest, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "z5q1jqf0q"
   },
   {
     "name": "Buffalo On Tap",
@@ -813,7 +573,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "nzer2j4ml"
+    "id": "zqg7ydceu"
   },
   {
     "name": "Buffalo Wine and Chocolate Festival",
@@ -825,7 +585,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "kp1a21lfc"
+    "id": "4ombpf097"
   },
   {
     "name": "Carthage Winterfest",
@@ -837,7 +597,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "quvdt5bj5"
+    "id": "hcz6vit1b"
   },
   {
     "name": "Teatown Hudson River EagleFest",
@@ -849,7 +609,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "4c74yjajg"
+    "id": "p7ffzvue2"
   },
   {
     "name": "Glens Falls Vegan Festival",
@@ -861,7 +621,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "nne5ifb91"
+    "id": "tkof39qd7"
   },
   {
     "name": "Winterfest in Irondequoit",
@@ -873,7 +633,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "26nobk2o7"
+    "id": "z04whvwu7"
   },
   {
     "name": "Saratoga Chowderfest",
@@ -885,7 +645,31 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "ux8urdcql"
+    "id": "44j8re2wl"
+  },
+  {
+    "name": "2/8*",
+    "dateString": "2/7",
+    "locationString": "Muscoot Farm’s Winter Festival, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "xlsi71tzc"
+  },
+  {
+    "name": "2/15",
+    "dateString": "2/9",
+    "locationString": "Saranac Lake Winter Carnival II, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "gisxch2lk"
   },
   {
     "name": "Mac and Cheese Fest",
@@ -897,7 +681,19 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "cakgtfa6f"
+    "id": "kp0q0uty4"
+  },
+  {
+    "name": "2/15",
+    "dateString": "2/13",
+    "locationString": "Lake George Winter Carnival II, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "3crxqaoao"
   },
   {
     "name": "Albany Wine and Chocolate Festival",
@@ -909,7 +705,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "payif95xv"
+    "id": "1gp3qnt21"
   },
   {
     "name": "Brant Lake Winter Carnival",
@@ -921,7 +717,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "ohnfsjgz4"
+    "id": "n1797sa5s"
   },
   {
     "name": "NYS Ice Wine and Culinary Festival",
@@ -933,7 +729,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "nhp6goosf"
+    "id": "ptlm1opme"
   },
   {
     "name": "Ithaca Tap and Craft Festival",
@@ -945,7 +741,19 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "lu3xg00iv"
+    "id": "prwd2ak3s"
+  },
+  {
+    "name": "2/15",
+    "dateString": "2/14",
+    "locationString": "Raquette Lake Winter Carnival, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "638p3t0kz"
   },
   {
     "name": "Hot Chocolate Fest at Ashokan",
@@ -957,7 +765,31 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "vujbwde5k"
+    "id": "s9bqpybcb"
+  },
+  {
+    "name": "2/21",
+    "dateString": "2/16",
+    "locationString": "Wild Center Wild Lights XIII, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "0ap5nwh7i"
+  },
+  {
+    "name": "2/22",
+    "dateString": "2/20",
+    "locationString": "Lake George Winter Carnival III, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "1xmju2q0a"
   },
   {
     "name": "Buffalo Whiskey Riot",
@@ -969,7 +801,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "w4847kv69"
+    "id": "prneilx32"
   },
   {
     "name": "Inlet Winter Carnival",
@@ -981,7 +813,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "hldcb88wo"
+    "id": "9ywq833aq"
   },
   {
     "name": "Kenan Wine and Beer Bash",
@@ -993,7 +825,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "967h8qxss"
+    "id": "pzqcucx5a"
   },
   {
     "name": "Saratoga Beer Summit",
@@ -1005,7 +837,19 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "apmn67eda"
+    "id": "lpdx94rll"
+  },
+  {
+    "name": "2/22",
+    "dateString": "2/21",
+    "locationString": "Canandaigua Fire and Ice Festival, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "kj3jp95gz"
   },
   {
     "name": "Brewer’s Invitational",
@@ -1017,7 +861,31 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "bchr6gblw"
+    "id": "wk28mcxn9"
+  },
+  {
+    "name": "2/28*",
+    "dateString": "2/27",
+    "locationString": "Ticonderoga End of Winter Carnival, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "km2xasx03"
+  },
+  {
+    "name": "3/1",
+    "dateString": "2/27",
+    "locationString": "Lake George Winter Carnival IV, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "pltglm6dr"
   },
   {
     "name": "Buffalo Wine Festival",
@@ -1029,7 +897,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "4fwdqcnnb"
+    "id": "bsrx771fu"
   },
   {
     "name": "Downtown Chili Cook",
@@ -1041,7 +909,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "vwarfqgq6"
+    "id": "kuh93314h"
   },
   {
     "name": "Adirondack Brewery Barrel Fest",
@@ -1053,7 +921,511 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "y4vehn1wl"
+    "id": "2eueb6tdz"
+  },
+  {
+    "name": "Burt Fest",
+    "dateString": "3/6*",
+    "locationString": "Buffalo, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "mm38eogxc"
+  },
+  {
+    "name": "3/8*",
+    "dateString": "3/6",
+    "locationString": "Brave Brews Fest, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "iue52ic16"
+  },
+  {
+    "name": "St. Patrick’s Day Celebration",
+    "dateString": "3/13*",
+    "locationString": "Niagara Falls, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "r2scnk9bl"
+  },
+  {
+    "name": "Ostara Oddities and Curiosities Night Market",
+    "dateString": "3/13*",
+    "locationString": "Poughkeepsie, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Horror & Oddities",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "4mv97237b"
+  },
+  {
+    "name": "3/14*",
+    "dateString": "3/13",
+    "locationString": "North Country Goes Green Irish Festival, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "b30le1pyg"
+  },
+  {
+    "name": "Brant Lake Winter Carnival",
+    "dateString": "3/14*",
+    "locationString": "Brant Lake, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "zroe5bi6r"
+  },
+  {
+    "name": "Hoosick Falls St. Patrick’s Parade and Irish Festival",
+    "dateString": "3/14",
+    "locationString": "Hoosick Falls, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "smgoycles"
+  },
+  {
+    "name": "Indigenous Winter Games and Maple Festival",
+    "dateString": "3/14*",
+    "locationString": "Victor, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "sfz86ewgj"
+  },
+  {
+    "name": "3/15*",
+    "dateString": "3/14",
+    "locationString": "Maple Fest at Indian Ladder Farms, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "11vzsdl68"
+  },
+  {
+    "name": "Ashokan Center Maple Festival",
+    "dateString": "3/15",
+    "locationString": "Olivebridge, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "5i2r47j5u"
+  },
+  {
+    "name": "3/22",
+    "dateString": "3/20",
+    "locationString": "Glens Falls Brewfest, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "8rlur6ugc"
+  },
+  {
+    "name": "Treetap Maple Fest",
+    "dateString": "3/21*",
+    "locationString": "East Concord, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "vxiy39rhv"
+  },
+  {
+    "name": "Winter Meltdown Spicy Food Festival",
+    "dateString": "3/21",
+    "locationString": "Glens Falls, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "ow19ugi8k"
+  },
+  {
+    "name": "3/22",
+    "dateString": "3/21",
+    "locationString": "Thurman Maple Days II, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "8uft5n5ha"
+  },
+  {
+    "name": "Essex Chili Cook",
+    "dateString": "3/22*",
+    "locationString": "Off, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "a5oo355py"
+  },
+  {
+    "name": "The Festival of the Passing of the Ice Dragon",
+    "dateString": "3/28",
+    "locationString": "Gowanda, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "kiitwffmg"
+  },
+  {
+    "name": "3/29",
+    "dateString": "3/28",
+    "locationString": "Andover Lions Club Maple Festival, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "qnxy1y8bp"
+  },
+  {
+    "name": "12/17* (Closed 12/15, 12/16)",
+    "dateString": "12/14",
+    "locationString": "East Islip Holiday Lights Drive, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "gv45pjjz9"
+  },
+  {
+    "name": "12/20*",
+    "dateString": "12/14",
+    "locationString": "Peace, Love and Lights IV, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "43ef1005y"
+  },
+  {
+    "name": "12/20*",
+    "dateString": "12/16",
+    "locationString": "Roc Holiday Village III, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "k2ilwgr50"
+  },
+  {
+    "name": "12/20*",
+    "dateString": "12/17",
+    "locationString": "Riverhead Holiday Light Show V, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "j90w19mdp"
+  },
+  {
+    "name": "12/19*",
+    "dateString": "12/18",
+    "locationString": "Poinsettias After Dark IV, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Horror & Oddities",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "tdqbhecl0"
+  },
+  {
+    "name": "12/20*",
+    "dateString": "12/18",
+    "locationString": "Buffalo Holiday Market IV, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "fkb3nt4n3"
+  },
+  {
+    "name": "Holiday Magic in the Village",
+    "dateString": "12/19*",
+    "locationString": "East Aurora, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "7lmih0atc"
+  },
+  {
+    "name": "12/24* (Closed 12/24, 12/25)",
+    "dateString": "12/21",
+    "locationString": "East Islip Holiday Lights Drive, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "bwaonvgfp"
+  },
+  {
+    "name": "12/26* (Closed 12/25)",
+    "dateString": "12/21",
+    "locationString": "Jungle Bells: Holiday Lights at Animal Adventure Park VIII, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "t9d69vlvf"
+  },
+  {
+    "name": "12/26* (Closed 12/24, 12/25)",
+    "dateString": "12/21",
+    "locationString": "Kevin McCurdy’s Holiday Spirit Festival V, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "p8r4e658r"
+  },
+  {
+    "name": "12/27*",
+    "dateString": "12/21",
+    "locationString": "Peace, Love and Lights V, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "y2the1gnw"
+  },
+  {
+    "name": "12/27* (Closed 12/24, 12/25)",
+    "dateString": "12/21",
+    "locationString": "LuminoCity Festival VIII, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "6b2lsx4wl"
+  },
+  {
+    "name": "12/27* (Closed 12/23, 12/24, 12/25)",
+    "dateString": "12/21",
+    "locationString": "Holiday Light Nights V, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "b0bxubp6y"
+  },
+  {
+    "name": "12/27* (Closed 12/25)",
+    "dateString": "12/23",
+    "locationString": "Roc Holiday Village IV, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "z85l0n2jn"
+  },
+  {
+    "name": "12/27* (Closed 12/25)",
+    "dateString": "12/24",
+    "locationString": "Glimmer Nights at Fenimore Farm and Country Village V, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "0zd8fr1q8"
+  },
+  {
+    "name": "12/26*",
+    "dateString": "12/25",
+    "locationString": "Poinsettias After Dark V, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Horror & Oddities",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "dnmpjxu12"
+  },
+  {
+    "name": "12/27*",
+    "dateString": "12/25",
+    "locationString": "Wild Center Wild Lights V, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "id94jvtgf"
+  },
+  {
+    "name": "Chanukah Event, Candy Drop and Celebration",
+    "dateString": "12/27*",
+    "locationString": "Monroe, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "zpigw7ids"
+  },
+  {
+    "name": "East Islip Holiday Lights Drive",
+    "dateString": "12/28*",
+    "locationString": "Thru V, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "uz27ueqv4"
+  },
+  {
+    "name": "12/30*",
+    "dateString": "12/28",
+    "locationString": "Poinsettias After Dark VI, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Horror & Oddities",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "mejeouogb"
+  },
+  {
+    "name": "12/31*",
+    "dateString": "12/28",
+    "locationString": "Riverhead Holiday Light Show VII, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "39alinr6h"
+  },
+  {
+    "name": "1/1*",
+    "dateString": "12/28",
+    "locationString": "Oneonta Festival of Lights IV, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "fog3ukotn"
+  },
+  {
+    "name": "1/2* (Closed 1/1)",
+    "dateString": "12/28",
+    "locationString": "Wild Center Wild Lights VI, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "1rlxo5bai"
+  },
+  {
+    "name": "1/2*",
+    "dateString": "12/28",
+    "locationString": "Magic of Lights: Long Island VII, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "up8oi9o7v"
+  },
+  {
+    "name": "1/3*",
+    "dateString": "12/28",
+    "locationString": "Broome County Festival of Lights VII, undefined",
+    "link": "https://festivalguidesandreviews.com/new-york-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "NY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "ovk0c7kir"
   },
   {
     "name": "The Vintage Market presents: A White Christmas",
@@ -1065,7 +1437,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "g9cq3t2w8"
+    "id": "syvbx9ahi"
   },
   {
     "name": "Christmas in the Village",
@@ -1077,7 +1449,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "9d791scqs"
+    "id": "q4vd1v6f8"
   },
   {
     "name": "Meckley’s Christmas Festival",
@@ -1089,7 +1461,67 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "bn1clhvn7"
+    "id": "rsh05ocsz"
+  },
+  {
+    "name": "12/21",
+    "dateString": "12/16",
+    "locationString": "Holiday Nights in Greenfield Village III, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "2pfrpqpmn"
+  },
+  {
+    "name": "12/23",
+    "dateString": "12/22",
+    "locationString": "Grand Rapids Christkindl Markt VI, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "kau6qqsnw"
+  },
+  {
+    "name": "12/28 (Closed 12/24, 12/25)",
+    "dateString": "12/23",
+    "locationString": "LIGHTS at Fernwood V, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "2ld1zfh44"
+  },
+  {
+    "name": "1/4 (Closed 1/1)",
+    "dateString": "12/29",
+    "locationString": "Wild Lights at the Detroit Zoo VII, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "ddgnxvbwq"
+  },
+  {
+    "name": "1/3 (Closed 12/31, 1/1)",
+    "dateString": "12/30",
+    "locationString": "LIGHTS at Fernwood VI, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "y5izs9m1m"
   },
   {
     "name": "Allegan New Year’s Eve Celebration",
@@ -1101,7 +1533,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "fcf0bozou"
+    "id": "wf6md4nmk"
   },
   {
     "name": "Cedar’s New Year’s Springing Eve Ball Drop",
@@ -1113,7 +1545,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "4taok20fw"
+    "id": "xro0qgmwp"
   },
   {
     "name": "Kalamazoo New Year’s Eve Fest",
@@ -1125,7 +1557,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "1ke7oqf6x"
+    "id": "z0b11ags9"
   },
   {
     "name": "Rockin’ NYE",
@@ -1137,7 +1569,31 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "jjma87dn5"
+    "id": "23q7p5nwm"
+  },
+  {
+    "name": "1/11",
+    "dateString": "1/5",
+    "locationString": "The Big, Bright Light Show VII, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "t5lzov9xe"
+  },
+  {
+    "name": "1/11*",
+    "dateString": "1/9",
+    "locationString": "Detroit Fire and Ice Festival, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "j4qcsoo2n"
   },
   {
     "name": "Fire and Ice (World of Winter)",
@@ -1149,7 +1605,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "u3to4i6zq"
+    "id": "0harjfjgl"
   },
   {
     "name": "SISU Ski Fest",
@@ -1161,7 +1617,19 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "pnbhmi2l3"
+    "id": "o8crdj5s4"
+  },
+  {
+    "name": "1/18",
+    "dateString": "1/12",
+    "locationString": "The Big, Bright Light Show VIII, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "66kn1mzn5"
   },
   {
     "name": "Winterfest at Pier Park",
@@ -1173,7 +1641,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "f7s0ig7b4"
+    "id": "th6l10zde"
   },
   {
     "name": "Ypsilanti Bourbon Fest",
@@ -1185,7 +1653,19 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "26afszjj3"
+    "id": "qfx6i7pey"
+  },
+  {
+    "name": "1/25",
+    "dateString": "1/22",
+    "locationString": "Winterfest, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "aeif29b1v"
   },
   {
     "name": "Winter Fest",
@@ -1197,7 +1677,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "bd553gdtl"
+    "id": "2gyelvc9s"
   },
   {
     "name": "Circus Wonderland (World of Winter)",
@@ -1209,7 +1689,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "hjpntj1xp"
+    "id": "w7ae41spy"
   },
   {
     "name": "Heikinpäivä Finnish American Mid",
@@ -1221,7 +1701,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "58w1poo65"
+    "id": "4eaxzakzl"
   },
   {
     "name": "Tip",
@@ -1233,7 +1713,31 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "hodafdl5j"
+    "id": "mzrq8shkn"
+  },
+  {
+    "name": "1/25",
+    "dateString": "1/24",
+    "locationString": "Tip, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "g82mbg236"
+  },
+  {
+    "name": "2/1",
+    "dateString": "1/28",
+    "locationString": "Zehnder’s Snowfest, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "7ftk9d52a"
   },
   {
     "name": "Winter’s A DRAG! (World of Winter)",
@@ -1245,7 +1749,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "x86un9w8x"
+    "id": "4in7tnfsx"
   },
   {
     "name": "Pure Ludington Brrrew Fest",
@@ -1257,7 +1761,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "02qawkz8g"
+    "id": "2nbxcpqxe"
   },
   {
     "name": "St. Joseph Winter Beer Fest",
@@ -1269,7 +1773,19 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "8q67763f7"
+    "id": "25g1932tb"
+  },
+  {
+    "name": "2/7",
+    "dateString": "2/4",
+    "locationString": "Michigan Tech Winter Carnival, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "1h2csairw"
   },
   {
     "name": "Da Yooper Winterfest",
@@ -1281,7 +1797,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "alnkrn8pr"
+    "id": "zrs9l6q0f"
   },
   {
     "name": "Saginaw Winter Brew Festival",
@@ -1293,7 +1809,43 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "apcy4wbvo"
+    "id": "t2cg4agrd"
+  },
+  {
+    "name": "2/15",
+    "dateString": "2/11",
+    "locationString": "Michigan Ice Festival, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "bqvcssx9z"
+  },
+  {
+    "name": "2/15",
+    "dateString": "2/12",
+    "locationString": "Snowsfest, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "jn866w43u"
+  },
+  {
+    "name": "2/14",
+    "dateString": "2/13",
+    "locationString": "Shanty Days, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "k6pdwwqik"
   },
   {
     "name": "Blake’s Chili Cook",
@@ -1305,7 +1857,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "3m19asmep"
+    "id": "ioqto60g4"
   },
   {
     "name": "Beulah Winterfest",
@@ -1317,7 +1869,19 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "w7nf15inw"
+    "id": "g87knfatc"
+  },
+  {
+    "name": "Winterfest",
+    "dateString": "2/14",
+    "locationString": "Pentwater, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "1u1njbwzi"
   },
   {
     "name": "Yeti Fest",
@@ -1329,7 +1893,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "6ra1yuqym"
+    "id": "4sf7i91oq"
   },
   {
     "name": "The Vintage Market: My Vintage Valentine",
@@ -1341,7 +1905,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "sh5w4vp8g"
+    "id": "nn612xcj"
   },
   {
     "name": "Meckley’s Shantytown Festival",
@@ -1353,7 +1917,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "m24r32hhi"
+    "id": "130rck5kx"
   },
   {
     "name": "Paint the Park (World of Winter)",
@@ -1365,7 +1929,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "mtxhfgaaz"
+    "id": "rsg5o0szb"
   },
   {
     "name": "Wine Not? Wine Festival",
@@ -1377,7 +1941,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "jggimdw0y"
+    "id": "0jbgzna9t"
   },
   {
     "name": "Lansing Bourbon Fest",
@@ -1389,7 +1953,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "b8ryydy0i"
+    "id": "pce5cyufc"
   },
   {
     "name": "Que the Cheese",
@@ -1401,7 +1965,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "fjmb58usq"
+    "id": "1vlrkcso9"
   },
   {
     "name": "Winter Beer Festival",
@@ -1413,7 +1977,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "i4mmowuvy"
+    "id": "3tmbw1smt"
   },
   {
     "name": "Lansing Frost Fest",
@@ -1425,7 +1989,331 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "47cs8ahtz"
+    "id": "b7jdbzsqd"
+  },
+  {
+    "name": "The Vintage Market: My Vintage Valentine",
+    "dateString": "3/1*",
+    "locationString": "Ann Arbor, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "a56itgbxl"
+  },
+  {
+    "name": "Noodle Fest (World of Winter)",
+    "dateString": "3/1",
+    "locationString": "Grand Rapids, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "rj16rvpqu"
+  },
+  {
+    "name": "3/8*",
+    "dateString": "3/4",
+    "locationString": "Gilda’s LaughFest, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "fmxzneq6r"
+  },
+  {
+    "name": "Grand Rapids Bourbon Fest",
+    "dateString": "3/7",
+    "locationString": "Grand Rapids, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "55j3i26e2"
+  },
+  {
+    "name": "Maple Sugar Festival",
+    "dateString": "3/7*",
+    "locationString": "Kalamazoo, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "ro85xasr2"
+  },
+  {
+    "name": "Suds and Snow",
+    "dateString": "3/7",
+    "locationString": "Traverse City, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "rd7ixo8k5"
+  },
+  {
+    "name": "Winter Jam: Grand Rapids",
+    "dateString": "3/8",
+    "locationString": "Grand Rapids, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "3cysmtr0u"
+  },
+  {
+    "name": "The Vintage Market: Lucky Junkin’",
+    "dateString": "3/8*",
+    "locationString": "Monroe, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "abj5lmvgs"
+  },
+  {
+    "name": "3/14",
+    "dateString": "3/11",
+    "locationString": "Clare Irish Festival, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "dkgyv0ofk"
+  },
+  {
+    "name": "Detroit Shamrock Festival",
+    "dateString": "3/14*",
+    "locationString": "Detroit, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "vyo14dfpg"
+  },
+  {
+    "name": "Irish on Ionia",
+    "dateString": "3/14*",
+    "locationString": "Grand Rapids, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "ovavj1p1a"
+  },
+  {
+    "name": "St. Pat’s Day Celebration",
+    "dateString": "3/14",
+    "locationString": "Grand Ledge, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "gcg36hzkj"
+  },
+  {
+    "name": "Southern Michigan Winter Beer Festival",
+    "dateString": "3/14",
+    "locationString": "Jackson, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "dakhuxb1t"
+  },
+  {
+    "name": "Meckley’s Shamrock Festival",
+    "dateString": "3/15*",
+    "locationString": "Somerset, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "lmjcy8hjv"
+  },
+  {
+    "name": "3/21*",
+    "dateString": "3/20",
+    "locationString": "Kalamazoo Fretboard Festival, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "yglj98yba"
+  },
+  {
+    "name": "Testicle Festival",
+    "dateString": "3/21*",
+    "locationString": "Deerfield, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "0mrb5cqap"
+  },
+  {
+    "name": "Brewsology Beer Fest",
+    "dateString": "3/21*",
+    "locationString": "Detroit, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "uc4ofe9ra"
+  },
+  {
+    "name": "Peace, Love and Hippies Indoor Spring Festival: Lapeer",
+    "dateString": "3/21*",
+    "locationString": "Lapeer, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "giqzhqhml"
+  },
+  {
+    "name": "Starkbierfest",
+    "dateString": "3/28*",
+    "locationString": "Cedar Springs, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "r43buwvvz"
+  },
+  {
+    "name": "Peace, Love and Hippies Indoor Spring Festival: Houghton Lake",
+    "dateString": "3/28*",
+    "locationString": "Houghton Lake, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "0muzcrcqm"
+  },
+  {
+    "name": "Motor City Blues Festival",
+    "dateString": "3/28*",
+    "locationString": "Detroit, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "6en8q25oo"
+  },
+  {
+    "name": "Brrs, Beards & Brews: A Lumberjack Festival",
+    "dateString": "3/28*",
+    "locationString": "Lansing, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "s33lqnbpt"
+  },
+  {
+    "name": "Winter Jam: Ypsilanti",
+    "dateString": "3/29",
+    "locationString": "Ypsilanti, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "hg9rogida"
+  },
+  {
+    "name": "12/20*",
+    "dateString": "12/15",
+    "locationString": "Holiday Nights in Greenfield Village III, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "yu1pqih7d"
+  },
+  {
+    "name": "12/23*",
+    "dateString": "12/21",
+    "locationString": "Grand Rapids Christkindl Markt VI, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "dknd97sej"
+  },
+  {
+    "name": "1/3* (Closed 1/1)",
+    "dateString": "12/28",
+    "locationString": "Wild Lights at the Detroit Zoo VII, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "9de8y4g41"
+  },
+  {
+    "name": "1/2* (Closed 12/31, 1/1)",
+    "dateString": "12/29",
+    "locationString": "LIGHTS at Fernwood VI, undefined",
+    "link": "https://festivalguidesandreviews.com/michigan-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "MI",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "0k8tre5nn"
   },
   {
     "name": "Krampus Bizaar",
@@ -1437,7 +2325,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "1k3fpoth4"
+    "id": "3qjg8fl36"
   },
   {
     "name": "Christmas Lake Village Festival of Lights II",
@@ -1449,7 +2337,31 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "olp4ks0by"
+    "id": "1pma34dlb"
+  },
+  {
+    "name": "12/24",
+    "dateString": "12/22",
+    "locationString": "Carmel Christkindlmarkt German Holiday Market VI, undefined",
+    "link": "https://festivalguidesandreviews.com/indiana-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "IN",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "le2v5pmcs"
+  },
+  {
+    "name": "12/25",
+    "dateString": "12/22",
+    "locationString": "Lanthier Winery Festival of Trees V, undefined",
+    "link": "https://festivalguidesandreviews.com/indiana-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "IN",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "3e81rm6lu"
   },
   {
     "name": "12/28 (Closed 12/25)",
@@ -1461,7 +2373,31 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "i12tlx998"
+    "id": "x3uu95ylh"
+  },
+  {
+    "name": "1/3 (Closed 12/31, 1/1)",
+    "dateString": "12/29",
+    "locationString": "Winter Wonderland Holiday Lights at Wellfield Botanic Gardens VI, undefined",
+    "link": "https://festivalguidesandreviews.com/indiana-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "IN",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "n4zr2tf5u"
+  },
+  {
+    "name": "1/4 (Closed 12/31, 1/1)",
+    "dateString": "12/29",
+    "locationString": "Christmas at the Zoo VII, undefined",
+    "link": "https://festivalguidesandreviews.com/indiana-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "IN",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "lzceanizu"
   },
   {
     "name": "Fire and Ice Festival",
@@ -1473,7 +2409,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "sq6391tt9"
+    "id": "9ehe2d361"
   },
   {
     "name": "Big Barn Beer Fest",
@@ -1485,7 +2421,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "4ldr88i4z"
+    "id": "q3k99ks7r"
   },
   {
     "name": "Winter Jam: Evansville",
@@ -1497,7 +2433,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "0evsxwa2x"
+    "id": "r301flwkj"
   },
   {
     "name": "Winter Jam: Indianapolis",
@@ -1509,7 +2445,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "5o0itkxfj"
+    "id": "xexd9o003"
   },
   {
     "name": "Brewers of Indiana Guild Winterfest",
@@ -1521,7 +2457,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "rs1xe61cu"
+    "id": "ezt1b1bcn"
   },
   {
     "name": "Chocolate Fest",
@@ -1533,7 +2469,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "dmtok8x7c"
+    "id": "uzxgnnr1d"
   },
   {
     "name": "Weather the Fort",
@@ -1545,7 +2481,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "ba8jstgsw"
+    "id": "mnvr7svl3"
   },
   {
     "name": "“Frigid Digits” Winter Beer Fest",
@@ -1557,7 +2493,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "r9a75osjr"
+    "id": "x8w9g7wtl"
   },
   {
     "name": "The Valentines Vendor Market",
@@ -1569,7 +2505,19 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "va2kvfgti"
+    "id": "9h0phlxmc"
+  },
+  {
+    "name": "2/21",
+    "dateString": "2/20",
+    "locationString": "Marsh Madness Sandhill Crane Festival, undefined",
+    "link": "https://festivalguidesandreviews.com/indiana-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "IN",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "3hornyczg"
   },
   {
     "name": "Shelf Ice Brewfest",
@@ -1581,7 +2529,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "gtpr2m5jc"
+    "id": "29xw8h0xy"
   },
   {
     "name": "Frozen Firkin Festival",
@@ -1593,7 +2541,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "0vim7g7kc"
+    "id": "o0562ips2"
   },
   {
     "name": "Bock Beer Fest",
@@ -1605,7 +2553,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "3rqbop4ln"
+    "id": "j6t77ujs3"
   },
   {
     "name": "March in the Pugs!",
@@ -1617,7 +2565,247 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "1q0wvkz7a"
+    "id": "rz43i6mp7"
+  },
+  {
+    "name": "3/1",
+    "dateString": "2/28",
+    "locationString": "Parke County Maple Fair I, undefined",
+    "link": "https://festivalguidesandreviews.com/indiana-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "IN",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "ph47670s5"
+  },
+  {
+    "name": "3/7",
+    "dateString": "3/6",
+    "locationString": "Jay County Fiber Arts Festival, undefined",
+    "link": "https://festivalguidesandreviews.com/indiana-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "IN",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "fqrkoh6i0"
+  },
+  {
+    "name": "BrrrFest Craft Beer Festival",
+    "dateString": "3/7*",
+    "locationString": "Bluffton, undefined",
+    "link": "https://festivalguidesandreviews.com/indiana-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "IN",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "0ebqicbst"
+  },
+  {
+    "name": "3/8",
+    "dateString": "3/7",
+    "locationString": "Maple Sugarbush Festival, undefined",
+    "link": "https://festivalguidesandreviews.com/indiana-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "IN",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "e5jmmgxs3"
+  },
+  {
+    "name": "Corkscrew and Brew Wine and Beer Festival",
+    "dateString": "3/14*",
+    "locationString": "Chesterton, undefined",
+    "link": "https://festivalguidesandreviews.com/indiana-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "IN",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "fmf3407r8"
+  },
+  {
+    "name": "Get Green Fest",
+    "dateString": "3/14",
+    "locationString": "Fort Wayne, undefined",
+    "link": "https://festivalguidesandreviews.com/indiana-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "IN",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "5rz5tz01a"
+  },
+  {
+    "name": "New Castle on Tap: St. Paddy’s Day Festival",
+    "dateString": "3/14",
+    "locationString": "New Castle, undefined",
+    "link": "https://festivalguidesandreviews.com/indiana-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "IN",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "7sqmgbw0s"
+  },
+  {
+    "name": "The Wildflower Spring Market and Food Truck Rally",
+    "dateString": "3/14*",
+    "locationString": "Terre Haute, undefined",
+    "link": "https://festivalguidesandreviews.com/indiana-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "IN",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "130u27p6v"
+  },
+  {
+    "name": "Crown Point St. Patrick’s Day",
+    "dateString": "3/17*",
+    "locationString": "Crown Point, undefined",
+    "link": "https://festivalguidesandreviews.com/indiana-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "IN",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "a14355ri0"
+  },
+  {
+    "name": "3/22*",
+    "dateString": "3/19",
+    "locationString": "xZOOberance I, undefined",
+    "link": "https://festivalguidesandreviews.com/indiana-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "IN",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "co660pg2m"
+  },
+  {
+    "name": "Evansville Mac and Cheese Festival",
+    "dateString": "3/21",
+    "locationString": "Evansville, undefined",
+    "link": "https://festivalguidesandreviews.com/indiana-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "IN",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "8nv738htv"
+  },
+  {
+    "name": "Winter Jam: Fort Wayne",
+    "dateString": "3/26",
+    "locationString": "Fort Wayne, undefined",
+    "link": "https://festivalguidesandreviews.com/indiana-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "IN",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "l4urcngo6"
+  },
+  {
+    "name": "3/29*",
+    "dateString": "3/26",
+    "locationString": "xZOOberance II, undefined",
+    "link": "https://festivalguidesandreviews.com/indiana-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "IN",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "mkbweytgj"
+  },
+  {
+    "name": "Christmas Lake Village Festival of Lights II",
+    "dateString": "12/19*",
+    "locationString": "Santa Claus, undefined",
+    "link": "https://festivalguidesandreviews.com/indiana-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "IN",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "k0c933iee"
+  },
+  {
+    "name": "12/22*",
+    "dateString": "12/21",
+    "locationString": "A Merry Prairie Holiday V, undefined",
+    "link": "https://festivalguidesandreviews.com/indiana-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "IN",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "1giezhxrm"
+  },
+  {
+    "name": "12/24*",
+    "dateString": "12/21",
+    "locationString": "Lanthier Winery Festival of Trees V, undefined",
+    "link": "https://festivalguidesandreviews.com/indiana-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "IN",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "o9o5wglba"
+  },
+  {
+    "name": "12/27* (Closed 12/25)",
+    "dateString": "12/21",
+    "locationString": "Danville Winterland Light Show VI, undefined",
+    "link": "https://festivalguidesandreviews.com/indiana-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "IN",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "n9009pn1s"
+  },
+  {
+    "name": "1/2* (Closed 12/31, 1/1)",
+    "dateString": "12/28",
+    "locationString": "Winter Wonderland Holiday Lights at Wellfield Botanic Gardens VI, undefined",
+    "link": "https://festivalguidesandreviews.com/indiana-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "IN",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "d72nal7p3"
+  },
+  {
+    "name": "1/3* (Closed 12/31, 1/1)",
+    "dateString": "12/28",
+    "locationString": "Christmas at the Zoo VII, undefined",
+    "link": "https://festivalguidesandreviews.com/indiana-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "IN",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "ktkkydswk"
+  },
+  {
+    "name": "12/27",
+    "dateString": "12/22",
+    "locationString": "Light Up The Fair VII, undefined",
+    "link": "https://festivalguidesandreviews.com/kentucky-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "KY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "4j9q1eicr"
   },
   {
     "name": "12/27 (Closed 12/24, 12/25)",
@@ -1629,7 +2817,19 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "pdady08jw"
+    "id": "ctwxzc080"
+  },
+  {
+    "name": "12/28",
+    "dateString": "12/25",
+    "locationString": "Festival of Lights V, undefined",
+    "link": "https://festivalguidesandreviews.com/kentucky-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "KY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "va1e3arcx"
   },
   {
     "name": "Festival of Lights VI",
@@ -1641,7 +2841,43 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "rd6kw3kb3"
+    "id": "9w1k6vlp8"
+  },
+  {
+    "name": "1/3",
+    "dateString": "1/1",
+    "locationString": "ChristmasTime at the Ark Encounter VI, undefined",
+    "link": "https://festivalguidesandreviews.com/kentucky-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "KY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "oyx6t8oba"
+  },
+  {
+    "name": "1/25",
+    "dateString": "1/19",
+    "locationString": "Patti’s Festival of Lights XII, undefined",
+    "link": "https://festivalguidesandreviews.com/kentucky-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "KY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "m1znok08f"
+  },
+  {
+    "name": "1/30",
+    "dateString": "1/26",
+    "locationString": "Patti’s Festival of Lights XIII, undefined",
+    "link": "https://festivalguidesandreviews.com/kentucky-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "KY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "sb1dc27p4"
   },
   {
     "name": "Louisville Chocolate, Wine and Whiskey Festival",
@@ -1653,7 +2889,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "ggsr0dshj"
+    "id": "q72k3n25j"
   },
   {
     "name": "John Hartford Days",
@@ -1665,7 +2901,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "zb03lzuy9"
+    "id": "ps8kl2o2v"
   },
   {
     "name": "Gospel Fest",
@@ -1677,7 +2913,7 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "yvudsmbx1"
+    "id": "tkgw50n9e"
   },
   {
     "name": "KY Meat Shower Festival",
@@ -1689,6 +2925,174 @@
     "category": "Festivals & Fairs",
     "latitude": 0,
     "longitude": 0,
-    "id": "1wj2s7gtf"
+    "id": "uts9jwqxn"
+  },
+  {
+    "name": "Tailspin Ale Fest",
+    "dateString": "3/7",
+    "locationString": "Louisville, undefined",
+    "link": "https://festivalguidesandreviews.com/kentucky-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "KY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "nk5sbfa5m"
+  },
+  {
+    "name": "Winter Jam: Louisville",
+    "dateString": "3/7",
+    "locationString": "Louisville, undefined",
+    "link": "https://festivalguidesandreviews.com/kentucky-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "KY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "lojpq8h7c"
+  },
+  {
+    "name": "3/15*",
+    "dateString": "3/13",
+    "locationString": "Cumberland Falls Storytelling Festival, undefined",
+    "link": "https://festivalguidesandreviews.com/kentucky-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "KY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "jxlv31loo"
+  },
+  {
+    "name": "Obscurious Market: Clockwork Arcana",
+    "dateString": "3/14",
+    "locationString": "Danville, undefined",
+    "link": "https://festivalguidesandreviews.com/kentucky-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "KY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "gms4xkhqi"
+  },
+  {
+    "name": "St. Patrick’s Day Parade and Festival",
+    "dateString": "3/14*",
+    "locationString": "Lexington, undefined",
+    "link": "https://festivalguidesandreviews.com/kentucky-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "KY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "v1jjkp071"
+  },
+  {
+    "name": "Tails and Ales",
+    "dateString": "3/14*",
+    "locationString": "Lexington, undefined",
+    "link": "https://festivalguidesandreviews.com/kentucky-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "KY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "ij5yui5nk"
+  },
+  {
+    "name": "3/29",
+    "dateString": "3/27",
+    "locationString": "Vintage Market Days of Lexington, undefined",
+    "link": "https://festivalguidesandreviews.com/kentucky-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "KY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "h8jmhxh7k"
+  },
+  {
+    "name": "Hello Spring Festival",
+    "dateString": "3/28*",
+    "locationString": "Hopkinsville, undefined",
+    "link": "https://festivalguidesandreviews.com/kentucky-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "KY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "ezl61od17"
+  },
+  {
+    "name": "Tymeless Hearts Spring Festival",
+    "dateString": "3/28",
+    "locationString": "Hopkinsville, undefined",
+    "link": "https://festivalguidesandreviews.com/kentucky-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "KY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "dpl3dkwbt"
+  },
+  {
+    "name": "Nulu Bock Fest",
+    "dateString": "3/28",
+    "locationString": "Louisville, undefined",
+    "link": "https://festivalguidesandreviews.com/kentucky-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "KY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "qrdkc4x29"
+  },
+  {
+    "name": "12/19*",
+    "dateString": "12/17",
+    "locationString": "ChristmasTime at the Ark Encounter IV, undefined",
+    "link": "https://festivalguidesandreviews.com/kentucky-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "KY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "840xn52cl"
+  },
+  {
+    "name": "12/26*",
+    "dateString": "12/21",
+    "locationString": "Light Up The Fair VII, undefined",
+    "link": "https://festivalguidesandreviews.com/kentucky-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "KY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "0u6qfd9fr"
+  },
+  {
+    "name": "12/26* (Closed 12/24, 12/25)",
+    "dateString": "12/22",
+    "locationString": "ChristmasTime at the Ark Encounter V, undefined",
+    "link": "https://festivalguidesandreviews.com/kentucky-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "KY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "y7r844sj8"
+  },
+  {
+    "name": "12/27*",
+    "dateString": "12/24",
+    "locationString": "Festival of Lights V, undefined",
+    "link": "https://festivalguidesandreviews.com/kentucky-festivals/",
+    "vendorInfo": "FestivalGuides",
+    "state": "KY",
+    "category": "Festivals & Fairs",
+    "latitude": 0,
+    "longitude": 0,
+    "id": "znuhjk5g8"
   }
 ]
