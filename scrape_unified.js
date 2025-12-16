@@ -9,8 +9,7 @@ Last Updated: December 2025
 SOURCES:
 1. Manual Seeds - Weekly markets with hardcoded GPS (Hartville, Rogers, Traders World, Andover)
 2. FestivalGuides - State festival listings (OH, PA, NY, MI, IN, KY)
-3. OhioFestivals.net - Ohio-specific festival table
-4. ODMall.info - Horror & oddities marketplace events
+3. ODMall.info - Horror & oddities marketplace events
 
 OUTPUT: shows.json (geocoded events ready for app)
 ================================================================================
@@ -220,6 +219,11 @@ async function scrapeFestivalGuides(state) {
                         const name = match[2].trim();
                         const city = match[3].trim();
                         
+                        // FILTER OUT JUNK: Skip if name is just a date, contains asterisk, or too short
+                        if (name.match(/^\d{1,2}\/\d{1,2}\*?$/) || name.includes('*') || name.length < 5) {
+                            return; // Skip this line
+                        }
+                        
                         // Extract just first date from range
                         const firstDate = dateRaw.split('-')[0];
                         
@@ -247,74 +251,7 @@ async function scrapeFestivalGuides(state) {
 }
 
 // ============================================================================
-// SCRAPER 2: OhioFestivals.net (Table Format)
-// ============================================================================
-
-async function scrapeOhioFestivals() {
-    return await runWithBrowser(async (page) => {
-        console.log(`   [OhioFestivals] Scraping TABLE...`);
-        try {
-            await page.goto(`https://ohiofestivals.net/schedule/`, { 
-                waitUntil: 'networkidle2',
-                timeout: 45000
-            });
-            
-            // Patient waiting with fallbacks
-            let tableFound = false;
-            try {
-                await page.waitForSelector('#tablepress-2', { timeout: 10000 });
-                tableFound = true;
-            } catch(e) {
-                try {
-                    await page.waitForSelector('.tablepress', { timeout: 10000 });
-                    tableFound = true;
-                } catch(e2) {
-                    try {
-                        await page.waitForSelector('table', { timeout: 10000 });
-                        tableFound = true;
-                    } catch(e3) {
-                        console.log('      No tables found, trying anyway...');
-                    }
-                }
-            }
-            
-            await new Promise(resolve => setTimeout(resolve, 5000));
-            
-            const data = await page.evaluate(() => {
-                const data = [];
-                const table = document.querySelector('#tablepress-2') || document.querySelector('.tablepress');
-                if (!table) return data;
-                
-                const rows = table.querySelectorAll('tbody tr');
-                rows.forEach(row => {
-                    const cells = row.querySelectorAll('td');
-                    if (cells.length >= 3) {
-                        const name = cells[0].innerText.trim();
-                        const city = cells[1].innerText.trim();
-                        const dateRaw = cells[2].innerText.trim();
-                        
-                        if (name && city && dateRaw && dateRaw.length > 3) {
-                            const location = `${city}, OH`;
-                            const link = cells[0].querySelector('a')?.href || "https://ohiofestivals.net/schedule/";
-                            data.push({ name, dateString: dateRaw, locationString: location, link, vendorInfo: "OhioFestivals.net", state: "OH" });
-                        }
-                    }
-                });
-                return data;
-            });
-            
-            console.log(`      Found ${data.length} events`);
-            return data;
-            
-        } catch (e) { 
-            console.error(`   ❌ OhioFestivals: ${e.message}`);
-            return []; 
-        }
-    });
-}
-
-// ============================================================================
-// SCRAPER 3: ODMall.info (Horror & Oddities)
+// SCRAPER 2: ODMall.info (Horror & Oddities)
 // ============================================================================
 
 async function scrapeODMall() {
@@ -453,17 +390,6 @@ async function scrapeODMall() {
     // STEP 2: Scrape External Sources
     // ------------------------------------------------------------------------
     
-    // OhioFestivals (skip if timeout, don't block)
-    try {
-        const ohioData = await scrapeOhioFestivals();
-        if (ohioData.length > 0) {
-            masterList = masterList.concat(ohioData.map(i => ({...i, category: i.category || determineCategory(i.name)})));
-            console.log(`   ✅ Added ${ohioData.length} from OhioFestivals.net\n`);
-        }
-    } catch(e) {
-        console.log(`   ⚠️  OhioFestivals skipped (timeout)\n`);
-    }
-
     // ODMall
     const odmallData = await scrapeODMall();
     if (odmallData.length > 0) {
@@ -543,7 +469,6 @@ async function scrapeODMall() {
     console.log(`\n🎉 COMPLETE! Saved ${finalGeocoded.length} shows to shows.json\n`);
     console.log('📊 BREAKDOWN:');
     console.log(`   - Seeds: ${finalGeocoded.filter(s => s.vendorInfo && s.vendorInfo.includes('Weekly')).length}`);
-    console.log(`   - OhioFestivals: ${finalGeocoded.filter(s => s.vendorInfo === 'OhioFestivals.net').length}`);
     console.log(`   - ODMall: ${finalGeocoded.filter(s => s.vendorInfo && s.vendorInfo.includes('ODMall')).length}`);
     console.log(`   - FestivalGuides: ${finalGeocoded.filter(s => s.vendorInfo === 'FestivalGuides').length}`);
 })();
