@@ -31,14 +31,14 @@ const GEOCODE_DELAY_MS = 1000; // Be polite to OpenStreetMap
 // ============================================================================
 
 const MANUAL_SEEDS = [
-    { name: "Rogers Community Auction", location: "Rogers, OH", dayOfWeek: 5, startMonth: 0, endMonth: 11, year: 2026, lat: 40.7933, lon: -80.6358, link: "http://rogersohio.com/", desc: "Weekly Friday Flea Market" },
-    { name: "Hartville Marketplace", location: "Hartville, OH", dayOfWeek: 5, startMonth: 0, endMonth: 11, year: 2026, lat: 40.9691, lon: -81.3323, link: "https://hartvillemarketplace.com", desc: "Hartville Market (Fri)" },
-    { name: "Hartville Marketplace", location: "Hartville, OH", dayOfWeek: 6, startMonth: 0, endMonth: 11, year: 2026, lat: 40.9691, lon: -81.3323, link: "https://hartvillemarketplace.com", desc: "Hartville Market (Sat)" },
-    { name: "Hartville Marketplace", location: "Hartville, OH", dayOfWeek: 1, startMonth: 0, endMonth: 11, year: 2026, lat: 40.9691, lon: -81.3323, link: "https://hartvillemarketplace.com", desc: "Hartville Market (Mon)" },
-    { name: "Andover Drive-In Flea Market", location: "Andover, OH", dayOfWeek: 6, startMonth: 4, endMonth: 9, year: 2026, lat: 41.6067, lon: -80.5739, link: "FB: PymatuningLakeDriveIn", desc: "Weekly Saturday Flea" },
-    { name: "Andover Drive-In Flea Market", location: "Andover, OH", dayOfWeek: 0, startMonth: 4, endMonth: 9, year: 2026, lat: 41.6067, lon: -80.5739, link: "FB: PymatuningLakeDriveIn", desc: "Weekly Sunday Flea" },
-    { name: "Traders World Flea Market", location: "Lebanon, OH", dayOfWeek: 6, startMonth: 0, endMonth: 11, year: 2026, lat: 39.4550, lon: -84.3466, link: "https://tradersworldmarket.com", desc: "Traders World (Sat)" },
-    { name: "Traders World Flea Market", location: "Lebanon, OH", dayOfWeek: 0, startMonth: 0, endMonth: 11, year: 2026, lat: 39.4550, lon: -84.3466, link: "https://tradersworldmarket.com", desc: "Traders World (Sun)" }
+    { name: "Rogers Community Auction", location: "Rogers, OH", dayOfWeek: 5, startMonth: 0, endMonth: 11, lat: 40.7933, lon: -80.6358, link: "http://rogersohio.com/", desc: "Weekly Friday Flea Market" },
+    { name: "Hartville Marketplace", location: "Hartville, OH", dayOfWeek: 5, startMonth: 0, endMonth: 11, lat: 40.9691, lon: -81.3323, link: "https://hartvillemarketplace.com", desc: "Hartville Market (Fri)" },
+    { name: "Hartville Marketplace", location: "Hartville, OH", dayOfWeek: 6, startMonth: 0, endMonth: 11, lat: 40.9691, lon: -81.3323, link: "https://hartvillemarketplace.com", desc: "Hartville Market (Sat)" },
+    { name: "Hartville Marketplace", location: "Hartville, OH", dayOfWeek: 1, startMonth: 0, endMonth: 11, lat: 40.9691, lon: -81.3323, link: "https://hartvillemarketplace.com", desc: "Hartville Market (Mon)" },
+    { name: "Andover Drive-In Flea Market", location: "Andover, OH", dayOfWeek: 6, startMonth: 4, endMonth: 9, lat: 41.6067, lon: -80.5739, link: "FB: PymatuningLakeDriveIn", desc: "Weekly Saturday Flea" },
+    { name: "Andover Drive-In Flea Market", location: "Andover, OH", dayOfWeek: 0, startMonth: 4, endMonth: 9, lat: 41.6067, lon: -80.5739, link: "FB: PymatuningLakeDriveIn", desc: "Weekly Sunday Flea" },
+    { name: "Traders World Flea Market", location: "Lebanon, OH", dayOfWeek: 6, startMonth: 0, endMonth: 11, lat: 39.4550, lon: -84.3466, link: "https://tradersworldmarket.com", desc: "Traders World (Sat)" },
+    { name: "Traders World Flea Market", location: "Lebanon, OH", dayOfWeek: 0, startMonth: 0, endMonth: 11, lat: 39.4550, lon: -84.3466, link: "https://tradersworldmarket.com", desc: "Traders World (Sun)" }
 ];
 
 // ============================================================================
@@ -220,7 +220,7 @@ async function scrapeFestivalGuides(state) {
                         const city = match[3].trim();
                         
                         // FILTER OUT JUNK: Skip if name is just a date, contains asterisk, or too short
-                        if (name.match(/^\d{1,2}\/\d{1,2}\*?$/) || name.includes('*') || name.length < 5) {
+                        if (name.match(/^\d{1,2}\/\d{1,2}\*?$/) || name.includes('*') || name.length < 8) {
                             return; // Skip this line
                         }
                         
@@ -363,27 +363,37 @@ async function scrapeODMall() {
     // ------------------------------------------------------------------------
     
     console.log('📍 [Seeds] Generating weekly market events...');
+    
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    const nextYear = currentYear + 1;
+    
     MANUAL_SEEDS.forEach(rule => {
-        let dateCursor = new Date(rule.year, rule.startMonth, 1);
-        const endDate = new Date(rule.year, rule.endMonth + 1, 0);
-        while (dateCursor <= endDate) {
-            if (dateCursor.getDay() === rule.dayOfWeek) {
-                const dateStr = `${dateCursor.getMonth()+1}/${dateCursor.getDate()}/${dateCursor.getFullYear()}`;
-                masterList.push({
-                    name: rule.name, 
-                    dateString: dateStr, 
-                    locationString: rule.location,
-                    link: rule.link, 
-                    vendorInfo: rule.desc, 
-                    category: "Weekly Markets",
-                    state: "OH", 
-                    latitude: rule.lat, 
-                    longitude: rule.lon
-                });
+        // Generate events for remainder of current year + all of next year
+        for (let year = currentYear; year <= nextYear; year++) {
+            let dateCursor = new Date(year, rule.startMonth, 1);
+            const endDate = new Date(year, rule.endMonth + 1, 0);
+            
+            while (dateCursor <= endDate) {
+                if (dateCursor.getDay() === rule.dayOfWeek && dateCursor >= today) {
+                    const dateStr = `${dateCursor.getMonth()+1}/${dateCursor.getDate()}/${dateCursor.getFullYear()}`;
+                    masterList.push({
+                        name: rule.name, 
+                        dateString: dateStr, 
+                        locationString: rule.location,
+                        link: rule.link, 
+                        vendorInfo: rule.desc, 
+                        category: "Weekly Markets",
+                        state: "OH", 
+                        latitude: rule.lat, 
+                        longitude: rule.lon
+                    });
+                }
+                dateCursor.setDate(dateCursor.getDate() + 1);
             }
-            dateCursor.setDate(dateCursor.getDate() + 1);
         }
     });
+    
     console.log(`   ✅ Generated ${masterList.length} seed events\n`);
 
     // ------------------------------------------------------------------------
@@ -464,11 +474,27 @@ async function scrapeODMall() {
     // STEP 5: Save Results
     // ------------------------------------------------------------------------
     
-    fs.writeFileSync('shows.json', JSON.stringify(finalGeocoded, null, 2));
+    // Add unique IDs and final cleanup
+    const finalData = finalGeocoded.map((show, index) => ({
+      ...show,
+      id: show.id || generateId(), // Generate ID if missing
+      // Ensure all required fields exist
+      name: show.name || "Unnamed Event",
+      dateString: show.dateString || "",
+      locationString: show.locationString || "",
+      category: show.category || "Festivals & Fairs"
+    }));
     
-    console.log(`\n🎉 COMPLETE! Saved ${finalGeocoded.length} shows to shows.json\n`);
+    fs.writeFileSync('shows.json', JSON.stringify(finalData, null, 2));
+    
+    console.log(`\n🎉 COMPLETE! Saved ${finalData.length} shows to shows.json\n`);
     console.log('📊 BREAKDOWN:');
-    console.log(`   - Seeds: ${finalGeocoded.filter(s => s.vendorInfo && s.vendorInfo.includes('Weekly')).length}`);
-    console.log(`   - ODMall: ${finalGeocoded.filter(s => s.vendorInfo && s.vendorInfo.includes('ODMall')).length}`);
-    console.log(`   - FestivalGuides: ${finalGeocoded.filter(s => s.vendorInfo === 'FestivalGuides').length}`);
+    console.log(`   - Seeds: ${finalData.filter(s => s.vendorInfo && s.vendorInfo.includes('Weekly')).length}`);
+    console.log(`   - ODMall: ${finalData.filter(s => s.vendorInfo && s.vendorInfo.includes('ODMall')).length}`);
+    console.log(`   - FestivalGuides: ${finalData.filter(s => s.vendorInfo === 'FestivalGuides').length}`);
 })();
+
+// Helper function to generate unique IDs
+function generateId() {
+  return Math.random().toString(36).substring(2, 11);
+}
